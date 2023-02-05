@@ -1,13 +1,19 @@
 import { React, useRef, useState, useEffect } from "react";
 import "../.././pages/styles/shop.css";
-import Slider from "@mui/material/Slider";
 import Skeleton from "react-loading-skeleton";
 import { NavLink } from "react-router-dom";
 
 import { getAllCategoryIncludeProduct } from "../../service/product";
 import { getProducts } from "./../../service/product";
 import { getAllCategory } from "../../service/category";
-
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { CardActionArea } from '@mui/material';
+import CardActions from '@mui/material/CardActions';
+import Button from '@mui/material/Button';
+import Rating from '@mui/material/Rating';
 const Products = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
@@ -75,48 +81,41 @@ const Products = () => {
     return (
       <>
       {product.map((product, j) => {
-          return (
-            <div key={j} value={product.id} className="col-sm-4 py-2">
-              <div className="card h-100 text-center p-4">
-                <div className="card-main">
-                  <div className="">
-                    <img
-                      src={product.profile}
-                      alt=""
-                      className="card-img-top"
-                      height="250px"
-                    />
-                  </div>
-                  <div classnameave="cart-line"></div>
-                </div>
-
-                <div className="content">
-                  <h6 id="productTitle" className="card-title mb-0">
+        return (
+          <div key={j} value={product.id} className="col-sm-3 py-2">
+            <Card sx={{ maxWidth: 345 }} style={{height: 480}}>
+              <CardActionArea>
+                <CardMedia
+                  style={{borderBottomRightRadius: 10, borderBottomLeftRadius:10, padding: 3}}
+                  component="img"
+                  height="260"
+                  image="https://media.istockphoto.com/id/1211524213/photo/cup-of-coffee-latte-isolated-on-white-background-with-clipping-path.jpg?b=1&s=170667a&w=0&k=20&c=ZeCBTyCclEFJOGCkcW2EYAHGiQ6woXxviPtS8WAQWaU="
+                  alt="green iguana"
+                />
+                <CardContent style={{paddingLeft: 20}}>
+                  <Typography gutterBottom variant="h5" component="div" style={{fontWeight: "bold"}}>
                     {product.name}
-                  </h6>
-                  <div className="rating">
-                    <i className="bi bi-star-fill"></i>
-                    <i className="bi bi-star-fill"></i>
-                    <i className="bi bi-star-fill"></i>
-                    <i className="bi bi-star-fill"></i>
-                    <i className="bi bi-star-fill"></i>
-                  </div>
-                  <p>
-                    <span className="money">
-                      $ {product.discount_price}
-                    </span>
-                    <span className="price-old">$ {product.price}</span>
-                  </p>
-                  <NavLink
-                    to={`/products/${product.id}`}
-                    className="btn btn-outline-dark"
-                  >
-                    Buy Now
-                  </NavLink>
-                </div>
-              </div>
-            </div>
-          );
+                  </Typography>
+                  <Rating name="read-only" value={5} readOnly />
+                  <Typography display="flex" >
+                    <Typography variant="h4" marginRight={3} component="div" style={{fontWeight: "bold"}}>
+                    $ {product.price}
+                    </Typography>
+                    <Typography gutterBottom variant="h6" marginRight={3} marginTop={1} component="div" color="text.secondary" style={{textDecoration: "line-through"}}>
+                    ${product.price - product.discount_price}
+                    </Typography>
+                    <Typography gutterBottom variant="h6" marginTop={1} component="div" style={{color: "green"}}>
+                      {product.discount_percent} % off
+                    </Typography>
+                  </Typography>
+                </CardContent>
+                <CardActions style={{paddingLeft: 20}}>
+                  <Button variant="outlined" color="primary" >Add to cart</Button>  
+                </CardActions>
+              </CardActionArea>
+            </Card>
+          </div>
+        );
         })}
       </>
     );
@@ -177,7 +176,7 @@ const Products = () => {
         {/* Category & Product Card Start */}
         <div className="row">
           {/* Left Sidee */}
-          <div className="col-12 col-sm-3">
+          <div className="col-12 col-sm-2">
             <div className="filter">
               {/* Category List Start */}
               <div className="Category">
@@ -191,7 +190,11 @@ const Products = () => {
           </div>
 
           {/* Right Side */}
-          <div className="col-12 col-sm-9">
+          <div className="col-12 col-sm-10">
+            <div className="row text-center">
+            <h2>All Product</h2>
+            </div>
+              
             {/* Card Start */}
             <div className="row">
               {/* <ShowProducts /> */}
