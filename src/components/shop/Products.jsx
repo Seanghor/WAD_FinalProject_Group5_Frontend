@@ -67,6 +67,9 @@ const Products = () => {
     setFilter(updatedList);
   };
 
+  const handleCategory = () => {
+
+  }
   const SelectCategory = () => {
     return (
       <div>
@@ -74,9 +77,9 @@ const Products = () => {
           <div>
             {categoryList.map((el, i) => (
               <div className="categorylist" key={i}>
-                <li className="col-2 link" onClick={() => setFilter(data)}>
+                <button style={{}} className="col-2 link" onClick={() => setFilter(data) } >
                   {el.name}
-                </li>
+                </button>
               </div>
             ))}
           </div>
@@ -89,7 +92,7 @@ const Products = () => {
   // Show Product Process
   const ShowProducts = () => {
     return (
-      <>
+      <div>
       {product.map((product, j) => {
           return (
             <div key={j} value={product.id} className="col-sm-4 py-2">
@@ -134,7 +137,7 @@ const Products = () => {
             </div>
           );
         })}
-      </>
+      </div>
     );
   };
 
