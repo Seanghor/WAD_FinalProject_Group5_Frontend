@@ -1,0 +1,234 @@
+
+*{
+
+    font-family: 'Poppins', sans-serif;
+  } 
+  .col-1{
+    flex:1;
+  }
+  .col-2{
+    flex: 2;
+  }
+  .col-3{
+    flex:3;
+  }
+  
+  .smallContainer{
+    position: relative;
+    text-align: center;
+    color: black;
+  }
+  /* Centered text */
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .centered h1{
+    font-size: 2em;
+  }
+  .shopimg{
+    width: 100%;
+    height: 30vh;
+  }
+  
+  #Filter{
+    display: flex;
+    align-items: left;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    justify-content: left;
+  }
+  #Filter span{
+    margin-left: 20px;
+  }
+  .vl {
+    border-left: 2px solid gray;
+    height: 30px;
+    margin-left: 20px;
+  }
+  .categorylist{
+    display: flex;
+    align-items: left;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    justify-content: left;
+  }
+  .cateQty{
+    margin-left: 20px;
+    background-color: rgb(198, 198, 198);
+    border-radius: 50%;
+    color: rgb(98, 98, 98);
+    text-align: center;
+    padding: 5px;
+  }
+  #search-input{
+    font-weight: 500;
+    border-width: 5px;
+  
+  }
+  .slider {
+    width: 100%;
+    height: 15px;
+  }
+  .link{
+    list-style-type: none;  
+  }
+  
+  .priceRange{
+    margin-top: 15px;
+    margin-bottom: 35px;
+    font-weight: 800;
+    color: gray;
+    font-family: 'Poppins';
+  }
+  
+  .submit{
+    background-color: blue;
+    color:#fff;
+    border-radius: 20px;
+    border-width: 0;
+    padding: 5px;
+  }
+  .card {
+    transition: all .2s ease-in-out 0s;
+    border-radius: 3px;
+    margin-bottom: 10px;
+  }
+  
+  .card-main {
+    position: relative;
+    /* overflow: hidden; */
+  }
+  
+  .new{
+    background: #FF0000;
+    z-index: 3;
+    position: relative;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    display: block;
+    text-transform: uppercase;
+    width: 70px;
+    height: 30px;
+    border-radius: 0 15px 15px 0;
+    line-height: 30px;
+    font-style: italic;
+    left: -30px;
+    top: 0px;
+  }
+  
+  .new::after {
+    border-top: 6px solid #c80;
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    border-left: 8px solid transparent;
+    border-right: 0px solid transparent;
+  }
+  .image img {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .cart-line {
+    height: 2px;
+    background: #f1f1f1;
+  }
+  
+  .cart-item {
+    text-align: center;
+    line-height: 45px;
+    background-color: #111;
+    transition: all 1s ease-in-out;
+    opacity: 0;
+    position: relative;
+    top: -30px;
+  }
+  .content {
+    padding: 16px 0;
+    text-align: center;
+  }
+  
+  .content h6 {
+    font-size: 16px;
+    color: #555;
+    font-weight: 700;
+    text-transform: capitalize;
+    transition: all .3s;
+  }
+  
+  .content h6:hover {
+    color: #fa0;
+    text-decoration: none;
+  }
+  .content .money {
+    font-size: 20px;
+    color: #fa0;
+    font-weight: 700;
+    font-style: italic;
+    margin-right: 6px;
+  }
+  
+  .content .price-old {
+    line-height: 18px;
+    display: inline-block;
+    text-decoration: line-through;
+    color: #888;
+    font-style: italic;
+    font-weight: 500;
+  }
+  
+  .pagination {
+    display: inline-block;
+    margin : 30px;
+  }
+  
+  .pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+  }
+  
+  .pagination a.active {
+    background-color: #F6FBB5;
+    color: rgb(17, 17, 17);
+  }
+  .ServiceDetail{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15%;
+    margin-top: 10%;
+  }
+  @media (max-width: 800px) {
+    .ServiceDetail {
+      flex-direction: column;
+    }
+  }
+  
+  #service h5{
+    color: gray;
+    font-weight: 600;
+    font-size: 1.22em;
+  }
+  
+  #Filter span
+  {
+    font-weight: 500;
+  }
+  p, button,a
+  {
+    font-weight: 500;
+  }
+  #productTitle{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 50ch;
+  }
+  

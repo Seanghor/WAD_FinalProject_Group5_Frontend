@@ -1,0 +1,24 @@
+*{
+    margin:0;
+    box-sizing: border-box;
+    font-family:'Poppins', sans-serif ;
+    font-weight: 600;
+  }
+  .icon
+  {
+    font-size: 1.5em;
+  }
+  .kitchilogo{
+    padding-left: 30px;
+  }
+
+  .nav-link {
+    font-weight: bold;
+    color: rgb(95, 89, 89);
+    font-size: x-large;
+    text-decoration: none;
+  }
+  .nav-link:hover{
+    color: black;
+  }
+  a:link { text-decoration: none; }

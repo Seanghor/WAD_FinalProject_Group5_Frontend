@@ -1,0 +1,51 @@
+*{
+    font-family: 'Signika', sans-serif;
+    box-sizing:border-box;
+    
+}
+
+
+.login{
+    font-size: 40px;
+    font-weight: bolder;
+    color: #0081C9;
+   
+
+}
+.form-group{
+    margin-bottom: 20px;
+}
+.form-group label{
+    margin-bottom: 10px;
+   color:gray;
+   font-weight: lighter;
+}
+.form-group input{
+    width: 360px;
+    height: 60px;
+    border-radius: 10px;
+    border: 1px solid gray;
+}
+
+.forgetpassword{
+    color: #0081C9;
+}
+.signup{
+    font-weight: thin;
+    text-decoration: none;
+}
+.welcome{
+    height: 70vh;
+    align-items: center;
+    margin-top: -50px;
+}
+.welcome p {
+    font-size: 60px;
+    font-weight: bolder;
+    text-align: center;
+    color:#0081C9;
+
+}
+.welcome a{
+    font-size: 60px;
+}

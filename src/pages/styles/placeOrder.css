@@ -1,0 +1,44 @@
+
+.form{
+    flex:1;
+    padding: 20px;
+    margin-right:100px;
+    width: 500px;
+}
+h1{
+    color:#0081C9;
+    font-weight: bolder;
+    margin-left:100px
+}
+.name input {
+    border: 1px solid grey;
+}
+
+.country select{
+    border: 1px solid grey;
+    width: 363px;
+   
+}
+.form .form-group{
+    width:500px;
+    margin-left: 100px;
+    margin-top: -5px;
+}
+.total{
+    color:red;
+}
+.checkout-btb{
+    margin-left: 200px;
+}
+.checkout-btb button{
+    width: 300px;
+    height: 50px;
+    background-color: #C54248;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bolder;
+}
+.placeOder{
+    margin-top: 0px;
+} 
