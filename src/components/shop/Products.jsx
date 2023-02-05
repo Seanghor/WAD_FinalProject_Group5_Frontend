@@ -9,11 +9,9 @@ import { getProducts } from "./../../service/product";
 import { getAllCategory } from "../../service/category";
 
 const Products = () => {
-  const categoriesList = useRef(null);
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
   const [categoryList, setCategoryList] = useState([]);
-  const [category, setCategory] = useState("");
   const [filter, setFilter] = useState(data);
   const [product, setaProduct] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -91,60 +89,52 @@ const Products = () => {
   // Show Product Process
   const ShowProducts = () => {
     return (
-      <div>
-        {!loading ? (
-          <div>
-            {product.map((product, j) => {
-              return (
-                <div key={j} value={product.id}>
-                  <div className="col-sm-4 py-2">
-                    <div className="card h-100 text-center p-4">
-                      <div className="card-main">
-                        <div className="">
-                          <img
-                            src={product.profile}
-                            alt=""
-                            className="card-img-top"
-                            height="250px"
-                          />
-                        </div>
-                        <div classnameave="cart-line"></div>
-                      </div>
-
-                      <div className="content">
-                        <h6 id="productTitle" className="card-title mb-0">
-                          {product.name}
-                        </h6>
-                        <div className="rating">
-                          <i className="bi bi-star-fill"></i>
-                          <i className="bi bi-star-fill"></i>
-                          <i className="bi bi-star-fill"></i>
-                          <i className="bi bi-star-fill"></i>
-                          <i className="bi bi-star-fill"></i>
-                        </div>
-                        <p>
-                          <span className="money">
-                            $ {product.discount_price}
-                          </span>
-                          <span className="price-old">$ {product.price}</span>
-                        </p>
-                        <NavLink
-                          to={`/products/${product.id}`}
-                          className="btn btn-outline-dark"
-                        >
-                          Buy Now
-                        </NavLink>
-                      </div>
-                    </div>
+      <>
+      {product.map((product, j) => {
+          return (
+            <div key={j} value={product.id} className="col-sm-4 py-2">
+              <div className="card h-100 text-center p-4">
+                <div className="card-main">
+                  <div className="">
+                    <img
+                      src={product.profile}
+                      alt=""
+                      className="card-img-top"
+                      height="250px"
+                    />
                   </div>
+                  <div classnameave="cart-line"></div>
                 </div>
-              );
-            })}
-          </div>
-        ) : (
-          <p>loading....!</p>
-        )}
-      </div>
+
+                <div className="content">
+                  <h6 id="productTitle" className="card-title mb-0">
+                    {product.name}
+                  </h6>
+                  <div className="rating">
+                    <i className="bi bi-star-fill"></i>
+                    <i className="bi bi-star-fill"></i>
+                    <i className="bi bi-star-fill"></i>
+                    <i className="bi bi-star-fill"></i>
+                    <i className="bi bi-star-fill"></i>
+                  </div>
+                  <p>
+                    <span className="money">
+                      $ {product.discount_price}
+                    </span>
+                    <span className="price-old">$ {product.price}</span>
+                  </p>
+                  <NavLink
+                    to={`/products/${product.id}`}
+                    className="btn btn-outline-dark"
+                  >
+                    Buy Now
+                  </NavLink>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </>
     );
   };
 
@@ -220,7 +210,10 @@ const Products = () => {
           <div className="col-12 col-sm-9">
             {/* Card Start */}
             <div className="row">
-              <ShowProducts />
+              {/* <ShowProducts /> */}
+              {
+                loading ? <Loading/> : <ShowProducts/>
+              }
             </div>
 
             {/* Pagination Start */}
