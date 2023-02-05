@@ -70,7 +70,23 @@ const Products = () => {
   };
 
   const SelectCategory = () => {
-    return <div>dssd</div>;
+    return (
+      <div>
+        {!loading ? (
+          <div>
+            {categoryList.map((el, i) => (
+              <div className="categorylist" key={i}>
+                <li className="col-2 link" onClick={() => setFilter(data)}>
+                  {el.name}
+                </li>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p>loading....!</p>
+        )}
+      </div>
+    );
   };
   // Show Product Process
   const ShowProducts = () => {
@@ -193,7 +209,7 @@ const Products = () => {
               <div className="Category">
                 <h3>Categories</h3>
                 <div className="categorylist">
-                  <ShowCategory />
+                  <SelectCategory />
                 </div>
               </div>
               {/* Category List End */}
