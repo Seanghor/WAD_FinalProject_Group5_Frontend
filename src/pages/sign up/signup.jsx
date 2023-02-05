@@ -1,8 +1,18 @@
 import React from 'react'
 import '.././styles/signup.css'
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
-const signup = () => {
+const Signup = () => {
+  const [name,setName]=useState("");
+  const [phone,setPhone]=useState("");
+  const [email,setEmail]=useState("")
+  const [password,setPassword] =useState("");
+  const [work,setWork] = useState("");
+  const [city,setCity] = useState("");
+  const [zip,setZip] = useState("");
+  const [province,setProvince] =useState("");
+  const [street,setStreet]=useState("");
   return (
     <div className="container">
       <div className="col-md-6 register">
@@ -21,31 +31,43 @@ const signup = () => {
           <div className="col">
             <div className="first_name">
               <p>First Name</p>
-              <input type="text" placeholder="sothea" className="item" />
+              <input type="text" value={name} onChange={(e)=>setName(e.target.value)} placeholder="sothea" className="item" />
             </div>
             <div className="phone_number">
-              <p>Phone Number</p>
-              <input type="number" placeholder="01234567" className="item"  />
+              <p>Email</p>
+              <input type="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="team5@kit.com" className="item"  />
             </div>
             <div className="password">
-              <p>Password</p>
-              <input type="password" placeholder="1234@14" className="item" />
+              <p>Street </p>
+              <input type="text" value={street} onChange={(e)=>setStreet(e.target.value)} placeholder="road 4" className="item" />
+            </div> 
+            <div className="city">
+              <p>City </p>
+              <input type="text " value={city} onChange={(e)=>setCity(e.target.value)} placeholder="Phnom Penh" className="item" />
+            </div> 
+            <div className="province">
+              <p>Province</p>
+              <input type="text " value={province} onChange={(e)=>setProvince(e.target.value)} placeholder="Phnom Penh" className="item" />
             </div> 
           </div>
 
           {/* Right side form */}
           <div className="col">
             <div className="last_name">
-              <p>Last Name</p>
-              <input type="text" placeholder="team5" className="item" />
+              <p>Phone number</p>
+              <input type="text" value={phone} onChange={(e)=>setPhone(e.target.value)} placeholder="1234" className="item" />
             </div>
             <div className="email">
-              <p>Email Address</p>
-              <input type="email" placeholder="team4@gmail.com" className="item" />
+              <p>Password</p>
+              <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="1@#$456" className="item" />
             </div>
             <div className="confirm_password">
-              <p>Confirm Password</p>
-              <input type="password" placeholder="1234@14" className="item" />
+              <p>Work</p>
+              <input type="text" value={work} onChange={(e)=>setWork(e.target.value)} placeholder="Student" className="item" />
+            </div>
+            <div className="confirm_password">
+              <p>Zip Code</p>
+              <input type="text" value={zip} onChange={(e)=>setZip(e.target.value)} placeholder="1234@14" className="item" />
             </div>
           </div>
         </div>
@@ -58,12 +80,12 @@ const signup = () => {
           </div>
           <div className="tick2">
               <input type="checkbox" className='checkbox' />
-              <label htmlFor="text"> I agree with the terms <li href="/">private policy.</li></label>
+              <label htmlFor="text"> I agree with the terms <a href="/">private policy.</a></label>
           </div>
         </div>
 
         <div className="col-md-6 btn">
-          <button  type="submit">Sign Up</button>
+          <button  type="submit" onClick={()=> {}}>Sign Up</button>
           
         </div>
         <p>Already have an Account ? <Link to="/signin">Login</Link></p>
@@ -75,4 +97,4 @@ const signup = () => {
   )
 }
 
-export default signup
+export default Signup

@@ -3,8 +3,10 @@ import "../.././pages/styles/shop.css";
 import Slider from "@mui/material/Slider";
 import Skeleton from "react-loading-skeleton";
 import { NavLink } from "react-router-dom";
-
-import { getAllCategoryIncludeProduct } from "../../service/product";
+import { CDropdown } from "@coreui/react";
+import { CDropdownItem, CDropdownMenu, CDropdownToggle } from "@coreui/react";
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 import { getProducts } from "./../../service/product";
 import { getAllCategory } from "../../service/category";
 
@@ -67,35 +69,34 @@ const Products = () => {
     setFilter(updatedList);
   };
 
-  const handleCategory = () => {
-
-  }
   const SelectCategory = () => {
+
     return (
-      <div>
-        {!loading ? (
-          <div>
-            {categoryList.map((el, i) => (
-              <div className="categorylist" key={i}>
-                <button style={{}} className="col-2 link" onClick={() => setFilter(data) } >
-                  {el.name}
-                </button>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p>loading....!</p>
-        )}
-      </div>
+      <CDropdown className="cate">
+        <CDropdownToggle className="p-2 mb-2 bg-white text-dark"><i className="bi bi-filter"></i> Category</CDropdownToggle>
+        <CDropdownMenu className="manu">
+          {!loading ? (
+            <div>
+              {categoryList.map((el, i) => (
+                <CDropdownItem href="#" className="categorylist" key={i}>
+                 <div onClick={()=> {}}> {el.name}</div>
+                </CDropdownItem>
+              ))}
+            </div>
+          ) : (
+            <p>loading....!</p>
+          )}
+        </CDropdownMenu>
+      </CDropdown>
     );
   };
   // Show Product Process
   const ShowProducts = () => {
     return (
-      <div>
-      {product.map((product, j) => {
+      <>
+        {product.map((product, j) => {
           return (
-            <div key={j} value={product.id} className="col-sm-4 py-2">
+            <div key={j} value={product.id} className="col-sm-3 py-2">
               <div className="card h-100 text-center p-4">
                 <div className="card-main">
                   <div className="">
@@ -121,9 +122,7 @@ const Products = () => {
                     <i className="bi bi-star-fill"></i>
                   </div>
                   <p>
-                    <span className="money">
-                      $ {product.discount_price}
-                    </span>
+                    <span className="money">$ {product.discount_price}</span>
                     <span className="price-old">$ {product.price}</span>
                   </p>
                   <NavLink
@@ -137,7 +136,7 @@ const Products = () => {
             </div>
           );
         })}
-      </div>
+      </>
     );
   };
 
@@ -214,9 +213,7 @@ const Products = () => {
             {/* Card Start */}
             <div className="row">
               {/* <ShowProducts /> */}
-              {
-                loading ? <Loading/> : <ShowProducts/>
-              }
+              {loading ? <Loading /> : <ShowProducts />}
             </div>
 
             {/* Pagination Start */}

@@ -13,6 +13,13 @@
     flex:3;
   }
   
+  .cate {
+    width: 200px;
+  }
+.manu {
+  width: 200px;
+}
+
   .smallContainer{
     position: relative;
     text-align: center;
