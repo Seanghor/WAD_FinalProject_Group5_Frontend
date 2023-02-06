@@ -9,7 +9,7 @@ import Product from "./components/shop/Product";
 import Signin from "./pages/sign in/signin";
 import Signup from "./pages/sign up/signup";
 import PlaceOrder from "./pages/placeOrder/placeOrder";
-
+import Cart from "./pages/cart/cart"
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
             <Route path="/signin" element={<Signin />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/placeOrder" element={<PlaceOrder />} />
- 
+            <Route path="/cart" elemetn={<Cart/>} />
            
           </Route>
         </Routes>
