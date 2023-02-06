@@ -51,7 +51,7 @@ const Home = () => {
         {/* Container Section Start */}
         <section className="bg-color">
           <div className="">
-            <div className="row row-cols-3 g-3">
+            <div className="row">
               <Cards 
                 img={Bin} 
                 name="Bin"
