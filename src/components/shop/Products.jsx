@@ -8,17 +8,15 @@ import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import { getProducts } from "./../../service/product";
 import { getAllCategory } from "../../service/category";
-
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea, Grid } from '@mui/material';
-import CardActions from '@mui/material/CardActions';
-import Button from '@mui/material/Button';
-import Rating from '@mui/material/Rating';
-import { Stack } from "@mui/system";
-
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { CardActionArea } from "@mui/material";
+import CardActions from "@mui/material/CardActions";
+import Button from "@mui/material/Button";
+import Rating from "@mui/material/Rating";
+import { getCategory } from "./../../service/category";
 const Products = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
@@ -118,7 +116,6 @@ const Products = () => {
   const ShowProducts = () => {
     return (
       <>
-
         {!category ? (
           <>
             <div className="row text-center">
@@ -271,7 +268,6 @@ const Products = () => {
             ))}
           </>
         )}
-
       </>
     );
   };
@@ -293,10 +289,10 @@ const Products = () => {
 
   // --------- Big Return
   return (
-    <>
-      <Grid className="bg-color p-5">
+    <div>
+      <section className="bg-color p-5">
         {/* Filter Row And Search bar Start */}
-        <Grid className="d-flex">
+        <div className="d-flex">
           <div className="p-2 flex-fill">
             <div className="filter" id="Filter">
               <div className="filterIcon">
@@ -325,13 +321,13 @@ const Products = () => {
             </div>
             {/* Search bar End */}
           </div>
-        </Grid>
+        </div>
         {/* Filter Row And Search bar End */}
 
         {/* Category & Product Card Start */}
-        <Grid className="row">
+        <div className="row">
           {/* Left Sidee */}
-          <Grid className="col-12 col-sm-2">
+          <div className="col-12 col-sm-2">
             <div className="filter">
               {/* Category List Start */}
               <div className="Category">
@@ -342,28 +338,21 @@ const Products = () => {
               </div>
               {/* Category List End */}
             </div>
-          </Grid>
+          </div>
 
           {/* Right Side */}
-
+          <div className="col-12 col-sm-10">
             {/* Card Start */}
-            <Grid className="row">
+            <div className="row">
               {/* <ShowProducts /> */}
-
-              {
-                loading ? <Loading/> : <ShowProducts/>
-              }
-            </Grid>
-
               {loading ? <Loading /> : <ShowProducts />}
             </div>
-
 
             {/* Pagination Start */}
 
             {/* Pagination End */}
-          </Grid>
-        </Grid>
+          </div>
+        </div>
 
         {/* Category & Product Card End */}
 
@@ -381,8 +370,8 @@ const Products = () => {
             <h5>100% Secure payment, consectetur adipiscing elit</h5>
           </div>
         </div>
-      </Grid>
-    </>
+      </section>
+    </div>
   );
 };
 
