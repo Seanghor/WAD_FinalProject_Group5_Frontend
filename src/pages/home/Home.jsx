@@ -3,11 +3,11 @@ import Pan from "../.././assets/image/pan/pan5-removebg.png";
 import Bowl from "../.././assets/image/removebg2/bowl.png";
 import Microwave from "../.././assets/image/microwave/microwave1.jpg";
 import Bin from "../.././assets/image/removebg2/bin.png";
-import CuttingBoard from "../.././assets/image/removebg2/cutting_board.png" 
+import CuttingBoard from "../.././assets/image/removebg2/cutting_board.png";
 import Pot from "../.././assets/image/pot/pot1.jpg";
 import Kettle from "../.././assets/image/removebg2/kettle.png";
-import Pan2 from "../.././assets/image/removebg2/pan.png"; 
-import Pan3 from "../.././assets/image/removebg2/pan2.png"; 
+import Pan2 from "../.././assets/image/removebg2/pan.png";
+import Pan3 from "../.././assets/image/removebg2/pan2.png";
 import Cards from "../../components/home/Card";
 import Card from "../../components/home/Card";
 import ".././styles/home.css";
@@ -24,10 +24,10 @@ const Home = () => {
               <div className="model">
                 <h2>New Model</h2>
                 <NavLink className="nav-item" to="/shop">
-                <li className="nav-link" href="/shop">
-                  Shop Now
-                </li>
-              </NavLink>
+                  <li className="nav-link" href="/shop">
+                    Shop Now
+                  </li>
+                </NavLink>
                 <h5>
                   Anodized to absorb, distribute and transfer
                   <br /> heat evenly and efficiently, these two frying
@@ -48,9 +48,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-
         {/* Container Section Start */}
-
         <section className="bg-color">
           <div className="">
             <div className="row row-cols-3 g-3">
@@ -60,9 +58,8 @@ const Home = () => {
 
               <Card img={Bin} name="Bin" linkName=">> View More" />
               <Card img={Bowl} name="Bowl" linkName=">> View More" />
-              <Card img={Mit} name="Mit" linkName=">> View More" />
+              <Card img={Bin} name="Mit" linkName=">> View More" />
             </div>
-
 
             {/* Top Picks For You Start */}
             <div className="title">
@@ -84,7 +81,7 @@ const Home = () => {
                 newPrice="10.00"
                 oldPrice="15.00"
                 discount=" 15"
-                desc = "Moving into a new house or buying your first home??Kit out your kitchen with this kitchen utensils list containing 46 of the most essential items!"
+                desc="Moving into a new house or buying your first home??Kit out your kitchen with this kitchen utensils list containing 46 of the most essential items!"
               />
               <ProductCard
                 img={Bowl}
@@ -92,7 +89,7 @@ const Home = () => {
                 newPrice="4.00"
                 oldPrice="9.00"
                 discount=" 15"
-                desc = "Moving into a new house or buying your first home??Kit out your kitchen with this kitchen utensils list containing 46 of the most essential items!"
+                desc="Moving into a new house or buying your first home??Kit out your kitchen with this kitchen utensils list containing 46 of the most essential items!"
               />
               <ProductCard
                 img={Microwave}
@@ -100,7 +97,7 @@ const Home = () => {
                 newPrice="81.00"
                 oldPrice="89.00"
                 discount=" 15"
-                desc = "Moving into a new house or buying your first home??Kit out your kitchen with this kitchen utensils list containing 46 of the most essential items!"
+                desc="Moving into a new house or buying your first home??Kit out your kitchen with this kitchen utensils list containing 46 of the most essential items!"
               />
               <ProductCard
                 img={Pot}
@@ -108,12 +105,12 @@ const Home = () => {
                 newPrice="15.00"
                 oldPrice="19.00"
                 discount=" 15"
-                desc = "Moving into a new house or buying your first home??Kit out your kitchen with this kitchen utensils list containing 46 of the most essential items!"
+                desc="Moving into a new house or buying your first home??Kit out your kitchen with this kitchen utensils list containing 46 of the most essential items!"
               />
             </Grid>
             {/* Product Card End */}
-          </Grid>
-        </Grid>
+          </div>
+        </section>{" "}
         {/* Container Section End */}
       </div>
     </div>
