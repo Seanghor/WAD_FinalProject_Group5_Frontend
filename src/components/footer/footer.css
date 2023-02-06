@@ -1,3 +1,6 @@
 .btn,.form-control{
     font-weight: 500;
 }
+#footerlink p li{
+    list-style: none;
+}

@@ -10,10 +10,11 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
+import { CardActionArea, Grid } from '@mui/material';
 import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
 import Rating from '@mui/material/Rating';
+import { Stack } from "@mui/system";
 const Products = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
@@ -82,7 +83,7 @@ const Products = () => {
       <>
       {product.map((product, j) => {
         return (
-          <div key={j} value={product.id} className="col-sm-3 py-2">
+          <Grid key={j} value={product.id} className="col-sm-3 py-2">
             <Card sx={{ maxWidth: 345 }} style={{height: 480}}>
               <CardActionArea>
                 <CardMedia
@@ -93,28 +94,28 @@ const Products = () => {
                   alt="green iguana"
                 />
                 <CardContent style={{paddingLeft: 20}}>
-                  <Typography gutterBottom variant="h5" component="div" style={{fontWeight: "bold"}}>
+                  <Typography gutterBottom variant="h5" style={{fontWeight: "bold"}}>
                     {product.name}
                   </Typography>
                   <Rating name="read-only" value={5} readOnly />
-                  <Typography display="flex" >
-                    <Typography variant="h4" marginRight={3} component="div" style={{fontWeight: "bold"}}>
+                  <Stack direction="row">
+                    <Typography variant="h4" marginRight={3} style={{fontWeight: "bold"}}>
                     $ {product.price}
                     </Typography>
                     <Typography gutterBottom variant="h6" marginRight={3} marginTop={1} component="div" color="text.secondary" style={{textDecoration: "line-through"}}>
                     ${product.price - product.discount_price}
                     </Typography>
                     <Typography gutterBottom variant="h6" marginTop={1} component="div" style={{color: "green"}}>
-                      {product.discount_percent} % off
+                      {product.discount_percent}% off
                     </Typography>
-                  </Typography>
+                  </Stack>
                 </CardContent>
                 <CardActions style={{paddingLeft: 20}}>
                   <Button variant="outlined" color="primary" >Add to cart</Button>  
                 </CardActions>
               </CardActionArea>
             </Card>
-          </div>
+          </Grid>
         );
         })}
       </>
@@ -138,10 +139,10 @@ const Products = () => {
 
   // --------- Big Return
   return (
-    <div>
-      <section className="bg-color p-5">
+    <>
+      <Grid className="bg-color p-5">
         {/* Filter Row And Search bar Start */}
-        <div className="d-flex">
+        <Grid className="d-flex">
           <div className="p-2 flex-fill">
             <div className="filter" id="Filter">
               <div className="filterIcon">
@@ -170,13 +171,13 @@ const Products = () => {
             </div>
             {/* Search bar End */}
           </div>
-        </div>
+        </Grid>
         {/* Filter Row And Search bar End */}
 
         {/* Category & Product Card Start */}
-        <div className="row">
+        <Grid className="row">
           {/* Left Sidee */}
-          <div className="col-12 col-sm-2">
+          <Grid className="col-12 col-sm-2">
             <div className="filter">
               {/* Category List Start */}
               <div className="Category">
@@ -187,27 +188,27 @@ const Products = () => {
               </div>
               {/* Category List End */}
             </div>
-          </div>
+          </Grid>
 
           {/* Right Side */}
-          <div className="col-12 col-sm-10">
+          <Grid className="col-12 col-sm-10">
             <div className="row text-center">
             <h2>All Product</h2>
             </div>
               
             {/* Card Start */}
-            <div className="row">
+            <Grid className="row">
               {/* <ShowProducts /> */}
               {
                 loading ? <Loading/> : <ShowProducts/>
               }
-            </div>
+            </Grid>
 
             {/* Pagination Start */}
 
             {/* Pagination End */}
-          </div>
-        </div>
+          </Grid>
+        </Grid>
 
         {/* Category & Product Card End */}
 
@@ -225,8 +226,8 @@ const Products = () => {
             <h5>100% Secure payment, consectetur adipiscing elit</h5>
           </div>
         </div>
-      </section>
-    </div>
+      </Grid>
+    </>
   );
 };
 
