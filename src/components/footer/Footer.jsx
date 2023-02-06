@@ -21,7 +21,7 @@ const Footer = () => {
               {/* Grid column  */}
 
               {/* Grid column  */}
-              <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+              <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4" id="footerlink">
                 {/*  Links */}
                 <h6 className="text-uppercase fw-bold mb-4">Links</h6>
                 <p>
@@ -64,9 +64,9 @@ const Footer = () => {
               {/* Grid column */}
 
               {/* Grid column */}
-              <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+              <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4" id="footerlink">
                 {/* <!-- Links --> */}
-                <h6 className="text-uppercase fw-bold mb-4">Help</h6>
+                <h6 className="text-uppercase fw-bold mb-4" >Help</h6>
                 <p>
                   <li href="#!" className="text-reset">
                     Payment Options

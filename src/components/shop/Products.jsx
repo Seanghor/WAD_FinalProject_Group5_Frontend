@@ -28,6 +28,7 @@ const Products = () => {
   const [category, setCategory] = useState(false);
 
   let componentMounted = true;
+  
 
   useEffect(() => {
     const allProducts = async () => {
