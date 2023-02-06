@@ -1,4 +1,5 @@
 import { React, useRef, useState, useEffect } from "react";
+import Button from "react-bootstrap/Button";
 import "../.././pages/styles/shop.css";
 import Skeleton from "react-loading-skeleton";
 import { NavLink } from "react-router-dom";
@@ -14,7 +15,8 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import CardActions from "@mui/material/CardActions";
-import Button from "@mui/material/Button";
+
+// import Button from "@mui/material/Button";
 import Rating from "@mui/material/Rating";
 import { getCategory } from "./../../service/category";
 const Products = () => {
@@ -28,7 +30,6 @@ const Products = () => {
   const [category, setCategory] = useState(false);
 
   let componentMounted = true;
-  
 
   useEffect(() => {
     const allProducts = async () => {
@@ -76,10 +77,12 @@ const Products = () => {
     );
   };
 
-  const filterProdcut = (cat) => {
-    const updatedList = data.filter((x) => x.category === cat);
-    setFilter(updatedList);
-  };
+  // const filterProdcut = (cat) => {
+  //   const updatedList = data.filter((x) => x.category === cat);
+  //   setFilter(updatedList);
+  // };
+
+  // handle Click category
   const onClickCategory = async (id) => {
     const dataC = await categoryList.find((cate) => {
       return cate.id === id;
@@ -88,6 +91,14 @@ const Products = () => {
     setData(dataC);
     console.log("Dataaaaa:", data.Product);
     return;
+  };
+
+  // handle click product:
+  const onClickProduct = async (id) => {
+    const pro = await product.find((product) => {
+      return product.id === id;
+    });
+    console.log("Log : ", pro);
   };
 
   const SelectCategory = () => {
@@ -183,9 +194,15 @@ const Products = () => {
                       </Typography>
                     </CardContent>
                     <CardActions style={{ paddingLeft: 20 }}>
-                      <button variant="outlined" color="primary">
-                        Add to cart
-                      </button>
+                      <Button
+                        variant="outline-primary"
+                        color="primary"
+                        onClick={() => {}}
+                      >
+                        <NavLink to={`/product/${product.id}`}>
+                          Add To Cart
+                        </NavLink>
+                      </Button>
                     </CardActions>
                   </CardActionArea>
                 </Card>
@@ -259,9 +276,15 @@ const Products = () => {
                       </Typography>
                     </CardContent>
                     <CardActions style={{ paddingLeft: 20 }}>
-                      <button variant="outlined" color="primary">
-                        Add to cart
-                      </button>
+                      <Button
+                        variant="outline-primary"
+                        color="primary"
+                        onClick={() => {}}
+                      >
+                        <NavLink to={`/product/${product.id}`}>
+                          Add To Cart
+                        </NavLink>
+                      </Button>
                     </CardActions>
                   </CardActionArea>
                 </Card>
