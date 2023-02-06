@@ -52,13 +52,27 @@ const Home = () => {
         <section className="bg-color">
           <div className="">
             <div className="row row-cols-3 g-3">
-              <Card img={Pan} name="Pan" linkName=">> View More" />
-              <Card img={Pot} name="Pot" linkName=">> View More" />
-              <Card img={Microwave} name="Microwave" linkName=">> View More" />
-
-              <Card img={Bin} name="Bin" linkName=">> View More" />
-              <Card img={Bowl} name="Bowl" linkName=">> View More" />
-              <Card img={Bin} name="Mit" linkName=">> View More" />
+              <Cards 
+                img={Bin} 
+                name="Bin"
+                newPrice="30.00"
+                oldPrice="25.00"
+                desc="Moving into a new house or buying your first home??Kit out your kitchen with this kitchen utensils list containing 46 of the most essential items!"
+              />
+              <Cards 
+                img={CuttingBoard} 
+                name="Cutting Board"
+                newPrice="8.00"
+                oldPrice="15.00"
+                desc="Moving into a new house or buying your first home??Kit out your kitchen with this kitchen utensils list containing 46 of the most essential items!"
+              />
+              <Cards 
+                img={Pan2} 
+                name="Mit"
+                newPrice="10.00"
+                oldPrice="15.00"
+                desc="Moving into a new house or buying your first home??Kit out your kitchen with this kitchen utensils list containing 46 of the most essential items!"
+              />
             </div>
 
             {/* Top Picks For You Start */}
