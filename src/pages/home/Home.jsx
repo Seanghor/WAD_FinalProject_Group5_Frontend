@@ -51,7 +51,7 @@ const Home = () => {
         {/* Container Section Start */}
         <section className="bg-color">
           <div className="">
-            <div className="row">
+            <div className="row justify-content-center">
               <Cards 
                 img={Bin} 
                 name="Bin"
