@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Cart = () => {
   
   return (
-    <div class="container h-100">
+    <div class="container ">
     <div class="row ">
       <div class="col">
         
