@@ -1,36 +1,35 @@
 import { React, useRef, useState, useEffect } from "react";
 import "../.././pages/styles/shop.css";
-import Slider from "@mui/material/Slider";
 import Skeleton from "react-loading-skeleton";
 import { NavLink } from "react-router-dom";
 import { CDropdown } from "@coreui/react";
 import { CDropdownItem, CDropdownMenu, CDropdownToggle } from "@coreui/react";
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
 import { getProducts } from "./../../service/product";
 import { getAllCategory } from "../../service/category";
-
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { CardActionArea } from "@mui/material";
+import CardActions from "@mui/material/CardActions";
+import Button from "@mui/material/Button";
+import Rating from "@mui/material/Rating";
+import { getCategory } from "./../../service/category";
 const Products = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
   const [categoryList, setCategoryList] = useState([]);
   const [filter, setFilter] = useState(data);
   const [product, setaProduct] = useState([]);
+  const [id2, setId] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
+  const [category, setCategory] = useState(false);
 
   let componentMounted = true;
 
   useEffect(() => {
-    const allCategory = async () => {
-      await getAllCategory()
-        .then((response) => response.allProductCategory)
-        .then((res) => {
-          setTimeout(() => {
-            setLoading(false);
-            setCategoryList(res);
-          }, 2000);
-        });
-    };
     const allProducts = async () => {
       await getProducts()
         .then((response) => response.products)
@@ -41,11 +40,23 @@ const Products = () => {
           }, 2000);
         });
     };
-    allCategory();
     allProducts();
+
+    const allCategory = async () => {
+      await getAllCategory()
+        .then((response) => response.allProductCategory)
+        .then((res) => {
+          setTimeout(() => {
+            setLoading(false);
+            setData(res);
+            setCategoryList(res);
+          }, 2000);
+        });
+    };
+    allCategory();
   }, []);
-  console.log("Category Test:", categoryList);
-  console.log("Product Test: ", product);
+  // console.log("Category Test:", categoryList);
+  // console.log("Product Test: ", product);
 
   // Loading Process
   const Loading = () => {
@@ -68,18 +79,28 @@ const Products = () => {
     const updatedList = data.filter((x) => x.category === cat);
     setFilter(updatedList);
   };
+  const onClickCategory = async (id) => {
+    const dataC = await categoryList.find((cate) => {
+      return cate.id === id;
+    });
+    setCategory(true);
+    setData(dataC);
+    console.log("Dataaaaa:", data.Product);
+    return;
+  };
 
   const SelectCategory = () => {
-
     return (
       <CDropdown className="cate">
-        <CDropdownToggle className="p-2 mb-2 bg-white text-dark"><i className="bi bi-filter"></i> Category</CDropdownToggle>
+        <CDropdownToggle className="p-2 mb-2 bg-white text-dark">
+          <i className="bi bi-filter"></i> Category
+        </CDropdownToggle>
         <CDropdownMenu className="manu">
           {!loading ? (
             <div>
               {categoryList.map((el, i) => (
                 <CDropdownItem href="#" className="categorylist" key={i}>
-                 <div onClick={()=> {}}> {el.name}</div>
+                  <div onClick={() => onClickCategory(el.id)}> {el.name}</div>
                 </CDropdownItem>
               ))}
             </div>
@@ -90,52 +111,163 @@ const Products = () => {
       </CDropdown>
     );
   };
+
   // Show Product Process
   const ShowProducts = () => {
     return (
       <>
-        {product.map((product, j) => {
-          return (
-            <div key={j} value={product.id} className="col-sm-3 py-2">
-              <div className="card h-100 text-center p-4">
-                <div className="card-main">
-                  <div className="">
-                    <img
-                      src={product.profile}
-                      alt=""
-                      className="card-img-top"
-                      height="250px"
-                    />
-                  </div>
-                  <div classnameave="cart-line"></div>
-                </div>
-
-                <div className="content">
-                  <h6 id="productTitle" className="card-title mb-0">
-                    {product.name}
-                  </h6>
-                  <div className="rating">
-                    <i className="bi bi-star-fill"></i>
-                    <i className="bi bi-star-fill"></i>
-                    <i className="bi bi-star-fill"></i>
-                    <i className="bi bi-star-fill"></i>
-                    <i className="bi bi-star-fill"></i>
-                  </div>
-                  <p>
-                    <span className="money">$ {product.discount_price}</span>
-                    <span className="price-old">$ {product.price}</span>
-                  </p>
-                  <NavLink
-                    to={`/products/${product.id}`}
-                    className="btn btn-outline-dark"
-                  >
-                    Buy Now
-                  </NavLink>
-                </div>
-              </div>
+        {!category ? (
+          <>
+            <div className="row text-center">
+              <h2>All Products</h2>
             </div>
-          );
-        })}
+            {product.map((product, j) => (
+              <div key={j} value={product.id} className="col-sm-3 py-2">
+                <Card sx={{ maxWidth: 345 }} style={{ height: 480 }}>
+                  <CardActionArea>
+                    <CardMedia
+                      style={{
+                        borderBottomRightRadius: 10,
+                        borderBottomLeftRadius: 10,
+                        padding: 3,
+                      }}
+                      component="img"
+                      height="260"
+                      image={product.profile}
+                      alt="green iguana"
+                    />
+                    <CardContent style={{ paddingLeft: 20 }}>
+                      <Typography
+                        gutterBottom
+                        variant="h5"
+                        component="div"
+                        style={{ fontWeight: "bold" }}
+                      >
+                        {product.name}
+                      </Typography>
+                      <Rating
+                        name="read-only"
+                        value={product.rating}
+                        readOnly
+                      />
+                      <Typography display="flex">
+                        <Typography
+                          variant="h4"
+                          marginRight={3}
+                          component="div"
+                          style={{ fontWeight: "bold" }}
+                        >
+                          $ {product.price}
+                        </Typography>
+                        <Typography
+                          gutterBottom
+                          variant="h6"
+                          marginRight={3}
+                          marginTop={1}
+                          component="div"
+                          color="text.secondary"
+                          style={{ textDecoration: "line-through" }}
+                        >
+                          ${product.price - product.discount_price}
+                        </Typography>
+                        <Typography
+                          gutterBottom
+                          variant="h6"
+                          marginTop={1}
+                          component="div"
+                          style={{ color: "green" }}
+                        >
+                          {product.discount_percent}% off
+                        </Typography>
+                      </Typography>
+                    </CardContent>
+                    <CardActions style={{ paddingLeft: 20 }}>
+                      <button variant="outlined" color="primary">
+                        Add to cart
+                      </button>
+                    </CardActions>
+                  </CardActionArea>
+                </Card>
+              </div>
+            ))}
+          </>
+        ) : (
+          <>
+            {" "}
+            <div className="row text-center">
+              <h2>{data.name}</h2>
+            </div>
+            {data.Product.map((product, j) => (
+              <div key={j} value={product.id} className="col-sm-3 py-2">
+                <Card sx={{ maxWidth: 345 }} style={{ height: 480 }}>
+                  <CardActionArea>
+                    <CardMedia
+                      style={{
+                        borderBottomRightRadius: 10,
+                        borderBottomLeftRadius: 10,
+                        padding: 3,
+                      }}
+                      component="img"
+                      height="260"
+                      image={product.profile}
+                      alt="green iguana"
+                    />
+                    <CardContent style={{ paddingLeft: 20 }}>
+                      <Typography
+                        gutterBottom
+                        variant="h5"
+                        component="div"
+                        style={{ fontWeight: "bold" }}
+                      >
+                        {product.name}
+                      </Typography>
+                      <Rating
+                        name="read-only"
+                        value={product.rating}
+                        readOnly
+                      />
+                      <Typography display="flex">
+                        <Typography
+                          variant="h4"
+                          marginRight={3}
+                          component="div"
+                          style={{ fontWeight: "bold" }}
+                        >
+                          $ {product.price}
+                        </Typography>
+                        <Typography
+                          gutterBottom
+                          variant="h6"
+                          marginRight={3}
+                          marginTop={1}
+                          component="div"
+                          color="text.secondary"
+                          style={{ textDecoration: "line-through" }}
+                        >
+                          ${product.price - product.discount_price}
+                        </Typography>
+                        <Typography
+                          gutterBottom
+                          variant="h6"
+                          marginTop={1}
+                          component="div"
+                          style={{ color: "green" }}
+                        >
+                          {product.Discount.discount_percent}% off
+                        </Typography>
+                      </Typography>
+                    </CardContent>
+                    <CardActions style={{ paddingLeft: 20 }}>
+                      <button variant="outlined" color="primary">
+                        Add to cart
+                      </button>
+                    </CardActions>
+                  </CardActionArea>
+                </Card>
+              </div>
+            ))}
+          </>
+        )}
       </>
     );
   };
@@ -179,12 +311,12 @@ const Products = () => {
                   className="form-control"
                   id="example-search-input"
                 />
-                <button
+                <Button
                   className="btn border-0 position-absolute end-0 "
                   type="submit"
                 >
                   <i className="bi bi-search" style={{ color: "blue" }}></i>
-                </button>
+                </Button>
               </form>
             </div>
             {/* Search bar End */}
@@ -195,7 +327,7 @@ const Products = () => {
         {/* Category & Product Card Start */}
         <div className="row">
           {/* Left Sidee */}
-          <div className="col-12 col-sm-3">
+          <div className="col-12 col-sm-2">
             <div className="filter">
               {/* Category List Start */}
               <div className="Category">
@@ -209,7 +341,7 @@ const Products = () => {
           </div>
 
           {/* Right Side */}
-          <div className="col-12 col-sm-9">
+          <div className="col-12 col-sm-10">
             {/* Card Start */}
             <div className="row">
               {/* <ShowProducts /> */}
