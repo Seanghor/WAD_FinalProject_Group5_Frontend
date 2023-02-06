@@ -5,7 +5,7 @@ import Microwave from "../.././assets/image/microwave/microwave1.jpg";
 import Bin from "../.././assets/image/bin/bin1.jpg";
 import Mit from "../.././assets/image/mits/mit1.jpg";
 import Pot from "../.././assets/image/pot/pot1.jpg";
-import Cards from "../../components/home/Card";
+import Card from "../../components/home/Card";
 import ".././styles/home.css";
 import ProductCard from "../../components/home/ProductCard";
 const Home = () => {
@@ -44,17 +44,14 @@ const Home = () => {
         {/* Container Section Start */}
         <section className="bg-color">
           <div className="">
-            <div className="row">
-              <Cards img={Pan} name="New Product of the year" linkName=">> View More" newPrice="10" oldPrice="15"/>
-              <Cards img={Pot} name="New Product of the year" linkName=">> View More" newPrice="10" oldPrice="15"/>
-              <Cards img={Microwave} name="New Product of the year" linkName=">> View More" newPrice="10" oldPrice="15"/>
-              
-            </div>
+            <div className="row row-cols-3 g-3">
+              <Card img={Pan} name="Pan" linkName=">> View More" />
+              <Card img={Pot} name="Pot" linkName=">> View More" />
+              <Card img={Microwave} name="Microwave" linkName=">> View More" />
 
-            <div className="row">
-              <Cards img={Bin} name="New Product of the year" linkName=">> View More" newPrice="10" oldPrice="15"/>
-              <Cards img={Bowl} name="New Product of the year" linkName=">> View More" newPrice="10" oldPrice="15"/>
-              <Cards img={Mit} name="New Product of the year" linkName=">> View More" newPrice="10" oldPrice="15"/>
+              <Card img={Bin} name="Bin" linkName=">> View More" />
+              <Card img={Bowl} name="Bowl" linkName=">> View More" />
+              <Card img={Mit} name="Mit" linkName=">> View More" />
             </div>
 
             {/* Top Picks For You Start */}
