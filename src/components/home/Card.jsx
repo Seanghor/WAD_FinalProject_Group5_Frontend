@@ -10,8 +10,8 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 const Cards = (prop) => {
   return (
-    <Grid className="col-md-4">
-      <Grid paddingLeft={5} paddingRight={5}>
+    <Grid className="col-md-3" padding={5}>
+      <Grid className="">
         <Card style={{ height: 880 }}>
           <CardActionArea>
             <Stack>
