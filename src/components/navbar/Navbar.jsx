@@ -55,7 +55,7 @@ const Navbar = () => {
                 <i className="bi bi-heart icon"></i>
               </div>
               <div className="p-4">
-                <NavLink className="nav-link" to="/placeOrder">
+                <NavLink className="nav-link" to="/cart">
                   <i className="bi bi-cart icon"></i>
                 </NavLink>
               </div>

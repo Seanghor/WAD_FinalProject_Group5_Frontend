@@ -3,6 +3,7 @@ import ".././styles/placeOrder.css";
 const placeOrder = () => {
   return (
     <div className="container">
+      
       <div className="row">
         {/* Left Side */}
         <div className="col-md-6">
