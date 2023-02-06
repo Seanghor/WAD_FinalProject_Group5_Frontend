@@ -1,0 +1,39 @@
+
+ .container h1 {
+    font-size: 6vmin;
+    padding-top: 14vmin;
+  }
+  
+ .team {
+    padding: 10vmin 4vmin;
+  }
+  
+.card {
+    width: 22em;
+    margin-top: 10vmin;
+    background-color:white;
+    color:black;
+    border-radius:5%;
+  }
+  .card-title{
+    color:#0081C9;
+  }
+  .card-body text{
+    color:#0081C9;
+  }
+ .card .card-text {
+    padding: 0.5em;
+
+  }
+  
+.card-body > a {
+    font-size: 1.5em;
+  }
+.carousel-item {
+    padding-left: 3rem;
+  }
+  
+  .border-radius {
+    border-radius: 340px;
+    width: 60%;
+  }
