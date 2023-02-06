@@ -1,0 +1,26 @@
+.table-title {
+    position: relative;
+    font-weight: bold;
+    text-align: center;
+
+}
+.form-check-input
+{
+    width: 20px;
+}
+.table-item{
+    background-color: #FFF9E5;
+    height: 50px;
+}
+.checkout {
+    background-color:#FFF9E5;
+   
+}
+.checkout .btn{
+    background-color:rgb(255, 75, 75);
+    color:white;
+    font-weight: bolder;
+}
+.checkout-bg .card{
+    border-radius: 7px;
+}
