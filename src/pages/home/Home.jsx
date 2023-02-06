@@ -9,6 +9,7 @@ import Kettle from "../.././assets/image/removebg2/kettle.png";
 import Pan2 from "../.././assets/image/removebg2/pan.png"; 
 import Pan3 from "../.././assets/image/removebg2/pan2.png"; 
 import Cards from "../../components/home/Card";
+import Card from "../../components/home/Card";
 import ".././styles/home.css";
 import ProductCard from "../../components/home/ProductCard";
 import { NavLink } from "react-router-dom";
@@ -49,34 +50,19 @@ const Home = () => {
         </div>
 
         {/* Container Section Start */}
-        <Grid className="bg-color">
-          <Grid className="">
-            <Grid className="row">
-              <Cards 
-                img={Bin} 
-                name="New Product of the year" 
-                linkName=">> View More" 
-                newPrice="12.99" 
-                oldPrice="15"
-                desc = "Moving into a new house or buying your first home??Kit out your kitchen with this kitchen utensils list containing 46 of the most essential items!"
-              />
-              <Cards 
-                img={CuttingBoard} 
-                name="New Product of the year" 
-                linkName=">> View More" 
-                newPrice="7.99" 
-                oldPrice="10"
-                desc = "Moving into a new house or buying your first home??Kit out your kitchen with this kitchen utensils list containing 46 of the most essential items!"
-              />
-              <Cards 
-                img={Pan2} 
-                name="New Product of the year" 
-                linkName=">> View More" 
-                newPrice="10.99" 
-                oldPrice="15"
-                desc = "Moving into a new house or buying your first home??Kit out your kitchen with this kitchen utensils list containing 46 of the most essential items!"
-              />
-            </Grid>
+
+        <section className="bg-color">
+          <div className="">
+            <div className="row row-cols-3 g-3">
+              <Card img={Pan} name="Pan" linkName=">> View More" />
+              <Card img={Pot} name="Pot" linkName=">> View More" />
+              <Card img={Microwave} name="Microwave" linkName=">> View More" />
+
+              <Card img={Bin} name="Bin" linkName=">> View More" />
+              <Card img={Bowl} name="Bowl" linkName=">> View More" />
+              <Card img={Mit} name="Mit" linkName=">> View More" />
+            </div>
+
 
             {/* Top Picks For You Start */}
             <div className="title">
