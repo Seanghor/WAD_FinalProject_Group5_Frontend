@@ -1,33 +1,32 @@
 import React from 'react'
 import ".././styles/profile.css";
-import KimsourImg from "../.././assets/image/profile/kimsour.jpg";
-const Kimsoure = () => { 
+
+const ProfileProp = (prop) => {
   return (
-    <>
     <div className="container justify-content-center">
       <div className="row text-center">
         <h2>Profile</h2>
-        <p>I am a frontend developer</p>
+        <p>{prop.title}</p>
       </div>
       <div className="row">
         <div className="col-md-5 p-5">
           <h5>About me</h5>
-          <p>I am a student of Kirirom Institute of Technology. I am allround web developer. I am a senior programmer with good knowledg of front-end techniques. I love working with tech enviroment and willing to learn and experience new things</p>
+          <p>{prop.aboutme}</p>
         </div>
         <div className="col-md-3 pt-5">
-          <img src={KimsourImg}
+          <img src={prop.image}
             alt="" 
             className='img'
           />
         </div>
-        <div className="col-md-4 p-5">
+        <div className="col-md-4 p-4">
           <h5>Details</h5>
           <h6>Name: </h6>
-          <p>Rith Kimsour</p>
+          <p>{prop.name}</p>
           <h6>Age: </h6>
-          <p>20</p>
+          <p>{prop.age}</p>
           <h6>Location:</h6>
-          <p>Cambodia, Sihanouk Province</p>
+          <p>{prop.location}</p>
           <div className="d-flex" >
             <i class="bi bi-facebook icon"></i>
             <i class="bi bi-twitter icon"></i>
@@ -36,8 +35,7 @@ const Kimsoure = () => {
         </div>
       </div>
     </div>
-    </>
   )
 }
 
-export default Kimsoure
+export default ProfileProp

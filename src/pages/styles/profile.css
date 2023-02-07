@@ -1,0 +1,35 @@
+.img{
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+   margin-left: 30px;
+}
+h2{
+    color: #0081C9;
+}
+h6{
+    font-weight: bold;
+    font-size: 1.2rem;
+    font-family: 'Poppins';
+}
+h5{
+    font-weight: bold;
+    font-size: 1.6rem;
+    font-family: 'Poppins';
+    margin-bottom: 40px;
+}
+.icon{
+    margin-left: 10px;
+    size: 1.5em;
+}
+.container {
+    padding-top: 50px;
+}
+.detail{
+    padding-left: 90px;
+}
+p{
+    font-size: 1.2rem;
+    font-family: 'Poppins'; ;
+    font-weight: 500;
+}

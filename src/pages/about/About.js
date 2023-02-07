@@ -8,6 +8,7 @@ const About = () => {
         
     <div class="team row ">
 
+
       <div class="col-md-4 col-12 text-center">
 
             <img src="../.././assets/image/sotheaban.png" class="img-fluid rounded-circle w-50 p-4" alt=""/>
@@ -20,14 +21,13 @@ const About = () => {
                       <Link to="/sothea">
                          <h3 class="card-title">Ban Sothea</h3> 
                       </Link>
-
-                          <p class="card-text">
-                          Hello, everyone! I'm from KIT.
-                          </p>
-                          <a href="#" class="text-secondary text-decoration-none">Frontend Developer</a>
-                          <p class="text">Software Engineering</p>
-                    </div>
-                  </div>
+                      <p class="card-text">
+                      Hello, everyone! I'm from KIT.
+                      </p>
+                      <a href="/" class="text-secondary text-decoration-none">Frontend Developer</a>
+                      <p class="text">Software Engineering</p>
+                </div>
+              </div>
           
       </div>
       <div class="col-md-4 col-12">
