@@ -10,8 +10,8 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 const Cards = (prop) => {
   return (
-    <Grid className="col-md-4">
-      <Grid paddingLeft={5} paddingRight={5}>
+    <Grid className="col-md-3" padding={5}>
+      <Grid className="">
         <Card style={{ height: 880 }}>
           <CardActionArea>
             <Stack>
@@ -89,16 +89,5 @@ const Cards = (prop) => {
   );
 };
 
-// const Card = (prop) => {
-//   return (
-//     <div className="card">
-//       <img src={prop.img} alt="" />
-//       <div className="card-body text-center">
-//       <h4 className="card-title">{prop.name}</h4>
-//       <li href="/" className="viewmore">{prop.linkName}</li>
-//       </div>
-//     </div>
-//   )
-// };
 
-export default Card;
+export default Cards;
