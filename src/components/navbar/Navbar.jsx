@@ -22,8 +22,8 @@ const Navbar = () => {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
-            <ul className="navbar-nav mb-1 mb-lg-0">
+          <div className="collapse navbar-collapse justify-content-center " id="navbarSupportedContent">
+            <ul className="navbar-nav mb-1 mb-lg-0 ml-xl-5 ml-sm-5">
               <NavLink className="nav-item" to="/">
                 <li className="nav-link" aria-current="page" href="/">
                   Home
@@ -47,7 +47,7 @@ const Navbar = () => {
             </ul>
            
           </div>
-          <div className="collapse navbar-collapse float-right"  id="navbarSupportedContent">
+          <div className="collapse navbar-collapse pr-xl-5 "  id="navbarSupportedContent">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li className="nav-item">
                   <NavLink className="nav-link" to="/signin">
