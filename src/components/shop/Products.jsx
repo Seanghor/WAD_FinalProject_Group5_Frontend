@@ -30,30 +30,34 @@ const Products = () => {
 
   let componentMounted = true;
 
-  useEffect(() => {
-    const allProducts = async () => {
-      await getProducts()
-        .then((response) => response.products)
-        .then((res) => {
-          setTimeout(() => {
-            setLoading(false);
-            setaProduct(res);
-          }, 2000);
-        });
-    };
-    allProducts();
+  // fect: get all product
+  const allProducts = async () => {
+    await getProducts()
+      .then((response) => response.products)
+      .then((res) => {
+        setTimeout(() => {
+          setLoading(false);
+          setaProduct(res);
+        }, 5000);
+      });
+  };
 
-    const allCategory = async () => {
-      await getAllCategory()
-        .then((response) => response.allProductCategory)
-        .then((res) => {
-          setTimeout(() => {
-            setLoading(false);
-            setData(res);
-            setCategoryList(res);
-          }, 2000);
-        });
-    };
+  // fect: get all Category:
+  const allCategory = async () => {
+    await getAllCategory()
+      .then((response) => response.allProductCategory)
+      .then((res) => {
+        setTimeout(() => {
+          setLoading(false);
+          setData(res);
+          setCategoryList(res);
+        }, 2000);
+      });
+  };
+
+  // --- useEffect:
+  useEffect(() => {
+    allProducts();
     allCategory();
   }, []);
   // console.log("Category Test:", categoryList);
@@ -64,13 +68,13 @@ const Products = () => {
     return (
       <div>
         <div className="col-sm-4 py-2">
-          <Skeleton height={350} />
+          <Skeleton height={350} width={100} />
         </div>
         <div className="col-sm-4 py-2">
-          <Skeleton height={350} />
+          <Skeleton height={350} width={100} />
         </div>
         <div className="col-sm-4 py-2">
-          <Skeleton height={350} />
+          <Skeleton height={350} width={100} />
         </div>
       </div>
     );
@@ -157,30 +161,34 @@ const Products = () => {
                             variant="h4"
                             style={{ fontWeight: "bold", marginRight: 10 }}
                           >
-                            ${product.price}
+                            ${product.discount_price}
                           </Typography>
-
-                          <Typography
-                            gutterBottom
-                            variant="h6"
-                            marginTop={1}
-                            color="text.secondary"
-                            style={{ textDecoration: "line-through" }}
-                          >
-                            ${product.price - product.discount_price}
-                          </Typography>
+                          {product.discount_active == true ? (
+                            <Typography
+                              gutterBottom
+                              variant="h6"
+                              marginTop={1}
+                              color="text.secondary"
+                              style={{ textDecoration: "line-through" }}
+                            >
+                              ${product.price}
+                            </Typography>
+                          ) : null}
                         </Stack>
 
                         <Stack style={{}}>
-                          <Typography
-                            gutterBottom
-                            variant="h6"
-                            marginTop={1}
-                            component="div"
-                            style={{ color: "green" }}
-                          >
-                            {product.discount_percent}%off
-                          </Typography>
+                          {product.discount_percent != 0 &&
+                          product.discount_active == true ? (
+                            <Typography
+                              gutterBottom
+                              variant="h6"
+                              marginTop={1}
+                              component="div"
+                              style={{ color: "red" }}
+                            >
+                              {product.discount_percent}%off
+                            </Typography>
+                          ) : null}
                         </Stack>
                       </Stack>
                     </CardContent>
@@ -208,7 +216,7 @@ const Products = () => {
             </div>
             {data.Product.map((product, j) => (
               <div key={j} value={product.id} className="col-sm-3 py-2">
-              <Card sx={{ maxWidth: 345 }} style={{ height: 480 }}>
+                <Card sx={{ maxWidth: 345 }} style={{ height: 480 }}>
                   <CardActionArea>
                     <CardMedia
                       style={{
@@ -241,30 +249,34 @@ const Products = () => {
                             variant="h4"
                             style={{ fontWeight: "bold", marginRight: 10 }}
                           >
-                            ${product.price}
+                            ${product.discount_price}
                           </Typography>
-
-                          <Typography
-                            gutterBottom
-                            variant="h6"
-                            marginTop={1}
-                            color="text.secondary"
-                            style={{ textDecoration: "line-through" }}
-                          >
-                            ${product.price - product.discount_price}
-                          </Typography>
+                          {product.discount_active == true ? (
+                            <Typography
+                              gutterBottom
+                              variant="h6"
+                              marginTop={1}
+                              color="text.secondary"
+                              style={{ textDecoration: "line-through" }}
+                            >
+                              ${product.price}
+                            </Typography>
+                          ) : null}
                         </Stack>
 
                         <Stack style={{}}>
-                          <Typography
-                            gutterBottom
-                            variant="h6"
-                            marginTop={1}
-                            component="div"
-                            style={{ color: "green" }}
-                          >
-                            {product.discount_percent}%off
-                          </Typography>
+                          {product.discount_percent != 0 &&
+                          product.discount_active == true ? (
+                            <Typography
+                              gutterBottom
+                              variant="h6"
+                              marginTop={1}
+                              component="div"
+                              style={{ color: "red" }}
+                            >
+                              {product?.Discount?.discount_percent}%off
+                            </Typography>
+                          ) : null}
                         </Stack>
                       </Stack>
                     </CardContent>
