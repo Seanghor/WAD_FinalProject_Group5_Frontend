@@ -9,8 +9,10 @@ import Product from "./components/shop/Product";
 import Signin from "./pages/sign in/signin";
 import Signup from "./pages/sign up/signup";
 import PlaceOrder from "./pages/placeOrder/placeOrder";
-import Cart from "./pages/cart/cart"
-
+import Cart from "./pages/cart/cart";
+import Sothea from "./pages/about/sothea";
+import Seanghor from "./pages/about/seanghor";
+import Kimsoure from "./pages/about/kimsoure";
 function App() {
   return (
     <div>
@@ -25,7 +27,10 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/placeOrder" element={<PlaceOrder />} />
             <Route path="/cart" elemetn={<Cart/>} />
-           
+            <Route path="/sothea" element={<Sothea/>} />
+            <Route path="/seanghor" element={<Seanghor/>} />
+            <Route path="/kimsoure" element={<Kimsoure/>} />
+            
           </Route>
         </Routes>
       </BrowserRouter>
