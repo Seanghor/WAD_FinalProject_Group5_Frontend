@@ -21,10 +21,8 @@ const ProductDetail = () => {
         setProduct(data);
       }, 3000);
       console.log("Get success ...: ", res.data.product);
-
       return;
     };
-
     getSingleProduct();
   }, []);
 
