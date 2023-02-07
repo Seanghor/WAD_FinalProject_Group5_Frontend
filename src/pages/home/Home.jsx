@@ -13,38 +13,8 @@ import { NavLink } from "react-router-dom";
 import { Grid } from "@mui/material";
 const Home = () => {
   return (
-    <div className="container-fluid" id="parent">
+    <div className="containerfluid" id="parent">
       <div id="child">
-        <div className="row" id="Bg">
-          <div className="col-md-6">
-            <div className="card" id="card1">
-              <div className="model">
-                <h3>New Model</h3>
-                <NavLink className="nav-item" to="/shop">
-                  <li className="nav-link" href="/shop">
-                    Shop Now
-                  </li>
-                </NavLink>
-                <h4>
-                  Anodized to absorb, distribute and transfer
-                  <br /> heat evenly and efficiently, these two frying
-                  <br /> pans sautée mushrooms, fry eggs, caramelize
-                  <br /> onions and bake frittatas.
-                </h4>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-md-6">
-            <div className="card" id="card">
-              <div className="model">
-                <div className="">
-                  <img src={Pan} alt="" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
         {/* Container Section Start */}
         <section className="bg-color">
           <div className="">

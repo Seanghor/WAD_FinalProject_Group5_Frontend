@@ -59,3 +59,27 @@
       vertical-align: top;
       margin-left: -10px; 
   } 
+
+  .container-fluid {
+    /* background-color: hsla(0, 7%, 75%, 0.521); */
+    display: flex;
+    justify-content: center;
+  }
+
+  .navbar {
+    background-color: rgba(121, 124, 124, 0.664);
+    display: flex;
+    justify-content: center;
+  }
+
+  .collapse  {
+    /* background-color: #ff0000; */
+    display: flex;
+    justify-content: center;
+  }
+
+  .navbar-nav {
+    /* background-color: blue; */
+    display: flex;
+    justify-content: center;
+  }
