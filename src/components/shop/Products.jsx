@@ -17,6 +17,7 @@ import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import Rating from "@mui/material/Rating";
 import { getCategory } from "./../../service/category";
+
 const Products = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
@@ -28,7 +29,6 @@ const Products = () => {
   const [category, setCategory] = useState(false);
 
   let componentMounted = true;
-  
 
   useEffect(() => {
     const allProducts = async () => {
@@ -183,12 +183,8 @@ const Products = () => {
                       </Typography>
                     </CardContent>
                     <CardActions style={{ paddingLeft: 20 }}>
-                      <Button
-                        variant="outline-primary"
-                        color="primary"
-                        onClick={() => {}}
-                      >
-                        <NavLink to={`/product/${product.id}`}>
+                      <Button variant="outline-primary">
+                        <NavLink to={`/products/${product.id}`}>
                           Add To Cart
                         </NavLink>
                       </Button>
@@ -265,15 +261,9 @@ const Products = () => {
                       </Typography>
                     </CardContent>
                     <CardActions style={{ paddingLeft: 20 }}>
-                      <Button
-                        variant="outline-primary"
-                        color="primary"
-                        onClick={() => {}}
-                      >
-                        <NavLink to={`/product/${product.id}`}>
-                          Add To Cart
-                        </NavLink>
-                      </Button>
+                      <button variant="outlined" color="primary">
+                        Add to cart
+                      </button>
                     </CardActions>
                   </CardActionArea>
                 </Card>
@@ -282,21 +272,6 @@ const Products = () => {
           </>
         )}
       </>
-    );
-  };
-
-  // show list of category at the lefe side:
-  const ShowCategory = () => {
-    return (
-      <div>
-        {categoryList.map((el, i) => (
-          <div className="categorylist" key={i}>
-            <li className="col-2 link" onClick={() => setFilter(data)}>
-              {el.name}
-            </li>
-          </div>
-        ))}
-      </div>
     );
   };
 

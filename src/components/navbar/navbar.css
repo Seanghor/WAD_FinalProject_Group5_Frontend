@@ -16,7 +16,7 @@
     text-decoration: none;
   }
   .nav-link:hover , :focus, :active {
-    color: #fa0;
+    /* color: #fa0; */
   }
   
   a:link { text-decoration: none; }
