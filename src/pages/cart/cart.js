@@ -42,14 +42,10 @@ const Cart = () => {
               </div>
               
             </div>
-          
-            
-              
             </div>
               <div class="row align-items-center">
               <div class="col-md-2">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/1.webp"
-                  class="img-fluid" alt="Generic placeholder image" />
+          
               </div>
               <div class="col-md-2 d-flex justify-content-center">
                 <div>

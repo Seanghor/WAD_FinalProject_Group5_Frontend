@@ -19,7 +19,7 @@ const About = () => {
                 <p class="card-text">
                 Hello, everyone! I'm from KIT.
                 </p>
-                <a href="#" class="text-secondary text-decoration-none">Frontend Developer</a>
+                <p class="text-secondary text-decoration-none">Frontend Developer</p>
                 <p class="text">Software Engineering</p>
               </div>
             </div>
@@ -37,7 +37,7 @@ const About = () => {
                       <p class="card-text">
                       Hello, everyone! I'm from KIT.
                       </p>
-                      <a href="#" class="text-secondary text-decoration-none">Backend Developer</a>
+                      <p  class="text-secondary text-decoration-none">Backend Developer</p>
                       <p class="text">Software Engineering </p>
                     </div>
                   </div>
@@ -55,7 +55,7 @@ const About = () => {
                 <h3 class="card-title">Seanghor</h3>
                 <p class="card-text">
                 Hello, everyone! I'm from KIT. </p>
-                <a href="#" class="text-secondary text-decoration-none ">Backend Developer</a>
+                <p class="text-secondary text-decoration-none ">Backend Developer</p>
                 <p class="text">Software Engineering</p>
               </div>
             </div>

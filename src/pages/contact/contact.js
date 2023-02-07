@@ -1,5 +1,5 @@
 import React from 'react'
-import ".././styles/contact.css";
+
 
 const Contact = () => {
   return (
@@ -7,7 +7,8 @@ const Contact = () => {
         <div class="item">
             <div class="text">
                 <h1>Get Im Touch With Us</h1>
-                <p class="text-p">For More Information About Our Product & Services.Please Feel Free To Drop Us An Email. </p> <p class="text-p"> Our Staff Always Be There To Help You Out. Do Not Hesitate!</p>
+                <p class="text-p">For More Information About Our Product & Services.Please Feel Free To Drop Us An Email. </p> 
+                <p class="text-p"> Our Staff Always Be There To Help You Out. Do Not Hesitate!</p>
             </div>
             <div class="row ">
                 <div class="col">
