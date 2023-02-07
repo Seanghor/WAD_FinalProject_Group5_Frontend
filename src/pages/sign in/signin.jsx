@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { login } from "../../service/auth";
 // import { loginAPI } from "../../service/auth";
-import { getProducts } from './../../service/product';
-import { getCategory, getAllCategory } from './../../service/category';
+import { getProducts } from "./../../service/product";
+import { getCategory, getAllCategory } from "./../../service/category";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
@@ -19,12 +19,11 @@ const Signin = () => {
       alert("password is required");
       return;
     }
-  
+
     await login({ email, password });
     console.log("Test email:", email);
     console.log("Test password:", password);
     console.log("Test : ", test);
-    
   };
   return (
     <div className="container">
@@ -74,11 +73,7 @@ const Signin = () => {
             {/* Login Btn */}
             <div className="row">
               <div className="btn">
-                <button
-                  type="button"
-                  className="btb btb-primary"
-                  onClick={onLogin}
-                >
+                <button type="button" className="btb" onClick={onLogin}>
                   Log in
                 </button>
               </div>

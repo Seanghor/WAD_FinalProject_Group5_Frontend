@@ -3,8 +3,6 @@
     font-size: 40px;
     font-weight: bolder;
     color: #0081C9;
-   
-
 }
 .form-group{
     margin-bottom: 20px;
@@ -42,4 +40,16 @@
 }
 .welcome a{
     font-size: 60px;
+}
+
+button{
+    width: 200px;
+    height: 60px;
+    border:none;
+    border-radius:7px;
+}
+.btb{
+    background-color: #0081C9;
+    color:white;
+    font-weight: bolder;
 }
