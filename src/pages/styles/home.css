@@ -11,6 +11,7 @@
   height: 100%;
   margin-left: 2px;
 }
+
 #card{
   background-color: #FBEBB5;
   border-width: 0;
@@ -19,15 +20,14 @@
 #card1{
   background-color: #FBEBB5;
   border-width: 0;
-  padding-top: 10em;
   padding-left: 3em
 }
-.model h5{
+.model h4{
   margin-top: 50px;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 }
 
-.model p{
+.model li{
   margin-top: 50px;
   font-size: 1.5rem;
   color: blue;
@@ -99,6 +99,7 @@ p, button{
 
 .title span {
   color: #fa0;
+  font-weight: 600;
 }
 
 .label {

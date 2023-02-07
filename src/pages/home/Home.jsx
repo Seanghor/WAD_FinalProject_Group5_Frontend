@@ -5,11 +5,8 @@ import Microwave from "../.././assets/image/microwave/microwave1.jpg";
 import Bin from "../.././assets/image/removebg2/bin.png";
 import CuttingBoard from "../.././assets/image/removebg2/cutting_board.png";
 import Pot from "../.././assets/image/pot/pot1.jpg";
-import Kettle from "../.././assets/image/removebg2/kettle.png";
 import Pan2 from "../.././assets/image/removebg2/pan.png";
-import Pan3 from "../.././assets/image/removebg2/pan2.png";
 import Cards from "../../components/home/Card";
-import Card from "../../components/home/Card";
 import ".././styles/home.css";
 import ProductCard from "../../components/home/ProductCard";
 import { NavLink } from "react-router-dom";
@@ -22,18 +19,18 @@ const Home = () => {
           <div className="col-md-6">
             <div className="card" id="card1">
               <div className="model">
-                <h2>New Model</h2>
+                <h3>New Model</h3>
                 <NavLink className="nav-item" to="/shop">
                   <li className="nav-link" href="/shop">
                     Shop Now
                   </li>
                 </NavLink>
-                <h5>
+                <h4>
                   Anodized to absorb, distribute and transfer
                   <br /> heat evenly and efficiently, these two frying
                   <br /> pans sautée mushrooms, fry eggs, caramelize
                   <br /> onions and bake frittatas.
-                </h5>
+                </h4>
               </div>
             </div>
           </div>

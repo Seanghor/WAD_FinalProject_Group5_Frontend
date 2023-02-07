@@ -1,11 +1,11 @@
 import { React, useRef, useState, useEffect } from "react";
-import Button from "react-bootstrap/Button";
 import "../.././pages/styles/shop.css";
 import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 import { NavLink } from "react-router-dom";
 import { CDropdown } from "@coreui/react";
 import { CDropdownItem, CDropdownMenu, CDropdownToggle } from "@coreui/react";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
 import { getProducts } from "./../../service/product";
 import { getAllCategory } from "../../service/category";
 import Card from "@mui/material/Card";
@@ -14,7 +14,9 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import CardActions from "@mui/material/CardActions";
+import Button from "@mui/material/Button";
 import Rating from "@mui/material/Rating";
+import { getCategory } from "./../../service/category";
 const Products = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
@@ -25,39 +27,33 @@ const Products = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [category, setCategory] = useState(false);
 
-  const [emulatorName, setEmulatorName] = useState("");
-
   let componentMounted = true;
-
-  // fect data product:
-  const allProducts = async () => {
-    await getProducts()
-      .then((response) => response.products)
-      .then((res) => {
-        setTimeout(() => {
-          setLoading(false);
-          setaProduct(res);
-         
-        }, 2000);
-      });
-  };
-
-  // fect data category:
-  const allCategory = async () => {
-    await getAllCategory()
-      .then((response) => response.allProductCategory)
-      .then((res) => {
-        setTimeout(() => {
-          setLoading(false);
-          setData(res);
-          setCategoryList(res);
-        }, 2000);
-      });
-  };
   
-  // use effect
+
   useEffect(() => {
+    const allProducts = async () => {
+      await getProducts()
+        .then((response) => response.products)
+        .then((res) => {
+          setTimeout(() => {
+            setLoading(false);
+            setaProduct(res);
+          }, 2000);
+        });
+    };
     allProducts();
+
+    const allCategory = async () => {
+      await getAllCategory()
+        .then((response) => response.allProductCategory)
+        .then((res) => {
+          setTimeout(() => {
+            setLoading(false);
+            setData(res);
+            setCategoryList(res);
+          }, 2000);
+        });
+    };
     allCategory();
   }, []);
   // console.log("Category Test:", categoryList);
@@ -80,19 +76,17 @@ const Products = () => {
     );
   };
 
-  // const filterProdcut = (cat) => {
-  //   const updatedList = data.filter((x) => x.category === cat);
-  //   setFilter(updatedList);
-  // };
-
-  // handle Click category
+  const filterProdcut = (cat) => {
+    const updatedList = data.filter((x) => x.category === cat);
+    setFilter(updatedList);
+  };
   const onClickCategory = async (id) => {
     const dataC = await categoryList.find((cate) => {
       return cate.id === id;
     });
     setCategory(true);
     setData(dataC);
-    console.log("Category:", data.Product);
+    console.log("Dataaaaa:", data.Product);
     return;
   };
 
@@ -150,9 +144,6 @@ const Products = () => {
                         component="div"
                         style={{ fontWeight: "bold" }}
                       >
-                        {emulatorName || (
-                          <Skeleton baseColor="red" count={1} width="150px" />
-                        )}
                         {product.name}
                       </Typography>
                       <Rating

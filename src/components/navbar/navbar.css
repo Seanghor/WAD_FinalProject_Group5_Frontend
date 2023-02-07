@@ -1,24 +1,51 @@
-*{
-    margin:0;
-    box-sizing: border-box;
-    font-family:'Poppins', sans-serif ;
-    font-weight: 600;
-  }
+
   .icon
   {
     font-size: 1.5em;
   }
   .kitchilogo{
-    padding-left: 30px;
+    padding-left: 10px;
+    padding-top: 2px;
+    width: 85%;
+    height: 78%;
   }
 
   .nav-link {
-    font-weight: bold;
     color: rgb(95, 89, 89);
-    font-size: x-large;
+    font-size: 22px;
     text-decoration: none;
   }
-  .nav-link:hover{
-    color: black;
+  .nav-link:hover , :focus, :active {
+    color: #fa0;
   }
+  
   a:link { text-decoration: none; }
+
+  @media only screen and (min-width:320px) and (max-width:767px){
+    .kitchilogo{
+      padding-left: 0px;
+      padding-top: 10px;
+      width: 70%;
+      height: 70%;
+    }
+    .nav-link {
+      color: rgb(95, 89, 89);
+      font-size: 18px;
+      text-decoration: none;
+    }
+  }
+
+  .badge {
+    padding-left: 9px;
+    padding-right: 9px;
+    border-radius: 9px;
+  }
+  #lblCartCount {
+      font-size: 16px;
+      background: #ff0000;
+      color: #fff;
+      padding: 1 4px;
+      border-radius:50%;
+      vertical-align: top;
+      margin-left: -10px; 
+  } 

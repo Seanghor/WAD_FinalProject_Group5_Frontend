@@ -1,19 +1,21 @@
 .text{
     text-align: center;
 }
-.text h1{
+ h1{
     color:#0081C9;
+    margin-right:120px;
+    
 }
 .text-p{
-    align-items:center;
+ 
     font-size: 10px;
 }
 
-.item h5{
+.item1 h5{
     color:#0081C9;
-    font-weight: thin;
+    font-weight: bold;
 }
-.item{
+.item1{
     margin:50px;
 }
 .form-group label{
@@ -32,4 +34,11 @@
     width: 200px;
     height: 50px;
     border-radius:10px;
+}
+.container{
+    padding: 50px;
+    margin-top:-50px;
+}
+.item-address{
+    margin-left: 100px;
 }
