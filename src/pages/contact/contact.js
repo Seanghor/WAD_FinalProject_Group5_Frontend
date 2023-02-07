@@ -1,26 +1,24 @@
 import React from 'react'
-
-
+import ".././styles/contact.css";
 const Contact = () => {
   return (
-    <div class="container">
-        <div class="item">
+    <div>
+        <div class="container">
             <div class="text">
-                <h1>Get Im Touch With Us</h1>
-                <p class="text-p">For More Information About Our Product & Services.Please Feel Free To Drop Us An Email. </p> 
-                <p class="text-p"> Our Staff Always Be There To Help You Out. Do Not Hesitate!</p>
+                <h1 >Get Im Touch With Us</h1>
+                <p class="text-p">For More Information About Our Product & Services.Please Feel Free To Drop Us An Email. </p> <p class="text-p"> Our Staff Always Be There To Help You Out. Do Not Hesitate!</p>
             </div>
-            <div class="row ">
-                <div class="col">
-                    <div class="item">
+            <div class="row text-align-center">
+                <div class="col item-address">
+                    <div class="item1">
                         <h5>Address</h5>
                         <p>Kirirom Mountian</p>
                     </div>
-                    <div class="item">
+                    <div class="item1">
                         <h5>Phone</h5>
                         <p>+855 123 4567</p>
                     </div>
-                    <div class="item">
+                    <div class="item1">
                         <h5>Working time</h5>
                         <p>Mon-Fri : 9:00-6:00</p>
                     </div>
@@ -51,8 +49,8 @@ const Contact = () => {
 
                 </div>
             </div>
-        </div>  
-</div>
+    </div>
+    </div>
   )
 }
 

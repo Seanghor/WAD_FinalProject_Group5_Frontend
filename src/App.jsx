@@ -11,7 +11,6 @@ import Signup from "./pages/sign up/signup";
 import PlaceOrder from "./pages/placeOrder/placeOrder";
 import Cart from "./pages/cart/cart"
 import Contact from "./pages/contact/contact";
-import Cart from "./pages/cart/cart";
 import Sothea from "./pages/about/sothea";
 import Seanghor from "./pages/about/seanghor";
 import Kimsoure from "./pages/about/kimsoure";
