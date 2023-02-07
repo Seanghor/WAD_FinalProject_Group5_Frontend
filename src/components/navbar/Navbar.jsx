@@ -5,10 +5,10 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light">
+      <nav className="navbar navbar-expand-lg navbar-light py-0">
         <div className="container-fluid">
-          <div className="kitchilogo">
-            <img src={kitchiLogo} alt="" />
+          <div className="logo">
+            <img src={kitchiLogo} alt=""  className="kitchilogo"/>
           </div>
 
           <button
@@ -22,8 +22,8 @@ const Navbar = () => {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <div className="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+            <ul className="navbar-nav mb-1 mb-lg-0">
               <NavLink className="nav-item" to="/">
                 <li className="nav-link" aria-current="page" href="/">
                   Home
@@ -45,21 +45,27 @@ const Navbar = () => {
                 </li>
               </NavLink>
             </ul>
-            <div className="d-flex ">
-              <div className="p-4">
-                <NavLink className="nav-link" to="/signin">
-                  <i className="bi bi-person-exclamation icon"></i>
-                </NavLink>
-              </div>
-              <div className="p-4">
-                <i className="bi bi-heart icon"></i>
-              </div>
-              <div className="p-4">
-                <NavLink className="nav-link" to="/cart">
-                  <i className="bi bi-cart icon"></i>
-                </NavLink>
-              </div>
-            </div>
+           
+          </div>
+          <div className="collapse navbar-collapse float-right"  id="navbarSupportedContent">
+          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/signin">
+                    <i className="bi bi-person-exclamation icon"></i>
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/">
+                  <i className="bi bi-heart icon"></i>
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/cart">
+                    <i className="bi bi-cart icon"></i>
+                    <span class='badge' id='lblCartCount'> 5 </span>
+                  </NavLink>
+                </li>
+            </ul>
           </div>
         </div>
       </nav>

@@ -183,9 +183,9 @@ const Products = () => {
                       </Typography>
                     </CardContent>
                     <CardActions style={{ paddingLeft: 20 }}>
-                      <button variant="outlined" color="primary">
+                      <Button variant="outlined" color="primary">
                         Add to cart
-                      </button>
+                      </Button>
                     </CardActions>
                   </CardActionArea>
                 </Card>
