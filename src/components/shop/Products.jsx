@@ -12,7 +12,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { CardActionArea,Stack  } from "@mui/material";
+import { CardActionArea, Stack } from "@mui/material";
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import Rating from "@mui/material/Rating";
@@ -86,7 +86,7 @@ const Products = () => {
     });
     setCategory(true);
     setData(dataC);
-    console.log("Dataaaaa:", data.Product);
+    console.log("Category:", data.Product);
     return;
   };
 
@@ -155,39 +155,41 @@ const Products = () => {
                         <Stack direction={"row"}>
                           <Typography
                             variant="h4"
-                            style={{ fontWeight: "bold" , marginRight: 10}}
-                            
+                            style={{ fontWeight: "bold", marginRight: 10 }}
                           >
-                          ${product.price}
-                        </Typography>
+                            ${product.price}
+                          </Typography>
 
                           <Typography
                             gutterBottom
                             variant="h6"
                             marginTop={1}
                             color="text.secondary"
-                            style={{ textDecoration: "line-through" ,}}
+                            style={{ textDecoration: "line-through" }}
                           >
                             ${product.price - product.discount_price}
                           </Typography>
                         </Stack>
-                        
+
                         <Stack style={{}}>
                           <Typography
                             gutterBottom
                             variant="h6"
                             marginTop={1}
                             component="div"
-                            style={{ color: "green", }}
+                            style={{ color: "green" }}
                           >
                             {product.discount_percent}%off
                           </Typography>
                         </Stack>
-                       
                       </Stack>
                     </CardContent>
                     <CardActions style={{ paddingLeft: 20 }}>
-                      <Button variant="outlined" color="primary" sx={{ width: 120, height: 40,padding: 1, margin: 0 }}>
+                      <Button
+                        variant="outlined"
+                        color="primary"
+                        sx={{ width: 120, height: 40, padding: 1, margin: 0 }}
+                      >
                         <NavLink to={`/product/${product.id}`}>
                           Add To Cart
                         </NavLink>
@@ -265,8 +267,15 @@ const Products = () => {
                       </Typography>
                     </CardContent>
                     <CardActions style={{ paddingLeft: 20 }}>
-                      <Button variant="outline-primary">
-                        <NavLink to={`/products/${product.id}`}> Add To Cart</NavLink>
+                      <Button
+                        variant="outlined"
+                        color="primary"
+                        sx={{ width: 120, height: 40, padding: 1, margin: 0 }}
+                      >
+                        <NavLink to={`/products/${product.id}`}>
+                          {" "}
+                          Add To Cart
+                        </NavLink>
                       </Button>
                     </CardActions>
                   </CardActionArea>
