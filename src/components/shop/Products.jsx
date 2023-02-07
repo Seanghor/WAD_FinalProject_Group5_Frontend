@@ -208,7 +208,7 @@ const Products = () => {
             </div>
             {data.Product.map((product, j) => (
               <div key={j} value={product.id} className="col-sm-3 py-2">
-                <Card sx={{ maxWidth: 345 }} style={{ height: 480 }}>
+              <Card sx={{ maxWidth: 345 }} style={{ height: 480 }}>
                   <CardActionArea>
                     <CardMedia
                       style={{
@@ -235,36 +235,38 @@ const Products = () => {
                         value={product.rating}
                         readOnly
                       />
-                      <Typography display="flex">
-                        <Typography
-                          variant="h4"
-                          marginRight={3}
-                          component="div"
-                          style={{ fontWeight: "bold" }}
-                        >
-                          ${product.price}
-                        </Typography>
-                        <Typography
-                          gutterBottom
-                          variant="h6"
-                          marginRight={3}
-                          marginTop={1}
-                          component="div"
-                          color="text.secondary"
-                          style={{ textDecoration: "line-through" }}
-                        >
-                          ${product.price - product.discount_price}
-                        </Typography>
-                        <Typography
-                          gutterBottom
-                          variant="h6"
-                          marginTop={1}
-                          component="div"
-                          style={{ color: "green" }}
-                        >
-                          {product.Discount.discount_percent}%off
-                        </Typography>
-                      </Typography>
+                      <Stack direction="row" justifyContent={"space-between"}>
+                        <Stack direction={"row"}>
+                          <Typography
+                            variant="h4"
+                            style={{ fontWeight: "bold", marginRight: 10 }}
+                          >
+                            ${product.price}
+                          </Typography>
+
+                          <Typography
+                            gutterBottom
+                            variant="h6"
+                            marginTop={1}
+                            color="text.secondary"
+                            style={{ textDecoration: "line-through" }}
+                          >
+                            ${product.price - product.discount_price}
+                          </Typography>
+                        </Stack>
+
+                        <Stack style={{}}>
+                          <Typography
+                            gutterBottom
+                            variant="h6"
+                            marginTop={1}
+                            component="div"
+                            style={{ color: "green" }}
+                          >
+                            {product.discount_percent}%off
+                          </Typography>
+                        </Stack>
+                      </Stack>
                     </CardContent>
                     <CardActions style={{ paddingLeft: 20 }}>
                       <Button
@@ -272,8 +274,7 @@ const Products = () => {
                         color="primary"
                         sx={{ width: 120, height: 40, padding: 1, margin: 0 }}
                       >
-                        <NavLink to={`/products/${product.id}`}>
-                          {" "}
+                        <NavLink to={`/product/${product.id}`}>
                           Add To Cart
                         </NavLink>
                       </Button>
