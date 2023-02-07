@@ -158,7 +158,7 @@ const Products = () => {
                           component="div"
                           style={{ fontWeight: "bold" }}
                         >
-                          $ {product.price}
+                          ${product.price}
                         </Typography>
                         <Typography
                           gutterBottom
@@ -178,7 +178,7 @@ const Products = () => {
                           component="div"
                           style={{ color: "green" }}
                         >
-                          {product.discount_percent}% off
+                          {product.discount_percent}%off
                         </Typography>
                       </Typography>
                     </CardContent>
@@ -236,7 +236,7 @@ const Products = () => {
                           component="div"
                           style={{ fontWeight: "bold" }}
                         >
-                          $ {product.price}
+                          ${product.price}
                         </Typography>
                         <Typography
                           gutterBottom
@@ -256,14 +256,16 @@ const Products = () => {
                           component="div"
                           style={{ color: "green" }}
                         >
-                          {product.Discount.discount_percent}% off
+                          {product.Discount.discount_percent}%off
                         </Typography>
                       </Typography>
                     </CardContent>
                     <CardActions style={{ paddingLeft: 20 }}>
-                      <button variant="outlined" color="primary">
-                        Add to cart
-                      </button>
+                      <Button variant="outline-primary">
+                        <NavLink to={`/products/${product.id}`}>
+                          Add To Cart
+                        </NavLink>
+                      </Button>
                     </CardActions>
                   </CardActionArea>
                 </Card>
