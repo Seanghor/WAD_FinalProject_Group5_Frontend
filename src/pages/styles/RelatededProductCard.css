@@ -16,6 +16,8 @@
   .product-card__image {
     max-width: 100%;
     height: auto;
+    padding: 5px;
+    border-radius: 10px ;
   }
   
   .product-card__description,
@@ -40,4 +42,5 @@
   
 .text {
     margin-top: 10px;
+    color: #000;
 }

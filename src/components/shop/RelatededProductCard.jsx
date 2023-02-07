@@ -10,7 +10,7 @@ function RelatededProductCard(props) {
         {" "}
         <p className="product-card__brand">{name}</p>
         <p className="product-card__description">Anodized to absorb</p>
-        <p className="product-card__price">{discount_price}</p>
+        <p className="product-card__price">${discount_price}</p>
       </div>
     </a>
   );

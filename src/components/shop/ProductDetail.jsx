@@ -6,8 +6,9 @@ import Card from "react-bootstrap/Card";
 import { BsCartCheck } from "react-icons/bs";
 import "../../pages/styles/product-detail.css";
 import { getCategory } from "./../../service/category";
-import RelatededProduct from "./RelatededProductCard";
 import RelatededProductCard from "./RelatededProductCard";
+import HorizontalScroll from "react-horizontal-scrolling";
+
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
@@ -47,17 +48,9 @@ const ProductDetail = () => {
     return <div> Loading...</div>;
   };
 
-  const ShowProduct = () => {
-    return (
-      <div>
-        <h2>{product.id}</h2>
-        <h>{product.name}</h>
-      </div>
-    );
-  };
   // return <div>{loading ? <Loading /> : <ShowProduct />}</div>;
   return (
-    <div className="container mt-5 mb-5">
+    <div className="container mt-5 mb-5 justify-content-center">
       <div className="row d-flex justify-content-center">
         <div className="col-md-10">
           <div className="row">
@@ -83,7 +76,7 @@ const ProductDetail = () => {
                     onclick="change_image(this)"
                     src="https://i.imgur.com/Dhebu4F.jpg"
                     width="70"
-                  />{" "}
+                  />
                 </div>
               </div>
             </div>
@@ -92,10 +85,8 @@ const ProductDetail = () => {
                 <div className="mb-3">
                   <h5 className="text-uppercase">{product.name}</h5>
                   <div className="price d-flex flex-row align-items-center">
-                    {" "}
                     <span className="act-price">${product.discount_price}</span>
                     <div className="ml-2">
-                      {" "}
                       {product?.discount_active == true &&
                       product?.discount_percent != 0 ? (
                         <small className="dis-price">${product.price}</small>
@@ -122,11 +113,18 @@ const ProductDetail = () => {
           </div>
         </div>
       </div>
-      <div className="re-product ">
-        <h1 className="text">Related Product</h1>
-        <div className="re-product-box">
-          {reproduct.map((product) => (<div key={product.id} className="card"><RelatededProductCard {...product} /></div>))}
+      <div className="re-product">
+        <div>
+          <h1 className="text">Related Product</h1>
         </div>
+        <HorizontalScroll className="test">
+          {reproduct.map((product, index) => (
+            <div key={index} className="card">
+              <RelatededProductCard {...product} />
+            </div>
+          ))}
+        </HorizontalScroll>
+        <div className="re-product-box"></div>
       </div>
     </div>
   );
