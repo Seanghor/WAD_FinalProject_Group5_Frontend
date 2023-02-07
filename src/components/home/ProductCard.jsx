@@ -25,28 +25,28 @@ const ProductCard = (prop) => {
           image={prop.img}
           alt="green iguana"
         />
-        <CardContent style={{paddingLeft: 20}}>
-          <Typography gutterBottom variant="h5" color="text.secondary" style={{fontWeight: "500"}}>
+        <CardContent style={{paddingLeft:20}}>
+          <Typography gutterBottom variant="h5" color="" style={{fontWeight: "500"}}>
             {prop.name}
           </Typography>
           <Typography gutterBottom variant="text.secondary" color="text.secondary" style={{fontWeight: "500"}}>
             {prop.desc}
           </Typography>
-          <Stack direction="row" spacing={3}>
+          <Stack direction="row" spacing={3} style={{justifyContent: "flex-end"}}>
             <Typography variant="text.secondary" marginRight={3} marginTop={2}  style={{fontWeight: "bold",letterSpacing:0,color: "grey", fontSize: 40 }}>
             ${prop.newPrice}
             </Typography>
-            <Stack direction="column" >
-              <Typography gutterBottom variant="h6" marginTop={1} style={{color: "green", paddingLeft: 2}}>
+            <Stack direction="column" paddingLeft={5} >
+              <Typography gutterBottom variant="h6" marginTop={1} style={{color: "red",textAlign: "end", paddingRight: 10 }}>
                 {prop.discount}% off
               </Typography>
               <Divider  sx={{ bgcolor: "grey",borderBottomWidth: 2,width: 150, marginBottom: 1}} />
-              <Rating name="read-only"  variant="outlined" value={5} readOnly />
+              <Rating name="read-only"  variant="outlined" value={5} readOnly style={{alignItems: "flex-end", paddingLeft: 35}}/>
             </Stack>
           </Stack>
         </CardContent>
         <CardActions style={{paddingLeft: 20, marginTop: 30}}>
-          <Button variant="outlined" color="primary">Add to cart</Button>  
+          <Button variant="outlined" color="primary"   sx={{ width: 120, height: 40,padding: 1, margin: 0 }}>Add to cart</Button>  
         </CardActions>
       </CardActionArea>
     </Card>
