@@ -1,0 +1,62 @@
+
+.card{
+    border:none;
+   
+}
+.product{
+    background-color:white;
+}
+input{
+    width: 30px;
+    height: 7px;
+    margin-right: 20px;
+   
+}
+.brand{
+    font-size: 13px
+}
+.act-price{
+    color:red;
+    font-size: 20px;
+    font-weight: 700;
+    margin-right:7px;
+}
+
+.price{
+    margin-top:-20px
+}
+.dis-price{
+    text-decoration: line-through;
+    margin-right:20px;
+    font-size:20px;
+}.about{
+    font-size: 14px
+}
+.color{
+    margin-bottom:10px
+}
+label.radio{
+    cursor: pointer}
+label.radio input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+label.radio span{
+    padding: 2px 9px;
+    border: 2px solid #0081C9;;
+    display: inline-block;
+    color:#0081C9;;
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+label.radio input:checked+span{
+    background-color: #0081C9;;
+    color: #fff;
+}
+button {
+    background-color:black;
+    color:red;
+}
