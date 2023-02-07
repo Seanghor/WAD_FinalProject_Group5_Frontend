@@ -16,7 +16,7 @@ import Divider from '@mui/material/Divider';
 const ProductCard = (prop) => {
   return (
     <Grid className="col-md-3" >
-    <Card sx={{ maxWidth: 420 }} style={{height: 580, margin: 25}}>
+    <Card sx={{ maxWidth: 420 }} style={{height: 600, margin: 25}}>
       <CardActionArea>
         <CardMedia
           style={{borderBottomRightRadius: 10, borderBottomLeftRadius:10, padding: 3}}
