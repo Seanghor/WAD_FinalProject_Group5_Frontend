@@ -8,7 +8,7 @@ import { getSingleProduct } from "../../service/product";
 import { client } from "../../utils/http";
 import { useEffect } from "react";
 import { getCategory } from "../../service/category";
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
@@ -22,10 +22,11 @@ const ProductDetail = () => {
       throw new Error("Failed to get product ...");
     }
     const data = await res.data.product;
-    setTimeout(() => {
-      setLoading(false);
-      setProduct(data);
-    });
+
+    setLoading(false);
+    setProduct(data);
+
+
     console.log("Get success ...: ", res.data.product);
     console.log("Get Name ...: ", res.data.product.name);
     return;
@@ -105,7 +106,9 @@ const ProductDetail = () => {
                     </span>
                     <div className="ml-2">
                       {" "}
+
                       <small id="discountPrice">${product.price}</small>{" "}
+
                       {product?.discount_active == true &&
                       product?.discount_percent != 0 ? (
                         <span >{product.discount_percent}% OFF</span>
@@ -145,7 +148,7 @@ const ProductDetail = () => {
         <div classNameName="product-container">
           {" "}
           {reproduct.map((product, index) => (
-            <RelatededProductCard {...product} classNameName="product-card"/>
+            <RelatededProductCard {...product} classNameName="product-card" />
           ))}
         </div>
       </section>

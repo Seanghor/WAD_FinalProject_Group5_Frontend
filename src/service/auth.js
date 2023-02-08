@@ -19,12 +19,12 @@ export const initProfile = async () => {
   localStorage.setItem("userInfo", JSON.stringify(pf));
 };
 
-export const register = async ({ email, password }) => {
-  const res = await client.post("/register", { email, password });
+export const register = async ({ username, phone, email, password }) => {
+  const res = await client.post("/register", { username, phone, email, password });
   if (res.status === 200) {
     localStorage.setItem("accessToken", res.data.accessToken);
     localStorage.setItem("refreshToken", res.data.refreshToken);
-    await initProfile();
+    // await initProfile();
     window.location.href = "/";
   }
 };
