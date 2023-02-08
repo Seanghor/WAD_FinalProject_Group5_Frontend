@@ -18,7 +18,7 @@ import Rating from "@mui/material/Rating";
 import { getCategory } from "./../../service/category";
 import Box from "@mui/material/Box";
 import Skeleton from "@mui/material/Skeleton";
-import { isAuth, isAuth } from "../../service/auth";
+import {  isAuth } from "../../service/auth";
 // import Skeleton ,{ SkeletonTheme }from 'react-loading-skeleton';
 // import 'react-loading-skeleton/dist/skeleton.css';
 
