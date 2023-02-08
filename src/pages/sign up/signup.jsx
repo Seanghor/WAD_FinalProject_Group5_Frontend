@@ -20,13 +20,11 @@ const Signup = () => {
         <div className="col-md-6 ">
           <h1 className="login">Register</h1>
           <form action="">
-
             <div className="form-group">
               <label htmlFor="text">Username</label>
               <input
                 type="text"
                 className="form-control"
-                id="input-email"
                 aria-describedby="emailHelp"
                 placeholder="Enter your name"
                 value={name}
@@ -41,7 +39,6 @@ const Signup = () => {
               <input
                 type="email"
                 className="form-control"
-                id="input-email"
                 aria-describedby="emailHelp"
                 placeholder="Enter your email"
                 value={email}
@@ -54,14 +51,13 @@ const Signup = () => {
             <div className="form-group">
               <label htmlFor="email">Username or Email address </label>
               <input
-                type="email"
+                type="text"
                 className="form-control"
-                id="input-email"
                 aria-describedby="emailHelp"
                 placeholder="Enter Phone Number"
                 value={phone}
                 onChange={(e) => {
-                  setEmail(e.target.value);
+                  setPhone(e.target.value);
                 }}
               />
             </div>
@@ -73,6 +69,7 @@ const Signup = () => {
                 className="form-control"
                 id="input-password"
                 placeholder="Enter your Password"
+                value={password}
                 onChange={(e) => {
                   setPassword(e.target.value);
                 }}
