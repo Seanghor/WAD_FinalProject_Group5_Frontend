@@ -8,7 +8,10 @@ import { getSingleProduct } from "../../service/product";
 import { client } from "../../utils/http";
 import { useEffect } from "react";
 import { getCategory } from "../../service/category";
-import { Link } from "react-router-dom";
+
+import { Link } from "react-router-dom"; 
+import {Stack, Typography} from "@mui/material/";
+
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
@@ -96,29 +99,43 @@ const ProductDetail = () => {
               <div className="product ">
                 <div className="mb-3">
                   <h5 className="text-uppercase">{product.name}</h5>
-                  <div className="price d-flex flex-row align-items-center">
-                    {" "}
-                    <span className="act-price">
-                      {" "}
-                      {product?.discount_active == true &&
-                      product?.discount_percent != 0 ? (
-                        <h4 className="dis-price">
-                          {" "}
-                          ${product.discount_price}
-                        </h4>
+                  <Stack direction="row" justifyContent={"space-between"}>
+                    <Stack direction={"row"}>
+                      <Typography
+                        variant="h4"
+                        style={{ fontWeight: "bold", marginRight: 10, color: "#111" }}
+                      >
+                        ${product.discount_price}
+                      </Typography>
+                      {product.discount_active == true ? (
+                        <Typography
+                          gutterBottom
+                          variant="h6"
+                          marginTop={1}
+                          color="text.secondary"
+                          style={{ textDecoration: "line-through", marginRight:35 }}
+                        >
+                          ${product.price}
+                        </Typography>
                       ) : null}
-                    </span>
-                    <div className="ml-2">
-                      {" "}
 
-                      <small id="discountPrice">${product.price}</small>{" "}
 
-                      {product?.discount_active == true &&
-                      product?.discount_percent != 0 ? (
-                        <span >{product.discount_percent}% OFF</span>
+                      {product.discount_percent != 0 &&
+                      product.discount_active == true ? (
+                        <Typography
+                          gutterBottom
+                          variant="h6"
+                          marginTop={1}
+                          component="div"
+                          style={{ color: "red"}}
+                        >
+                          {product.discount_percent}%off
+                        </Typography>
+
                       ) : null}
-                    </div>
-                  </div>
+                    </Stack>
+                  </Stack>
+                      
                 </div>
                 <div className="cart  align-items-center">
                   <button className="btn btn-danger text-uppercase ">

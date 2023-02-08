@@ -40,6 +40,7 @@ const Products = () => {
     const isCustomer = await isAuth();
     setCustomer(isCustomer);
   };
+  console.log("isCustomer : ", customer);
 
   // fect: get all product
   const allProducts = async () => {
@@ -279,7 +280,7 @@ const Products = () => {
                           <NavLink to={`/product/${product.id}`}>
                           </NavLink>
                         ) : (
-                          <p>sasd</p>
+                          null
                         )}
                         <NavLink to={`/product/${product.id}`}>
                           Add To Cart

@@ -3,6 +3,8 @@ import ".././styles/signup.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { register } from './../../service/auth';
+import{Checkbox ,Button, Typography,Stack}from '@mui/material/';
+const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 const Signup = () => {
   const [username, setUsername] = useState("");
@@ -133,6 +135,7 @@ const Signup = () => {
         </div>
       </div>
     </div>
+
   );
 };
 
