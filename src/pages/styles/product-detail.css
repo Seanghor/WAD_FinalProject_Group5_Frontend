@@ -14,7 +14,7 @@ input{
 .brand{
     font-size: 13px
 }
-.act-price{
+#act-price{
     color:red;
     font-size: 20px;
     font-weight: 700;
@@ -30,7 +30,7 @@ input{
   text-decoration: line-through;
   margin-right: 20px;
 }
-.dis-price{
+#dis-price{
   color: black;
   font-size:1.8rem;
   font-weight: bolder;

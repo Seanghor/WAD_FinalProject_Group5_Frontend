@@ -82,14 +82,15 @@ const Signin = () => {
             </div>
 
             {/* Login Btn */}
-            <div className="">
+            
               <Button 
                 size="small"
                 variant="contained"  
                 onClick={onLogin} 
                 sx={{ width: 120, height: 40,padding: 1, margin: 0 }}
-              >Login</Button>
-            </div>
+              >Login
+              </Button>
+        
             <div className="row pt-5">
               <p>
                 Don't you have account? <Link to="/signup">Signup</Link>
