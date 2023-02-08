@@ -1,4 +1,4 @@
-import React from "react";
+import {React,useState} from "react";
 import "../.././pages/styles/home.css";
 import Grid from "@mui/material/Grid";
 import {
@@ -16,7 +16,8 @@ import Divider from '@mui/material/Divider';
 const ProductCard = (prop) => {
   return (
     <Grid className="col-md-3" >
-    <Card sx={{ maxWidth: 420 }} style={{height: 600, margin: 25}}>
+    <Card sx={{ maxWidth: 420 }} style={{height: 600, margin: 25}} 
+    >
       <CardActionArea>
         <CardMedia
           style={{borderBottomRightRadius: 10, borderBottomLeftRadius:10, padding: 3}}
@@ -40,7 +41,7 @@ const ProductCard = (prop) => {
               <Typography gutterBottom variant="h6" marginTop={1} style={{color: "red",textAlign: "end", paddingRight: 10 }}>
                 {prop.discount}% off
               </Typography>
-              <Divider  sx={{ bgcolor: "grey",borderBottomWidth: 2,width: 150, marginBottom: 1}} />
+              <Divider sx={{ bgcolor: "grey",borderBottomWidth: 1, marginBottom: 1,}} size="smal"/>
               <Rating name="read-only"  variant="outlined" value={5} readOnly style={{alignItems: "flex-end", paddingLeft: 35}}/>
             </Stack>
           </Stack>

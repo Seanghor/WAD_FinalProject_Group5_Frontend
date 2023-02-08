@@ -13,8 +13,8 @@ import { NavLink } from "react-router-dom";
 import { Grid } from "@mui/material";
 const Home = () => {
   return (
-    <div className="container-fluid" id="parent">
-      <div id="child">
+    <div className="container-fluid" >
+      <div >
         <div className="row" id="Bg">
           <div className="col-md-6">
             <div className="card" id="card1">
@@ -45,10 +45,66 @@ const Home = () => {
             </div>
           </div>
         </div>
+
+       <div className="row p-5 " id="detail">
+        <div className="col-md-3">
+          <div className="row">
+            <div className="col-sm-1 m-3">
+              <i class="bi bi-airplane iCon"></i>
+            </div>
+           
+            <div className="col">
+              <h3>Free Delivery</h3>
+              <p>On all order above $99</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="col-md-3">
+          <div className="row">
+            <div className="col-sm-1 m-3">
+            <i class="bi bi-wallet2 iCon"></i>
+            </div>
+           
+            <div className="col">
+              <h3>Secure Payment</h3>
+              <p>100% Secure Payment</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="col-md-3">
+          <div className="row">
+            <div className="col-sm-1 m-3">
+            <i class="bi bi-clipboard-check iCon"></i>
+            </div>
+           
+            <div className="col">
+              <h3>Join Risk Free</h3>
+              <p>30 days return policy</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="col-md-3">
+          <div className="row">
+            <div className="col-sm-1 m-3">
+              <i class="bi bi-truck iCon"></i>
+            </div>
+           
+            <div className="col">
+              <h3>Contact Delivery</h3>
+              <p>We alwarys ensure your safety</p>
+            </div>
+          </div>
+        </div>
+       </div>
+
         {/* Container Section Start */}
         <section className="bg-color">
           <div className="">
             <div className="row justify-content-center">
+             
               <Cards 
                 img={Bin} 
                 name="Bin"
