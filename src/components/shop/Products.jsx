@@ -61,7 +61,7 @@ const Products = () => {
     allCategory();
   }, []);
   // console.log("Category Test:", categoryList);
-  // console.log("Product Test: ", product);
+  console.log("Product Test: ", product);
 
   // Loading Process
   const Loading = () => {

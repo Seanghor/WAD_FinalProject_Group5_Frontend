@@ -1,18 +1,24 @@
 import React from "react";
 import "../../pages/styles/RelatededProductCard.css";
 function RelatededProductCard(props) {
-  const { profile, description, name, discount_price } = props;
+  const { profile, description, name, discount_price, price} = props;
 
   return (
-    <a className="product-card" href="#dolce-gabbana-cropped">
-      <img className="product-card__image" src={profile} />
-      <div className="text">
-        {" "}
-        <p className="product-card__brand">{name}</p>
-        <p className="product-card__description">Anodized to absorb</p>
-        <p className="product-card__price">${discount_price}</p>
+    <div class="product-card">
+      <div class="product-image">
+        <img
+          src={ profile}
+          class="product-thumb"
+          alt=""
+        />
       </div>
-    </a>
+      <div class="product-info">
+        <h2 class="product-brand">{name}</h2>
+        <p class="product-short-description">a short line about the cloth..</p>
+        <span class="price">${discount_price }</span>
+        <span class="actual-price">${price}</span>
+      </div>
+    </div>
   );
 }
 
