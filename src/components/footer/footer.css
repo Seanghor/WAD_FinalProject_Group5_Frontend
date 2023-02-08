@@ -32,3 +32,11 @@
 #Input{
     height: 30%;
 }
+.desc {
+    font-weight: 500;
+    font-family: 'Merienda', cursive;
+}
+.price{
+    font-weight:bold;
+    font-family: 'Merienda', cursive;
+}

@@ -159,7 +159,7 @@ const Products = () => {
                         <Stack direction={"row"}>
                           <Typography
                             variant="h4"
-                            style={{ fontWeight: "bold", marginRight: 10 }}
+                            style={{ fontWeight: "bold", marginRight: 10, color: "#111" }}
                           >
                             ${product.discount_price}
                           </Typography>
@@ -194,6 +194,7 @@ const Products = () => {
                     </CardContent>
                     <CardActions style={{ paddingLeft: 20 }}>
                       <Button
+                        className="card4"
                         variant="outlined"
                         color="primary"
                         sx={{ width: 120, height: 40, padding: 1, margin: 0 }}
