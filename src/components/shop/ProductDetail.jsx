@@ -8,6 +8,7 @@ import { getSingleProduct } from "../../service/product";
 import { client } from "../../utils/http";
 import { useEffect } from "react";
 import { getCategory } from "../../service/category";
+import { Link } from "react-router-dom"; 
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
@@ -61,17 +62,17 @@ const ProductDetail = () => {
     });
   });
   return (
-    <div class="container mt-5 mb-5">
-      <div class="row d-flex justify-content-center">
-        <div class="col-md-10">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="images p-3">
-                <div class="text-center p-4">
+    <div className="container mt-5 mb-5">
+      <div className="row d-flex justify-content-center">
+        <div className="col-md-10">
+          <div className="row">
+            <div className="col-md-6">
+              <div className="images p-3">
+                <div className="text-center p-4">
                   {" "}
                   <img id="main-image" src={product.profile} width="250" />{" "}
                 </div>
-                <div class="thumbnail text-center">
+                <div className="thumbnail text-center">
                   {" "}
                   <img
                     onclick="change_image(this)"
@@ -86,40 +87,40 @@ const ProductDetail = () => {
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="product ">
-                <div class="mb-3">
-                  <h5 class="text-uppercase">{product.name}</h5>
-                  <div class="price d-flex flex-row align-items-center">
+            <div className="col-md-6">
+              <div className="product ">
+                <div className="mb-3">
+                  <h5 className="text-uppercase">{product.name}</h5>
+                  <div className="price d-flex flex-row align-items-center">
                     {" "}
-                    <span class="act-price">
+                    <span className="act-price">
                       {" "}
                       {product?.discount_active == true &&
                       product?.discount_percent != 0 ? (
-                        <small class="dis-price"> ${product.discount_price}</small>
+                        <small className="dis-price">
+                          {" "}
+                          ${product.discount_price}
+                        </small>
                       ) : null}
                     </span>
-                    <div class="ml-2">
+                    <div className="ml-2">
                       {" "}
-                      <small  className="act-price">
-                        ${product.price}
-                      </small>{" "}
+                      <small classNameName="act-price">${product.price}</small>{" "}
                       {product?.discount_active == true &&
-                        product?.discount_percent != 0 ? (
-                          <span>{product.discount_percent}% OFF</span>
-                        ) : null}
-                      
+                      product?.discount_percent != 0 ? (
+                        <span>{product.discount_percent}% OFF</span>
+                      ) : null}
                     </div>
                   </div>
                 </div>
-                <div class="cart  align-items-center">
-                  <input type="text" class="quantity" placeholder="1" />
-                  <button class="btn btn-danger text-uppercase ">
-                    Add to cart
+                <div className="cart  align-items-center">
+                  <input type="text" className="quantity" placeholder="1" />
+                  <button className="btn btn-danger text-uppercase ">
+                    <Link to="/cart">Add to cart</Link>
                   </button>
                 </div>
-                <h5 class=" mt-5">Product Details</h5>
-                <p class="about">
+                <h5 className=" mt-5">Product Details</h5>
+                <p className="about">
                   Anodized to absorb, distribute and transfer heat evenly and
                   efficiently, these two frying pans sautée mushrooms, fry eggs,
                   caramelize onions and bake frittatas. Ergonomic handles
@@ -131,21 +132,21 @@ const ProductDetail = () => {
           </div>
         </div>
 
-        <div class="re-product ">
-          <h2 class="text">Related Product</h2>
+        <div className="re-product ">
+          <h2 className="text">Related Product</h2>
         </div>
       </div>
-      <section class="product-slider">
-        <button class="pre-btn">
+      <section className="product-slider">
+        <button className="pre-btn">
           <img src={arrow} alt="" />
         </button>
-        <button class="nxt-btn">
+        <button className="nxt-btn">
           <img src={arrow} alt="" />
         </button>
-        <div className="product-container">
+        <div classNameName="product-container">
           {" "}
           {reproduct.map((product, index) => (
-            <RelatededProductCard {...product} className="product-card"/>
+            <RelatededProductCard {...product} classNameName="product-card"/>
           ))}
         </div>
       </section>

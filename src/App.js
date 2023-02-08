@@ -32,8 +32,6 @@ function App() {
             <Route path="/sothea" element={<Sothea/>} />
             <Route path="/seanghor" element={<Seanghor/>} />
             <Route path="/kimsoure" element={<Kimsoure/>} />
-            
-
           </Route>
         </Routes>
       </BrowserRouter>

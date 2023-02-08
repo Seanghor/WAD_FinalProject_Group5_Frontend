@@ -4,19 +4,19 @@ function RelatededProductCard(props) {
   const { profile, description, name, discount_price, price} = props;
 
   return (
-    <div class="product-card">
-      <div class="product-image">
+    <div className="product-card">
+      <div className="product-image">
         <img
           src={ profile}
-          class="product-thumb"
+          className="product-thumb"
           alt=""
         />
       </div>
-      <div class="product-info">
-        <h2 class="product-brand">{name}</h2>
-        <p class="product-short-description">a short line about the cloth..</p>
-        <span class="price">${discount_price }</span>
-        <span class="actual-price">${price}</span>
+      <div className="product-info">
+        <h2 className="product-brand">{name}</h2>
+        <p className="product-short-description">a short line about the cloth..</p>
+        <span className="price">${discount_price }</span>
+        <span className="actual-price">${price}</span>
       </div>
     </div>
   );
