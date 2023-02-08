@@ -27,9 +27,9 @@ const Home = () => {
                 </NavLink>
                 <h4>
                   Anodized to absorb, distribute and transfer
-                  <br /> heat evenly and efficiently, these two frying
-                  <br /> pans sautée mushrooms, fry eggs, caramelize
-                  <br /> onions and bake frittatas.
+                  heat evenly and efficiently, these two frying
+                  pans sautée mushrooms, fry eggs, caramelize
+                  onions and bake frittatas.
                 </h4>
               </div>
             </div>
@@ -53,7 +53,7 @@ const Home = () => {
               <i class="bi bi-airplane iCon"></i>
             </div>
            
-            <div className="col">
+            <div className="col Info">
               <h3>Free Delivery</h3>
               <p>On all order above $99</p>
             </div>
@@ -66,7 +66,7 @@ const Home = () => {
             <i class="bi bi-wallet2 iCon"></i>
             </div>
            
-            <div className="col">
+            <div className="col Info">
               <h3>Secure Payment</h3>
               <p>100% Secure Payment</p>
             </div>
@@ -78,8 +78,8 @@ const Home = () => {
             <div className="col-sm-1 m-3">
             <i class="bi bi-clipboard-check iCon"></i>
             </div>
-           
-            <div className="col">
+            
+            <div className="col Info">
               <h3>Join Risk Free</h3>
               <p>30 days return policy</p>
             </div>
@@ -92,7 +92,7 @@ const Home = () => {
               <i class="bi bi-truck iCon"></i>
             </div>
            
-            <div className="col">
+            <div className="col Info">
               <h3>Contact Delivery</h3>
               <p>We alwarys ensure your safety</p>
             </div>

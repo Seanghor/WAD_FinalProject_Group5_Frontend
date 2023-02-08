@@ -12,8 +12,8 @@ const Cards = (prop) => {
   return (
     <Grid className="col-md-3" padding={5}>
       <Grid className="">
-        <Card style={{ height: 880 }}>
-          <CardActionArea>
+        <Card style={{ height: 800 }} className="card2 card3"  >
+          <CardActionArea >
             <Stack>
               <CardMedia
                 className="background-img"

@@ -5,8 +5,8 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light py-0">
-        <div className="container-fluid">
+      <nav className="navbar navbar-expand-lg navbar-light pt-2 pb-0">
+        <div className="container pb-0">
           <div className="logo">
             <img src={kitchiLogo} alt=""  className="kitchilogo"/>
           </div>
@@ -60,7 +60,7 @@ const Navbar = () => {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/cart">
+                  <NavLink className="nav-link" to="/placeOrder">
                     <i className="bi bi-cart icon"></i>
                     <span class='badge' id='lblCartCount'> 5 </span>
                   </NavLink>

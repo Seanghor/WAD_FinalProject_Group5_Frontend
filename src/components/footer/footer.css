@@ -1,6 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@600&display=swap');
 .btn,.form-control{
     font-weight: 500;
+    font-family: 'Merienda', cursive;
 }
-#footerlink p li{
+#footerlink p ,li{
+    color: #fff;
     list-style: none;
+    font-family: 'Merienda', cursive;
+}
+
+#footerlink h6,h4,label{
+    color: #fff;
+    font-family: 'Merienda', cursive;
+}
+
+.background{
+    padding: 90px 0 60px 0;
+    background-color:#262626;
+    color: #fff;
+    
+}
+.bg{
+    background-color: #000000;
+    color: #fff;
+    margin-top: 100px;
+}
+
+.bg p ,span{
+    font-family: 'Merienda', cursive;
+}
+#Input{
+    height: 30%;
 }
