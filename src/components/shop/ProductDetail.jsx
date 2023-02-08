@@ -22,8 +22,10 @@ const ProductDetail = () => {
       throw new Error("Failed to get product ...");
     }
     const data = await res.data.product;
+
     setLoading(false);
     setProduct(data);
+
 
     console.log("Get success ...: ", res.data.product);
     console.log("Get Name ...: ", res.data.product.name);
@@ -96,26 +98,25 @@ const ProductDetail = () => {
                       {" "}
                       {product?.discount_active == true &&
                       product?.discount_percent != 0 ? (
-                        <small className="dis-price">
+                        <h4 className="dis-price">
                           {" "}
                           ${product.discount_price}
-                        </small>
+                        </h4>
                       ) : null}
                     </span>
                     <div className="ml-2">
                       {" "}
-                      <small classNameName="act-price">
-                        ${product.price}
-                      </small>{" "}
+
+                      <small id="discountPrice">${product.price}</small>{" "}
+
                       {product?.discount_active == true &&
                       product?.discount_percent != 0 ? (
-                        <span>{product.discount_percent}% OFF</span>
+                        <span >{product.discount_percent}% OFF</span>
                       ) : null}
                     </div>
                   </div>
                 </div>
                 <div className="cart  align-items-center">
-                  <input type="text" className="quantity" placeholder="1" />
                   <button className="btn btn-danger text-uppercase ">
                     <Link to="/cart">Add to cart</Link>
                   </button>
