@@ -72,11 +72,9 @@ const Signin = () => {
 
             {/* Login Btn */}
             <div className="row">
-              <div className="btn">
-                <button type="button" className="btb" onClick={onLogin}>
-                  Log in
-                </button>
-              </div>
+              <button type="button" className="btb" onClick={onLogin}>
+                Log in
+              </button>
             </div>
             <div className="row">
               <p>

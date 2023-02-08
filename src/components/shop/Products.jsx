@@ -1,6 +1,5 @@
 import { React, useRef, useState, useEffect } from "react";
 import "../.././pages/styles/shop.css";
-import Skeleton from "react-loading-skeleton";
 import { NavLink } from "react-router-dom";
 import { CDropdown } from "@coreui/react";
 import { CDropdownItem, CDropdownMenu, CDropdownToggle } from "@coreui/react";
@@ -17,6 +16,10 @@ import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import Rating from "@mui/material/Rating";
 import { getCategory } from "./../../service/category";
+import Box from '@mui/material/Box';
+import Skeleton from '@mui/material/Skeleton';
+// import Skeleton ,{ SkeletonTheme }from 'react-loading-skeleton';
+// import 'react-loading-skeleton/dist/skeleton.css';
 
 const Products = () => {
   const [loading, setLoading] = useState(true);
@@ -38,7 +41,7 @@ const Products = () => {
         setTimeout(() => {
           setLoading(false);
           setaProduct(res);
-        }, 5000);
+        },);
       });
   };
 
@@ -67,16 +70,76 @@ const Products = () => {
   const Loading = () => {
     return (
       <div>
-        <div className="col-sm-4 py-2">
-          <Skeleton height={350} width={100} />
-        </div>
-        <div className="col-sm-4 py-2">
-          <Skeleton height={350} width={100} />
-        </div>
-        <div className="col-sm-4 py-2">
-          <Skeleton height={350} width={100} />
-        </div>
-      </div>
+        <div className="row">
+          <div className="col-sm-3 py-2">
+            <Box sx={{ pt: 1 }}>
+              <Skeleton />
+              <Skeleton width="60%" height={100}/>
+              <Skeleton />
+              <Skeleton width="60%" height={100}/>
+            </Box>
+          </div>
+          <div className="col-sm-3 py-2">
+            <Box sx={{ pt: 1 }} >
+              <Skeleton />
+              <Skeleton width="60%" height={100}/>
+              <Skeleton />
+              <Skeleton width="60%" height={100}/>
+            </Box>
+          </div>
+          <div className="col-sm-3 py-2">
+            <Box sx={{ pt: 1 }}>
+              <Skeleton />
+              <Skeleton width="60%" height={100} />
+              <Skeleton />
+              <Skeleton width="60%" height={100}/>
+            </Box>
+          </div>
+          <div className="col-sm-3 py-2">
+            <Box sx={{ pt: 1 }}>
+              <Skeleton />
+              <Skeleton width="60%" height={100} />
+              <Skeleton />
+              <Skeleton width="60%" height={100}/>
+            </Box>
+          </div>
+        </div>  
+
+        <div className="row">
+          <div className="col-sm-3 py-2">
+            <Box sx={{ pt: 1 }}>
+              <Skeleton />
+              <Skeleton width="60%" height={100}/>
+              <Skeleton />
+              <Skeleton width="60%" height={100}/>
+            </Box>
+          </div>
+          <div className="col-sm-3 py-2">
+            <Box sx={{ pt: 1 }} >
+              <Skeleton />
+              <Skeleton width="60%" height={100}/>
+              <Skeleton />
+              <Skeleton width="60%" height={100}/>
+            </Box>
+          </div>
+          <div className="col-sm-3 py-2">
+            <Box sx={{ pt: 1 }}>
+              <Skeleton />
+              <Skeleton width="60%" height={100} />
+              <Skeleton />
+              <Skeleton width="60%" height={100}/>
+            </Box>
+          </div>
+          <div className="col-sm-3 py-2">
+            <Box sx={{ pt: 1 }}>
+              <Skeleton />
+              <Skeleton width="60%" height={100} />
+              <Skeleton />
+              <Skeleton width="60%" height={100}/>
+            </Box>
+          </div>
+          </div>  
+      </div> 
     );
   };
 
