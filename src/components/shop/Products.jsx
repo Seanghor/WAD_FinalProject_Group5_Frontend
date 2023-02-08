@@ -54,7 +54,7 @@ const Products = () => {
           setLoading(false);
           setData(res);
           setCategoryList(res);
-        }, 2000);
+        },);
       });
   };
 
@@ -311,7 +311,7 @@ const Products = () => {
                         <Stack direction={"row"}>
                           <Typography
                             variant="h4"
-                            style={{ fontWeight: "bold", marginRight: 10 }}
+                            style={{ fontWeight: "bold", marginRight: 10, color: "#111" }}
                           >
                             ${product.discount_price}
                           </Typography>
@@ -338,7 +338,7 @@ const Products = () => {
                               component="div"
                               style={{ color: "red" }}
                             >
-                              {product?.Discount?.discount_percent}%off
+                              {product.discount_percent}%off
                             </Typography>
                           ) : null}
                         </Stack>
@@ -346,6 +346,7 @@ const Products = () => {
                     </CardContent>
                     <CardActions style={{ paddingLeft: 20 }}>
                       <Button
+                        className="card4"
                         variant="outlined"
                         color="primary"
                         sx={{ width: 120, height: 40, padding: 1, margin: 0 }}
