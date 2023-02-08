@@ -16,8 +16,9 @@ import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import Rating from "@mui/material/Rating";
 import { getCategory } from "./../../service/category";
-import Box from '@mui/material/Box';
-import Skeleton from '@mui/material/Skeleton';
+import Box from "@mui/material/Box";
+import Skeleton from "@mui/material/Skeleton";
+import { isAuth, isAuth } from "../../service/auth";
 // import Skeleton ,{ SkeletonTheme }from 'react-loading-skeleton';
 // import 'react-loading-skeleton/dist/skeleton.css';
 
@@ -30,8 +31,15 @@ const Products = () => {
   const [id2, setId] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
   const [category, setCategory] = useState(false);
+  const [customer, setCustomer] = useState(false);
+  const [accessToken, setAccessToken] = useState(null);
 
   let componentMounted = true;
+
+  const isCustomer = async () => {
+    const isCustomer = await isAuth();
+    setCustomer(isCustomer);
+  };
 
   // fect: get all product
   const allProducts = async () => {
@@ -41,7 +49,7 @@ const Products = () => {
         setTimeout(() => {
           setLoading(false);
           setaProduct(res);
-        },);
+        });
       });
   };
 
@@ -54,12 +62,13 @@ const Products = () => {
           setLoading(false);
           setData(res);
           setCategoryList(res);
-        },);
+        });
       });
   };
 
   // --- useEffect:
   useEffect(() => {
+    isCustomer();
     allProducts();
     allCategory();
   }, []);
@@ -74,17 +83,9 @@ const Products = () => {
           <div className="col-sm-3 py-2">
             <Box sx={{ pt: 1 }}>
               <Skeleton />
-              <Skeleton width="60%" height={100}/>
+              <Skeleton width="60%" height={100} />
               <Skeleton />
-              <Skeleton width="60%" height={100}/>
-            </Box>
-          </div>
-          <div className="col-sm-3 py-2">
-            <Box sx={{ pt: 1 }} >
-              <Skeleton />
-              <Skeleton width="60%" height={100}/>
-              <Skeleton />
-              <Skeleton width="60%" height={100}/>
+              <Skeleton width="60%" height={100} />
             </Box>
           </div>
           <div className="col-sm-3 py-2">
@@ -92,7 +93,7 @@ const Products = () => {
               <Skeleton />
               <Skeleton width="60%" height={100} />
               <Skeleton />
-              <Skeleton width="60%" height={100}/>
+              <Skeleton width="60%" height={100} />
             </Box>
           </div>
           <div className="col-sm-3 py-2">
@@ -100,26 +101,26 @@ const Products = () => {
               <Skeleton />
               <Skeleton width="60%" height={100} />
               <Skeleton />
-              <Skeleton width="60%" height={100}/>
+              <Skeleton width="60%" height={100} />
             </Box>
           </div>
-        </div>  
+          <div className="col-sm-3 py-2">
+            <Box sx={{ pt: 1 }}>
+              <Skeleton />
+              <Skeleton width="60%" height={100} />
+              <Skeleton />
+              <Skeleton width="60%" height={100} />
+            </Box>
+          </div>
+        </div>
 
         <div className="row">
           <div className="col-sm-3 py-2">
             <Box sx={{ pt: 1 }}>
               <Skeleton />
-              <Skeleton width="60%" height={100}/>
+              <Skeleton width="60%" height={100} />
               <Skeleton />
-              <Skeleton width="60%" height={100}/>
-            </Box>
-          </div>
-          <div className="col-sm-3 py-2">
-            <Box sx={{ pt: 1 }} >
-              <Skeleton />
-              <Skeleton width="60%" height={100}/>
-              <Skeleton />
-              <Skeleton width="60%" height={100}/>
+              <Skeleton width="60%" height={100} />
             </Box>
           </div>
           <div className="col-sm-3 py-2">
@@ -127,7 +128,7 @@ const Products = () => {
               <Skeleton />
               <Skeleton width="60%" height={100} />
               <Skeleton />
-              <Skeleton width="60%" height={100}/>
+              <Skeleton width="60%" height={100} />
             </Box>
           </div>
           <div className="col-sm-3 py-2">
@@ -135,11 +136,19 @@ const Products = () => {
               <Skeleton />
               <Skeleton width="60%" height={100} />
               <Skeleton />
-              <Skeleton width="60%" height={100}/>
+              <Skeleton width="60%" height={100} />
             </Box>
           </div>
-          </div>  
-      </div> 
+          <div className="col-sm-3 py-2">
+            <Box sx={{ pt: 1 }}>
+              <Skeleton />
+              <Skeleton width="60%" height={100} />
+              <Skeleton />
+              <Skeleton width="60%" height={100} />
+            </Box>
+          </div>
+        </div>
+      </div>
     );
   };
 
@@ -222,7 +231,11 @@ const Products = () => {
                         <Stack direction={"row"}>
                           <Typography
                             variant="h4"
-                            style={{ fontWeight: "bold", marginRight: 10, color: "#111" }}
+                            style={{
+                              fontWeight: "bold",
+                              marginRight: 10,
+                              color: "#111",
+                            }}
                           >
                             ${product.discount_price}
                           </Typography>
@@ -262,6 +275,12 @@ const Products = () => {
                         color="primary"
                         sx={{ width: 120, height: 40, padding: 1, margin: 0 }}
                       >
+                        {customer ? (
+                          <NavLink to={`/product/${product.id}`}>
+                          </NavLink>
+                        ) : (
+                          <p>sasd</p>
+                        )}
                         <NavLink to={`/product/${product.id}`}>
                           Add To Cart
                         </NavLink>
@@ -311,7 +330,11 @@ const Products = () => {
                         <Stack direction={"row"}>
                           <Typography
                             variant="h4"
-                            style={{ fontWeight: "bold", marginRight: 10, color: "#111" }}
+                            style={{
+                              fontWeight: "bold",
+                              marginRight: 10,
+                              color: "#111",
+                            }}
                           >
                             ${product.discount_price}
                           </Typography>

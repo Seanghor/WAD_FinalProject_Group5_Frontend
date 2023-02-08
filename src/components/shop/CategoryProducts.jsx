@@ -19,6 +19,7 @@ import CardActions from "@mui/material/CardActions";
 import Rating from "@mui/material/Rating";
 import { getCategory } from "./../../service/category";
 
+
 export const CategoryProducts = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
@@ -26,6 +27,7 @@ export const CategoryProducts = () => {
   const [filter, setFilter] = useState(data);
   const [product, setaProduct] = useState([]);
   const [isCategory, setIsCategory] = useState(false);
+
 
   // Fect data Product:
   const allProducts = async (data) => {
@@ -52,8 +54,10 @@ export const CategoryProducts = () => {
       });
   };
 
+
   // UseEffect
   useEffect(() => {
+    testing();
     allProducts();
     allCategory();
   }, []);

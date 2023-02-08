@@ -147,7 +147,7 @@ export const client = createAxiosClient({
   getCurrentAccessToken,
   getCurrentRefreshToken,
   refreshTokenUrl: REFRESH_TOKEN_URL,
-  // logout: logout,
+  logout: logout,
   setRefreshedTokens,
 });
 
