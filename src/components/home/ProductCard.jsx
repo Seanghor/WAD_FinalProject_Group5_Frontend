@@ -16,7 +16,7 @@ import Divider from '@mui/material/Divider';
 const ProductCard = (prop) => {
   return (
     <Grid className="col-md-3" >
-    <Card sx={{ maxWidth: 420 }} style={{height: 600, margin: 25}}  className="card4"
+    <Card sx={{ maxWidth: 420 }} style={{height: 620, margin: 25}} 
     >
       <CardActionArea>
         <CardMedia
@@ -38,7 +38,7 @@ const ProductCard = (prop) => {
             ${prop.newPrice}
             </Typography>
             <Stack direction="column" paddingLeft={5} >
-              <Typography gutterBottom variant="h6" marginTop={1} style={{color: "red",textAlign: "end", paddingRight: 10 }}>
+              <Typography gutterBottom variant="h6" marginTop={1} style={{color: "red",textAlign: "end", paddingRight: 10, fontFamily: 'Merienda' }}>
                 {prop.discount}% off
               </Typography>
               <Divider sx={{ bgcolor: "grey",borderBottomWidth: 1, marginBottom: 1,}} size="smal"/>
@@ -47,7 +47,7 @@ const ProductCard = (prop) => {
           </Stack>
         </CardContent>
         <CardActions style={{paddingLeft: 20, marginTop: 30}}>
-          <Button variant="outlined" color="primary"   sx={{ width: 120, height: 40,padding: 1, margin: 0 }}>Add to cart</Button>  
+          <Button variant="outlined" color="primary"  className="card4" sx={{ width: 120, height: 40,padding: 1, margin: 0 }}>Add to cart</Button>  
         </CardActions>
       </CardActionArea>
     </Card>

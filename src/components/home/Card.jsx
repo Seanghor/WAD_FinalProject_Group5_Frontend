@@ -12,7 +12,7 @@ const Cards = (prop) => {
   return (
     <Grid className="col-md-3" padding={5}>
       <Grid className="">
-        <Card style={{ height: 800 }} className="card2 card3"  >
+        <Card style={{ height: 720 }} className="card2 card3"  >
           <CardActionArea >
             <Stack>
               <CardMedia
@@ -32,29 +32,20 @@ const Cards = (prop) => {
             <CardContent style={{ marginTop: 125 }}>
               <Typography style={{ textAlign: "center" }}>
                 <Typography
-                  variant="h4"
+                  variant="text"
                   marginRight={3}
                   component="div"
-                  style={{ fontWeight: "bold" }}
+                  className="price"
+                  fontSize={30}
                 >
                   ${prop.newPrice}
                 </Typography>
-                <Typography
-                  gutterBottom
-                  variant="h6"
-                  marginRight={3}
-                  marginTop={1}
-                  component="div"
-                  color="text.secondary"
-                  style={{ textDecoration: "line-through" }}
-                >
-                  $ {prop.oldPrice}
-                </Typography>
+               
                 <Typography
                   gutterBottom
                   variant="h6"
                   component="div"
-                  style={{}}
+                  style={{marginTop: 15, fontFamily: 'Merienda', fontWeight:600}}
                 >
                   {prop.name}
                 </Typography>
@@ -63,7 +54,7 @@ const Cards = (prop) => {
                   variant="text.secondary"
                   color="text.secondary"
                   component="div"
-                  style={{ fontWeight: "500" }}
+                  className="desc"
                 >
                   {prop.desc}
                 </Typography>

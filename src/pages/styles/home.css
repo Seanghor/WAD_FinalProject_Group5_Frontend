@@ -28,6 +28,14 @@
 .model h4{
   margin-top: 50px;
   font-size: 1.4rem;
+  color: #131313;
+}
+
+.model h3{
+  margin-top: 50px;
+  font-size: 1.8rem;
+  color: #131313;
+  font-family: 'Merienda', cursive;
 }
 
 .model li{
@@ -45,6 +53,7 @@
   font-family: 'Roboto', sans-serif;
  
 }
+
 
 p, button{
   font-weight: 500;
