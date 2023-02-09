@@ -8,45 +8,18 @@ import { getSingleProduct } from "../../service/product";
 import { client } from "../../utils/http";
 import { useEffect } from "react";
 import { getCategory } from "../../service/category";
-import { isAuth } from "../../service/auth";
-import { Link } from "react-router-dom";
-import { Stack, Typography } from "@mui/material/";
-import { userInfo } from "../../service/auth";
-import { createOrders } from "./../../service/order";
+
+import { Link } from "react-router-dom"; 
+import {Stack, Typography} from "@mui/material/";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
   const [reproduct, setReproduct] = useState([]);
-  const [customerInfo, setCustomerInfor] = useState([]);
-  const [productId, setproductId] = useState(Number);
-  const [customerId, setCustomerId] = useState(Number);
-  const [quantity, setQuantity] = useState(null);
-  const [isAuth, setIsAuth] = useState(false);
 
-  // check accessToekn:
-  const isCustomer = !!localStorage.getItem("accessToken");
 
-  // check customer infor
-  const infoOfCustomer = async () => {
-    const data = await userInfo();
-    const profileData = await data.profile;
-    setCustomerInfor(profileData);
-    setCustomerId(profileData.customerId);
-    setQuantity(Number(1));
-    setproductId(Number(id));
-  };
-  // setIsAuth(isCustomer)
-  const onClickCustomer = async () => {
-    if (isCustomer) {
-      console.log("customerId : ", customerInfo.customerId);
-      console.log("productId : ", id);
-      console.log("quantity : ", quantity);
-      await createOrders({ productId, quantity, customerId });
-    }
-  };
-
+  
   // fect: get product by Id
   const getSingleProduct = async () => {
     const res = await client.get(`/product/${id}`);
@@ -54,24 +27,27 @@ const ProductDetail = () => {
       throw new Error("Failed to get product ...");
     }
     const data = await res.data.product;
+
     setLoading(false);
     setProduct(data);
+
+
+    console.log("Get success ...: ", res.data.product);
+    console.log("Get Name ...: ", res.data.product.name);
     return;
   };
 
   // getCateGory:
   const allproductsOfCategory = async () => {
     const cateId = await product.category_id;
-    console.log("CategoryId : ", cateId);
     const res = await getCategory(+cateId);
     const data = await res.Product;
     setReproduct(data);
+    console.log("Related :", data);
   };
-  // console.log("Related :", reproduct);
 
+  
   useEffect(() => {
-    // onClickCustomer()
-    infoOfCustomer();
     getSingleProduct();
     allproductsOfCategory();
   }, []);
@@ -93,7 +69,6 @@ const ProductDetail = () => {
       item.scrollLeft -= containerWidth;
     });
   });
-
   return (
     <div className="container mt-5 mb-5">
       <div className="row d-flex justify-content-center">
@@ -103,11 +78,7 @@ const ProductDetail = () => {
               <div className="images p-3">
                 <div className="text-center p-4">
                   {" "}
-                  <img
-                    id="main-image"
-                    src="https://scontent-sjc3-1.xx.fbcdn.net/v/t39.30808-6/323215885_566798904906612_8875341566048822805_n.jpg?stp=dst-jpg_p526x296&_nc_cat=106&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=xBUaHAuo3RoAX9LUvpm&_nc_ht=scontent-sjc3-1.xx&oh=00_AfB5ofxa8CInAH8EatdgGYP4C4Q8Q9yeFc1_n8SYdPfGrA&oe=63E89968"
-                    width="250"
-                  />{" "}
+                  <img id="main-image" src="https://scontent-sjc3-1.xx.fbcdn.net/v/t39.30808-6/323215885_566798904906612_8875341566048822805_n.jpg?stp=dst-jpg_p526x296&_nc_cat=106&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=xBUaHAuo3RoAX9LUvpm&_nc_ht=scontent-sjc3-1.xx&oh=00_AfB5ofxa8CInAH8EatdgGYP4C4Q8Q9yeFc1_n8SYdPfGrA&oe=63E89968" width="250" />{" "}
                 </div>
                 <div className="thumbnail text-center">
                   {" "}
@@ -132,11 +103,7 @@ const ProductDetail = () => {
                     <Stack direction={"row"}>
                       <Typography
                         variant="h4"
-                        style={{
-                          fontWeight: "bold",
-                          marginRight: 10,
-                          color: "#111",
-                        }}
+                        style={{ fontWeight: "bold", marginRight: 10, color: "#111" }}
                       >
                         ${product.discount_price}
                       </Typography>
@@ -146,14 +113,12 @@ const ProductDetail = () => {
                           variant="h6"
                           marginTop={1}
                           color="text.secondary"
-                          style={{
-                            textDecoration: "line-through",
-                            marginRight: 35,
-                          }}
+                          style={{ textDecoration: "line-through", marginRight:35 }}
                         >
                           ${product.price}
                         </Typography>
                       ) : null}
+
 
                       {product.discount_percent != 0 &&
                       product.discount_active == true ? (
@@ -162,24 +127,19 @@ const ProductDetail = () => {
                           variant="h6"
                           marginTop={1}
                           component="div"
-                          style={{ color: "red" }}
+                          style={{ color: "red"}}
                         >
                           {product.discount_percent}%off
                         </Typography>
+
                       ) : null}
                     </Stack>
                   </Stack>
+                      
                 </div>
                 <div className="cart  align-items-center">
-                  <button
-                    className="btn btn-danger text-uppercase "
-                    onClick={() => onClickCustomer()}
-                  >
-                    {isCustomer ? (
-                      <Link to="/cart">Add to cart</Link>
-                    ) : (
-                      <Link to="/signin">Add to cart</Link>
-                    )}
+                  <button className="btn btn-danger text-uppercase ">
+                    <Link to="/cart">Add to cart</Link>
                   </button>
                 </div>
                 <h5 className=" mt-5">Product Details</h5>

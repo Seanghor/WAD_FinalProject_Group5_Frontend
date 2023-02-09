@@ -2,24 +2,34 @@ import React from "react";
 import ".././styles/placeOrder.css";
 const placeOrder = () => {
   return (
-    <div className="container p-5">
+    <div className="container">
       
       <div className="row">
         {/* Left Side */}
-        <div className="col-md-6 pt-5">
-          <h2>Billing details</h2>
+        <div className="col-md-6">
+          <h1>Billing details</h1>
           {/* First Name Last name */}
           <form action="#">
-            {/* Company Name */}
-            <div className="information">
-              <div className="form-group company_name">
-                <label htmlFor="company">Username</label>
+            <div className="row">
+              <div className="col-md-4 name">
+                <label htmlFor="name">First Name</label>
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Company Name"
+                  placeholder="firstname"
                 />
               </div>
+              <div className="col-md-4 name">
+                <label htmlFor="name">Last Name</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="lastname"
+                />
+              </div>
+            </div>
+            {/* Company Name */}
+            <div className="information">
               <div className="form-group company_name">
                 <label htmlFor="company">Company Name (optional)</label>
                 <input
@@ -89,16 +99,16 @@ const placeOrder = () => {
           </form>
         </div>
 
-        <div className="col-md-6 pt-5">
-          <div className="row">
+        <div className="col-md-6 placeOder">
+          <div className="row order">
             <div className="col">
-              <h6>product</h6>
+              <h1>product</h1>
               <p>Coca</p>
               <p>Subtotal</p>
               <h2 className="total">Total</h2>
             </div>
             <div className="col">
-              <h6>Subtotal</h6>
+              <h1>Subtotal</h1>
               <p>70.00$</p>
               <p>70.00$</p>
               <h2 className="total">70.00$</h2>
@@ -109,7 +119,7 @@ const placeOrder = () => {
             <ul className="describe">
               <li>
                 <p>
-                  <h2>Direct Bank Transfer</h2>
+                  <strong>Direct Bank Transfer</strong>{" "}
                 </p>
               </li>
             </ul>
