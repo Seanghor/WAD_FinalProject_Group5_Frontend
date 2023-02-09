@@ -10,26 +10,16 @@ const placeOrder = () => {
           <h2>Billing details</h2>
           {/* First Name Last name */}
           <form action="#">
-            <div className="row">
-              <div className="col-md-3 pt-5 name">
-                <label htmlFor="name" style={{color:"grey"}}>Firt Name</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="firstname"
-                />
-              </div>
-              <div className="col-md-3 pt-5 name">
-                <label htmlFor="name" style={{color:"grey"}}>Last Name</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="lastname"
-                />
-              </div>
-            </div>
             {/* Company Name */}
             <div className="information">
+              <div className="form-group company_name">
+                <label htmlFor="company">Username</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Company Name"
+                />
+              </div>
               <div className="form-group company_name">
                 <label htmlFor="company">Company Name (optional)</label>
                 <input

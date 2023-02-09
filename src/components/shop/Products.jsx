@@ -411,7 +411,7 @@ const Products = () => {
                   type="submit"
                   style={{width: 30, marginLeft:30, borderRadius: 50}}
                 >
-                   <SearchIcon />
+                  <SearchIcon />
                 </Button>
 
                
