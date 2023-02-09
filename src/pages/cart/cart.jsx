@@ -1,4 +1,4 @@
-import {React, useState} from "react";
+import { React, useState } from "react";
 import ".././styles/cart.css";
 import { Link } from "react-router-dom";
 
@@ -8,17 +8,16 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
-import {TableRow,Stack,Divider} from "@mui/material/";
+import { TableRow, Stack, Divider } from "@mui/material/";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Button from "@mui/material/Button";
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
 import { getOrders } from "./../../service/order";
 import { useEffect } from "react";
-
 
 const columns = [
   { id: "product_name", label: "Product Name", minWidth: 170 },
@@ -54,35 +53,50 @@ const Cart = () => {
   }, []);
   return (
     <div className="container ">
-
       <div className="row pt-5">
         <div className="col-md-9 pt-5">
-        <Paper sx={{ width: "100%", overflow: "hidden" }}>
-          <TableContainer sx={{ maxHeight: 100 }}>
-            <Table stickyHeader aria-label="sticky table">
-              <TableHead>
-                <TableRow>
-                {columns.map((column) => (
-                  <TableCell
-                  key={column.id}
-                  align={column.align}
-                  style={{ width: "auto", color: "white",backgroundColor:'#262626',}}
-                  >
-                  {column.label}
-                  </TableCell>
-                ))}
-                </TableRow>
-              </TableHead>
-              <TableBody> 
-                <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                  <TableCell component="th" scope="row">{orders.productName} </TableCell>
-                  <TableCell component="th" scope="row">$ 100 </TableCell>
-                  <TableCell component="th" scope="row">5</TableCell>
-                  <TableCell component="th" scope="row">$ 500</TableCell>
-                  <TableCell>
-                    <DeleteIcon sx={{color: "red"}} />
-                  </TableCell>     
-                  </TableRow>            
+          <Paper sx={{ width: "100%", overflow: "hidden" }}>
+            <TableContainer sx={{ maxHeight: 100 }}>
+              <Table stickyHeader aria-label="sticky table">
+                <TableHead>
+                  <TableRow>
+                    {columns.map((column) => (
+                      <TableCell
+                        key={column.id}
+                        align={column.align}
+                        style={{
+                          width: "auto",
+                          color: "white",
+                          backgroundColor: "#262626",
+                        }}
+                      >
+                        {column.label}
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {orders.map((product) => (
+                    <TableRow
+                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                    >
+                      <TableCell component="th" scope="row">
+                        {product.productName}{" "}
+                      </TableCell>
+                      <TableCell component="th" scope="row">
+                        {product.quantity}{" "}
+                      </TableCell>
+                      <TableCell component="th" scope="row">
+                        ${product.price}
+                      </TableCell>
+                      <TableCell component="th" scope="row">
+                        ${product.total_price}
+                      </TableCell>
+                      <TableCell>
+                        <DeleteIcon sx={{ color: "red" }} />
+                      </TableCell>
+                    </TableRow>
+                  ))}
                 </TableBody>
               </Table>
             </TableContainer>
@@ -90,9 +104,14 @@ const Cart = () => {
         </div>
 
         <div className="col-md-3 pt-5">
-          <Card sx={{ maxWidth: 345 , backgroundColor: "#FBE7C6"}}>
-            <CardContent >
-              <Typography gutterBottom variant="h5" component="div" sx={{color: "#0081C9"}}>
+          <Card sx={{ maxWidth: 345, backgroundColor: "#FBE7C6" }}>
+            <CardContent>
+              <Typography
+                gutterBottom
+                variant="h5"
+                component="div"
+                sx={{ color: "#0081C9" }}
+              >
                 Order Summary
               </Typography>
               <Stack direction="row" justifyContent="space-between">
@@ -103,28 +122,33 @@ const Cart = () => {
                 <Typography>Shipping</Typography>
                 <Typography>$ 20.00</Typography>
               </Stack>
-              <Divider sx={{ bgcolor: "grey",borderBottomWidth: 3, marginBottom: 1,marginTop: 5}}/>
+              <Divider
+                sx={{
+                  bgcolor: "grey",
+                  borderBottomWidth: 3,
+                  marginBottom: 1,
+                  marginTop: 5,
+                }}
+              />
               <Stack direction="row" justifyContent="space-between">
                 <Typography>Total</Typography>
                 <Typography>$ 224.00</Typography>
               </Stack>
-             
             </CardContent>
             <CardActions>
-              
-                <Link to="/placeOrder" sx={{color: "white"}}>
-                  <Button size="small" variant="contained" sx={{height: 45, maxWidth: "full", }}>
-                    Checkout 
-                  </Button>
-                </Link>
-            
-              
+              <Link to="/placeOrder" sx={{ color: "white" }}>
+                <Button
+                  size="small"
+                  variant="contained"
+                  sx={{ height: 45, maxWidth: "full" }}
+                >
+                  Checkout
+                </Button>
+              </Link>
             </CardActions>
           </Card>
-
-
         </div>
-      
+
         {/* <div className="col-lg-4 checkout-bg ">
           <div className="card position-sticky top-0">
             <div className="p-3 checkout">
