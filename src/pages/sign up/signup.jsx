@@ -57,7 +57,6 @@ const Signup = () => {
     console.log("SignUp : Successfull");
   };
   return (
-   (
     <div className="container">
       <div className="row">
         {/* Login Form Left Side */}
@@ -71,9 +70,9 @@ const Signup = () => {
                 className="form-control"
                 aria-describedby="emailHelp"
                 placeholder="Enter your name"
-                value={name}
+                value={username}
                 onChange={(e) => {
-                  setName(e.target.value);
+                  setUsername(e.target.value);
                 }}
               />
             </div>
@@ -126,7 +125,7 @@ const Signup = () => {
                 <Stack direction="row">
                   <Checkbox {...label} />
                   <Typography
-                    style={{fontSize: 16, marginTop: 10}}
+                    style={{ fontSize: 16, marginTop: 10 }}
                     component="div"
                     fontSize={30}
                   >
@@ -136,26 +135,27 @@ const Signup = () => {
                 <Stack direction="row">
                   <Checkbox {...label} />
                   <Typography
-                    style={{fontSize: 16, marginTop: 10}}
+                    style={{ fontSize: 16, marginTop: 10 }}
                     component="div"
                     fontSize={30}
                   >
                     I agree with the terms private policy.
                   </Typography>
-                </Stack> 
+                </Stack>
               </div>
             </div>
 
             {/* Login Btn */}
-            
-              <Button 
-                size="small"
-                variant="contained"  
-                onClick={OnSignup} 
-                sx={{ width: 120, height: 40,padding: 1, marginTop: 5 }}
-              >Sigup
-              </Button>
-        
+
+            <Button
+              size="small"
+              variant="contained"
+              onClick={OnSignup}
+              sx={{ width: 120, height: 40, padding: 1, marginTop: 5 }}
+            >
+              Sigup
+            </Button>
+
             <div className="row pt-5">
               <p>
                 Already have an account? <Link to="/signin">Login</Link>
@@ -167,14 +167,11 @@ const Signup = () => {
         {/* Welcome Right Side */}
         <div className="col-md-6 welcome d-flex justify-content-center">
           <div className=" text-center">
-            <p>
-              Welcome New User!
-            </p>
+            <p>Welcome New User!</p>
           </div>
         </div>
       </div>
     </div>
-
   );
 };
 
