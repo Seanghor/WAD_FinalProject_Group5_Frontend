@@ -11,10 +11,41 @@ import ".././styles/home.css";
 import ProductCard from "../../components/home/ProductCard";
 import { NavLink } from "react-router-dom";
 import { Grid } from "@mui/material";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+import { client } from "../../utils/http";
+import { useEffect } from "react";
 const Home = () => {
+  const [product, setProduct] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const arr = [];
+  const allProd = [];
+
+  // fect data get product by Id
+  const getSingleProduct = async (id) => {
+    const res = await client.get(`/product/${id}`);
+    if (res.status !== 200) {
+      throw new Error("Failed to get product ...");
+    }
+    const data = await res.data.product;
+    allProd.push(data);
+    console.log(allProd);
+    setLoading(false);
+
+    return;
+  };
+
+  console.log("All Data : ", product);
+  allProd.push();
+  useEffect(() => {
+    getSingleProduct(1);
+    getSingleProduct(2);
+    getSingleProduct(3);
+  }, []);
+
   return (
-    <div className="container-fluid" >
-      <div >
+    <div className="container-fluid">
+      <div>
         <div className="row" id="Bg">
           <div className="col-md-6">
             <div className="card" id="card1">
@@ -26,10 +57,9 @@ const Home = () => {
                   </li>
                 </NavLink>
                 <h4>
-                  Anodized to absorb, distribute and transfer
-                  heat evenly and efficiently, these two frying
-                  pans sautée mushrooms, fry eggs, caramelize
-                  onions and bake frittatas.
+                  Anodized to absorb, distribute and transfer heat evenly and
+                  efficiently, these two frying pans sautée mushrooms, fry eggs,
+                  caramelize onions and bake frittatas.
                 </h4>
               </div>
             </div>
@@ -45,89 +75,79 @@ const Home = () => {
             </div>
           </div>
         </div>
+        <div className="row p-5 " id="detail">
+          <div className="col-md-3">
+            <div className="row">
+              <div className="col-sm-1 m-3">
+                <i class="bi bi-airplane iCon"></i>
+              </div>
 
-       <div className="row p-5 " id="detail">
-        <div className="col-md-3">
-          <div className="row">
-            <div className="col-sm-1 m-3">
-              <i class="bi bi-airplane iCon"></i>
+              <div className="col Info">
+                <h3>Free Delivery</h3>
+                <p>On all order above $99</p>
+              </div>
             </div>
-           
+          </div>
 
-            <div className="col Info">
+          <div className="col-md-3">
+            <div className="row">
+              <div className="col-sm-1 m-3">
+                <i class="bi bi-wallet2 iCon"></i>
+              </div>
 
-              <h3>Free Delivery</h3>
-              <p>On all order above $99</p>
+              <div className="col Info">
+                <h3>Secure Payment</h3>
+                <p>100% Secure Payment</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-md-3">
+            <div className="row">
+              <div className="col-sm-1 m-3">
+                <i class="bi bi-clipboard-check iCon"></i>
+              </div>
+
+              <div className="col Info">
+                <h3>Join Risk Free</h3>
+                <p>30 days return policy</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-md-3">
+            <div className="row">
+              <div className="col-sm-1 m-3">
+                <i class="bi bi-truck iCon"></i>
+              </div>
+
+              <div className="col Info">
+                <h3>Contact Delivery</h3>
+                <p>We alwarys ensure your safety</p>
+              </div>
             </div>
           </div>
         </div>
-
-        <div className="col-md-3">
-          <div className="row">
-            <div className="col-sm-1 m-3">
-            <i class="bi bi-wallet2 iCon"></i>
-            </div>
-           
-
-            <div className="col Info">
-
-              <h3>Secure Payment</h3>
-              <p>100% Secure Payment</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-md-3">
-          <div className="row">
-            <div className="col-sm-1 m-3">
-            <i class="bi bi-clipboard-check iCon"></i>
-            </div>
-
-            
-            <div className="col Info">
-
-              <h3>Join Risk Free</h3>
-              <p>30 days return policy</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-md-3">
-          <div className="row">
-            <div className="col-sm-1 m-3">
-              <i class="bi bi-truck iCon"></i>
-            </div>
-
-            <div className="col Info">
-
-              <h3>Contact Delivery</h3>
-              <p>We alwarys ensure your safety</p>
-            </div>
-          </div>
-        </div>
-       </div>
-{/* Container Section Start */}
-
+        {/* Container Section Start */}
         <section className="bg-color">
           <div className="">
             <div className="row justify-content-center">
-             
-              <Cards 
-                img={Bin} 
+              <Cards
+                img={Bin}
                 name="Bin"
                 newPrice="30.00"
                 oldPrice="25.00"
                 desc="Moving into a new house or buying your first home??Kit out your kitchen with this kitchen utensils list containing 46 of the most essential items!"
               />
-              <Cards 
-                img={CuttingBoard} 
+              <Cards
+                img={CuttingBoard}
                 name="Cutting Board"
                 newPrice="8.00"
                 oldPrice="15.00"
                 desc="Moving into a new house or buying your first home??Kit out your kitchen with this kitchen utensils list containing 46 of the most essential items!"
               />
-              <Cards 
-                img={Pan2} 
+              <Cards
+                img={Pan2}
                 name="Mit"
                 newPrice="10.00"
                 oldPrice="15.00"
