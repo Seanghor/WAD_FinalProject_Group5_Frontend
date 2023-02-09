@@ -16,6 +16,10 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import { getOrders } from "./../../service/order";
+import { useEffect } from "react";
+
+
 const columns = [
   { id: "product_name", label: "Product Name", minWidth: 170 },
   { id: "quantity", label: "Quantity", minWidth: 70 },
@@ -23,11 +27,6 @@ const columns = [
   { id: "total", label: "Total", minWidth: 70 },
   { id: "actions", label: "", maxWidth: 20 },
 ];
-
-import { useState } from "react";
-import { getOrders } from "./../../service/order";
-import { useEffect } from "react";
-
 
 const Cart = () => {
   const [orders, setOrders] = useState([]);
@@ -76,7 +75,7 @@ const Cart = () => {
               </TableHead>
               <TableBody> 
                 <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                  <TableCell component="th" scope="row">Gas </TableCell>
+                  <TableCell component="th" scope="row">{orders.productName} </TableCell>
                   <TableCell component="th" scope="row">$ 100 </TableCell>
                   <TableCell component="th" scope="row">5</TableCell>
                   <TableCell component="th" scope="row">$ 500</TableCell>

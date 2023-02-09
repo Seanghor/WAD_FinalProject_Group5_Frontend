@@ -106,21 +106,8 @@ const ProductDetail = () => {
                   {" "}
                   <img
                     id="main-image"
-                    src="https://scontent-sjc3-1.xx.fbcdn.net/v/t39.30808-6/323215885_566798904906612_8875341566048822805_n.jpg?stp=dst-jpg_p526x296&_nc_cat=106&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=xBUaHAuo3RoAX9LUvpm&_nc_ht=scontent-sjc3-1.xx&oh=00_AfB5ofxa8CInAH8EatdgGYP4C4Q8Q9yeFc1_n8SYdPfGrA&oe=63E89968"
+                    src={ product.profile}
                     width="250"
-                  />{" "}
-                </div>
-                <div className="thumbnail text-center">
-                  {" "}
-                  <img
-                    onclick="change_image(this)"
-                    src="https://i.imgur.com/Rx7uKd0.jpg"
-                    width="70"
-                  />{" "}
-                  <img
-                    onclick="change_image(this)"
-                    src="https://i.imgur.com/Dhebu4F.jpg"
-                    width="70"
                   />{" "}
                 </div>
               </div>
