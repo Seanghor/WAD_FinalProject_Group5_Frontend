@@ -2,9 +2,11 @@ import React from "react";
 import ".././styles/signup.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { register } from './../../service/auth';
-import{Checkbox ,Button, Typography,Stack}from '@mui/material/';
-const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+import { register } from "./../../service/auth";
+import { Checkbox, Button, Typography, Stack } from "@mui/material/";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 const Signup = () => {
   const [username, setUsername] = useState("");
@@ -30,7 +32,17 @@ const Signup = () => {
       return;
     }
     if (!password) {
-      alert("password is required");
+      // alert("password is required");
+      toast("Wow so easy!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
       return;
     }
     if (password.length < 6) {
@@ -39,7 +51,7 @@ const Signup = () => {
     }
 
     // call api for signUp:
-    await register({ username, email, password, phone })
+    await register({ username, email, password, phone });
     console.log("email:", email);
     console.log("password:", password);
     console.log("SignUp : Successfull");
@@ -135,7 +147,6 @@ const Signup = () => {
         </div>
       </div>
     </div>
-
   );
 };
 
