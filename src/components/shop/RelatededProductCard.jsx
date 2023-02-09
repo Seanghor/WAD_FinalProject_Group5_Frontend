@@ -7,7 +7,8 @@ function RelatededProductCard(props) {
     <div className="product-card">
       <div className="product-image">
         <img
-          src={ profile}
+          // src={ profile}
+          src="https://static.appliancesconnection.com/www/250x250/product-info/images/static-pages/content-images/1168-AppliancesConnection-Ranges.jpg"
           className="product-thumb"
           alt=""
         />

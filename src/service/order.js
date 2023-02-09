@@ -19,9 +19,9 @@ export const getOrderById = async (id) => {
 // create order
 export const createOrders = async ({ productId, quantity, customerId }) => {
   const res = await client.post("/order", {
-    productId: 2,
-    quantity: 5,
-    customerId: 1,
+    productId,
+    quantity,
+    customerId,
   });
   if (res.status !== 200) {
     console.log("Fail to createOrder ...");

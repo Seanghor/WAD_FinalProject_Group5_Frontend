@@ -19,7 +19,7 @@ const Navbar = () => {
   // --- useEffect:
   useEffect(() => {
     orderList();
-  }, []);
+  }, [notification]);
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light pt-2 pb-0">

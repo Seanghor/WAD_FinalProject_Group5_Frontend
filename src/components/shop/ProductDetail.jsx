@@ -211,7 +211,7 @@ const ProductDetail = () => {
         <div classNameName="product-container">
           {" "}
           {reproduct.map((product, index) => (
-            <RelatededProductCard {...product} classNameName="product-card" />
+           <div key={index}>dadasda</div>
           ))}
         </div>
       </section>
