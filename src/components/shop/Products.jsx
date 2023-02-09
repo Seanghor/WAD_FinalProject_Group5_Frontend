@@ -82,34 +82,34 @@ const Products = () => {
         <div className="row">
           <div className="col-sm-3 py-2">
             <Box sx={{ pt: 1 }}>
-              <Skeleton />
-              <Skeleton width="60%" height={100} />
-              <Skeleton />
-              <Skeleton width="60%" height={100} />
+              <Skeleton x={{ animationDuration: "0.9s" }}/>
+              <Skeleton width="60%" height={100} x={{ animationDuration: "0.9s" }}/>
+              <Skeleton x={{ animationDuration: "0.9s" }}/>
+              <Skeleton width="60%" height={100} x={{ animationDuration: "0.9s" }}/>
             </Box>
           </div>
           <div className="col-sm-3 py-2">
             <Box sx={{ pt: 1 }}>
-              <Skeleton />
-              <Skeleton width="60%" height={100} />
-              <Skeleton />
-              <Skeleton width="60%" height={100} />
+              <Skeleton x={{ animationDuration: "0.9s" }}/>
+              <Skeleton width="60%" height={100} x={{ animationDuration: "0.9s" }} />
+              <Skeleton x={{ animationDuration: "0.9s" }}/>
+              <Skeleton width="60%" height={100} x={{ animationDuration: "0.9s" }} />
             </Box>
           </div>
           <div className="col-sm-3 py-2">
             <Box sx={{ pt: 1 }}>
-              <Skeleton />
-              <Skeleton width="60%" height={100} />
-              <Skeleton />
-              <Skeleton width="60%" height={100} />
+              <Skeleton x={{ animationDuration: "0.9s"}}/>
+              <Skeleton width="60%" height={100} x={{ animationDuration: "0.9s" }}/>
+              <Skeleton x={{ animationDuration: "0.9s" }}/>
+              <Skeleton width="60%" height={100} x={{ animationDuration: "0.9s" }}/>
             </Box>
           </div>
           <div className="col-sm-3 py-2">
             <Box sx={{ pt: 1 }}>
-              <Skeleton />
-              <Skeleton width="60%" height={100} />
-              <Skeleton />
-              <Skeleton width="60%" height={100} />
+              <Skeleton x={{ animationDuration: "0.9s"}}/>
+              <Skeleton width="60%" height={100} x={{ animationDuration: "0.9s" }}/>
+              <Skeleton x={{ animationDuration: "0.9s" }}/>
+              <Skeleton width="60%" height={100} x={{ animationDuration:"0.9s" }}/>
             </Box>
           </div>
         </div>
@@ -117,34 +117,34 @@ const Products = () => {
         <div className="row">
           <div className="col-sm-3 py-2">
             <Box sx={{ pt: 1 }}>
-              <Skeleton />
-              <Skeleton width="60%" height={100} />
-              <Skeleton />
-              <Skeleton width="60%" height={100} />
+              <Skeleton x={{ animationDuration: "0.9s"}}/>
+              <Skeleton width="60%" height={100} x={{ animationDuration: "0.9s"}}/>
+              <Skeleton x={{ animationDuration: "0.9s" }}/>
+              <Skeleton width="60%" height={100} x={{ animationDuration: "0.9s" }} />
             </Box>
           </div>
           <div className="col-sm-3 py-2">
             <Box sx={{ pt: 1 }}>
-              <Skeleton />
-              <Skeleton width="60%" height={100} />
-              <Skeleton />
-              <Skeleton width="60%" height={100} />
+              <Skeleton x={{ animationDuration: "0.9s" }}/>
+              <Skeleton width="60%" height={100} x={{ animationDuration: "0.9s"}}/>
+              <Skeleton x={{ animationDuration: "0.9s" }}/>
+              <Skeleton width="60%" height={100} x={{ animationDuration: "0.9s" }}/>
             </Box>
           </div>
           <div className="col-sm-3 py-2">
             <Box sx={{ pt: 1 }}>
-              <Skeleton />
-              <Skeleton width="60%" height={100} />
-              <Skeleton />
-              <Skeleton width="60%" height={100} />
+              <Skeleton x={{ animationDuration: "0.9s" }}/>
+              <Skeleton width="60%" height={100} x={{ animationDuration: "0.9s"}}/>
+              <Skeleton x={{ animationDuration: "0.9s" }}/>
+              <Skeleton width="60%" height={100} x={{ animationDuration: "0.9s" }}/>
             </Box>
           </div>
           <div className="col-sm-3 py-2">
             <Box sx={{ pt: 1 }}>
-              <Skeleton />
-              <Skeleton width="60%" height={100} />
-              <Skeleton />
-              <Skeleton width="60%" height={100} />
+              <Skeleton x={{ animationDuration: "0.9s" }}/>
+              <Skeleton width="60%" height={100} x={{ animationDuration: "0.9s" }}/>
+              <Skeleton x={{ animationDuration: "0.9s" }}/>
+              <Skeleton width="60%" height={100} x={{ animationDuration: "0.9s" }}/>
             </Box>
           </div>
         </div>

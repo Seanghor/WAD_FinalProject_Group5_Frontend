@@ -148,18 +148,18 @@ const ProductDetail = () => {
                 </div>
                 <div className="cart  align-items-center">
                   <button className="btn btn-danger text-uppercase " onClick={()=>isCustomer}>
-                    {!isCustomer? ( <Link to="/signin">Add to cart</Link>):( <Link to="/cart">Add to cart</Link>)}
+                    {!isCustomer? ( <Link to="/signin" style={{color: "white"}}>Add to cart</Link>):( <Link to="/cart">Add to cart</Link>)}
                    
                   </button>
                 </div>
                 <h5 className=" mt-5">Product Details</h5>
-                <p className="about">
+                <h5 className="about">
                   Anodized to absorb, distribute and transfer heat evenly and
                   efficiently, these two frying pans sautée mushrooms, fry eggs,
                   caramelize onions and bake frittatas. Ergonomic handles
                   provide a sturdy grip as you stir and flip. Oven-safe for
                   versatility.
-                </p>
+                </h5>
               </div>
             </div>
           </div>
