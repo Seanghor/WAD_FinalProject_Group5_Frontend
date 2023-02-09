@@ -1,10 +1,8 @@
-import { React, useRef, useState, useEffect } from "react";
+import { React, useState, useEffect } from "react";
 import "../.././pages/styles/shop.css";
 import { NavLink } from "react-router-dom";
 import { CDropdown } from "@coreui/react";
 import { CDropdownItem, CDropdownMenu, CDropdownToggle } from "@coreui/react";
-import Dropdown from "react-bootstrap/Dropdown";
-import DropdownButton from "react-bootstrap/DropdownButton";
 import { getProducts } from "./../../service/product";
 import { getAllCategory } from "../../service/category";
 import Card from "@mui/material/Card";
@@ -12,15 +10,19 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea, Stack } from "@mui/material";
+import TextField from '@mui/material/TextField';
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import Rating from "@mui/material/Rating";
-import { getCategory } from "./../../service/category";
 import Box from "@mui/material/Box";
 import Skeleton from "@mui/material/Skeleton";
-import { isAuth } from "../../service/auth";
+import {  isAuth } from "../../service/auth";
+import SearchIcon from '@mui/icons-material/Search';
+
+
 // import Skeleton ,{ SkeletonTheme }from 'react-loading-skeleton';
 // import 'react-loading-skeleton/dist/skeleton.css';
+
 
 const Products = () => {
   const [loading, setLoading] = useState(true);
@@ -33,8 +35,6 @@ const Products = () => {
   const [category, setCategory] = useState(false);
   const [customer, setCustomer] = useState(false);
   const [accessToken, setAccessToken] = useState(null);
-
-  let componentMounted = true;
 
   const isCustomer = async () => {
     const isCustomer = await isAuth();
@@ -406,17 +406,17 @@ const Products = () => {
             {/* Search bar Start */}
             <div className="col-md-5 mx-auto pt-4">
               <form className="d-flex flex-row position-relative">
-                <input
-                  type="search"
-                  className="form-control"
-                  id="example-search-input"
-                />
+              <TextField id="outlined-basic" label="Outlined" variant="outlined" />
                 <Button
-                  className="btn border-0 position-absolute end-0 "
+                  variant="contained"
+                  className="btn"
                   type="submit"
+                  style={{width: 30, marginLeft:30, borderRadius: 50}}
                 >
-                  <i className="bi bi-search" style={{ color: "blue" }}></i>
+                  <SearchIcon />
                 </Button>
+
+               
               </form>
             </div>
             {/* Search bar End */}
