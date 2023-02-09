@@ -5,7 +5,6 @@ import { useState } from "react";
 import { register } from "./../../service/auth";
 import { Checkbox, Button, Typography, Stack } from "@mui/material/";
 import { ToastContainer, toast } from "react-toastify";
-
 import "react-toastify/dist/ReactToastify.css";
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
@@ -79,7 +78,7 @@ const Signup = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="email">Email </label>
+              <label htmlFor="email">Username or Email address </label>
               <input
                 type="email"
                 className="form-control"
@@ -93,10 +92,11 @@ const Signup = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="email">Phone Number</label>
+              <label htmlFor="email">Username or Email address </label>
               <input
                 type="text"
-                className="form-control"         
+                className="form-control"
+                aria-describedby="emailHelp"
                 placeholder="Enter Phone Number"
                 value={phone}
                 onChange={(e) => {

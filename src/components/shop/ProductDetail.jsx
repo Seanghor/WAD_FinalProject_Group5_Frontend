@@ -11,14 +11,43 @@ import { getCategory } from "../../service/category";
 import { isAuth } from "../../service/auth";
 import { Link } from "react-router-dom";
 import { Stack, Typography } from "@mui/material/";
+import { userInfo } from "../../service/auth";
+import { createOrders } from "./../../service/order";
+
 
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
   const [reproduct, setReproduct] = useState([]);
+  const [customerInfo, setCustomerInfor] = useState([]);
+  const [productId, setproductId] = useState(Number);
+  const [customerId, setCustomerId] = useState(Number);
+  const [quantity, setQuantity] = useState(null);
+  const [isAuth, setIsAuth] = useState(false);
 
-  const isCustomer = !!localStorage.getItem('accessToken')
+  // check accessToekn:
+  const isCustomer = !!localStorage.getItem("accessToken");
+
+  // check customer infor
+  const infoOfCustomer = async () => {
+    const data = await userInfo();
+    const profileData = await data.profile;
+    setCustomerInfor(profileData);
+    setCustomerId(profileData.customerId);
+    setQuantity(Number(1));
+    setproductId(Number(id));
+  };
+  // setIsAuth(isCustomer)
+  const onClickCustomer = async () => {
+    if (isCustomer) {
+      console.log("customerId : ", customerInfo.customerId);
+      console.log("productId : ", id);
+      console.log("quantity : ", quantity);
+      await createOrders({ productId, quantity, customerId });
+    }
+  };
+
   // fect: get product by Id
   const getSingleProduct = async () => {
     const res = await client.get(`/product/${id}`);
@@ -26,12 +55,8 @@ const ProductDetail = () => {
       throw new Error("Failed to get product ...");
     }
     const data = await res.data.product;
-
     setLoading(false);
     setProduct(data);
-
-    console.log("ProductDetail ...: ", res.data.product);
-    console.log("Product Name: ", res.data.product.name);
     return;
   };
 
@@ -43,9 +68,11 @@ const ProductDetail = () => {
     const data = await res.Product;
     setReproduct(data);
   };
-  console.log("Related :", reproduct);
+  // console.log("Related :", reproduct);
 
   useEffect(() => {
+    // onClickCustomer()
+    infoOfCustomer();
     getSingleProduct();
     allproductsOfCategory();
   }, []);
@@ -67,7 +94,6 @@ const ProductDetail = () => {
       item.scrollLeft -= containerWidth;
     });
   });
-
 
   return (
     <div className="container mt-5 mb-5">
@@ -146,9 +172,16 @@ const ProductDetail = () => {
                   </Stack>
                 </div>
                 <div className="cart  align-items-center">
-                  <button className="btn btn-danger text-uppercase " onClick={()=>isCustomer}>
-                    {!isCustomer? ( <Link to="/signin" style={{color: "white"}}>Add to cart</Link>):( <Link to="/cart">Add to cart</Link>)}
-                   
+
+                  <button
+                    className="btn btn-danger text-uppercase "
+                    onClick={() => onClickCustomer()}
+                  >
+                    {isCustomer ? (
+                      <Link to="/cart">Add to cart</Link>
+                    ) : (
+                      <Link to="/signin">Add to cart</Link>
+                    )}
                   </button>
                 </div>
                 <h5 className=" mt-5">Product Details</h5>

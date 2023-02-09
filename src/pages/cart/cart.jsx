@@ -1,6 +1,7 @@
 import {React, useState} from "react";
 import ".././styles/cart.css";
 import { Link } from "react-router-dom";
+
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -23,9 +24,38 @@ const columns = [
   { id: "actions", label: "", maxWidth: 20 },
 ];
 
+import { useState } from "react";
+import { getOrders } from "./../../service/order";
+import { useEffect } from "react";
+
+
 const Cart = () => {
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [total, setTotal] = useState(0);
+
+  const shipping = 0;
+  let x = 0;
+  orders.forEach((ord) => {
+    x += Number(ord.total_price);
+    return x;
+  });
+
+  // get all order:
+  const orderList = async () => {
+    const data = await getOrders();
+    setOrders(data);
+    setLoading(true);
+    console.log("Get all order: ", data);
+  };
+
+  // --- useEffect:
+  useEffect(() => {
+    orderList();
+  }, []);
   return (
     <div className="container ">
+
       <div className="row pt-5">
         <div className="col-md-9 pt-5">
         <Paper sx={{ width: "100%", overflow: "hidden" }}>
@@ -92,6 +122,8 @@ const Cart = () => {
               
             </CardActions>
           </Card>
+
+
         </div>
       
         {/* <div className="col-lg-4 checkout-bg ">
@@ -99,14 +131,16 @@ const Cart = () => {
             <div className="p-3 checkout">
               <h6 className="card-title mb-3">Order Summary</h6>
               <div className="d-flex justify-content-between mb-1 small">
-                <span>Subtotal</span> <span>$214.50</span>
+                <span>Subtotal</span> <span>${x}</span>
               </div>
               <div className="d-flex justify-content-between mb-1 small">
-                <span>Shipping</span> <span>$20.00</span>
+                <span>Shipping</span>{" "}
+                <span>${parseFloat(shipping).toFixed(2)}</span>
               </div>
               <hr />
               <div className="d-flex justify-content-between mb-4 small">
-                <span>TOTAL</span> <strong className="text-dark">$224.50</strong>
+                <span>TOTAL</span>{" "}
+                <strong className="text-dark">${parseFloat(x + shipping).toFixed(2)}</strong>
               </div>
 
               <Link to="/placeOrder" className="btn  w-100 mt-2">

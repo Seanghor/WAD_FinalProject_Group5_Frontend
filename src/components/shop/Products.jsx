@@ -10,19 +10,19 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea, Stack } from "@mui/material";
-import TextField from '@mui/material/TextField';
+import TextField from "@mui/material/TextField";
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
 import Skeleton from "@mui/material/Skeleton";
-import {  isAuth } from "../../service/auth";
-import SearchIcon from '@mui/icons-material/Search';
-
+import { getProfile, isAuth } from "../../service/auth";
+import SearchIcon from "@mui/icons-material/Search";
 
 // import Skeleton ,{ SkeletonTheme }from 'react-loading-skeleton';
 // import 'react-loading-skeleton/dist/skeleton.css';
-
+import { getOrders } from "./../../service/order";
+import { userInfo } from "./../../service/auth";
 
 const Products = () => {
   const [loading, setLoading] = useState(true);
@@ -36,6 +36,13 @@ const Products = () => {
   const [customer, setCustomer] = useState(false);
   const [accessToken, setAccessToken] = useState(null);
 
+  // testing
+  const test = async () => {
+    const data = await userInfo();
+    console.log("Testing : ", data);
+  };
+
+  // just checke role user now
   const isCustomer = async () => {
     const isCustomer = await isAuth();
     setCustomer(isCustomer);
@@ -67,8 +74,12 @@ const Products = () => {
       });
   };
 
+
+
   // --- useEffect:
   useEffect(() => {
+    test();
+    isCustomer();
     allProducts();
     allCategory();
   }, []);
@@ -438,8 +449,19 @@ const Products = () => {
             {/* Search bar Start */}
             <div className="col-md-5 mx-auto pt-4">
               <form className="d-flex flex-row position-relative">
-              
-               
+
+                  id="outlined-basic"
+                  label="Outlined"
+                  variant="outlined"
+                />
+                <Button
+                  variant="contained"
+                  className="btn"
+                  type="submit"
+                  style={{ width: 30, marginLeft: 30, borderRadius: 50 }}
+                >
+                  <SearchIcon />
+                </Button>
               </form>
             </div>
             {/* Search bar End */}
