@@ -75,7 +75,7 @@ const Cart = () => {
               </TableHead>
               <TableBody> 
                 <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                  <TableCell component="th" scope="row">Gas </TableCell>
+                  <TableCell component="th" scope="row">{orders.productName} </TableCell>
                   <TableCell component="th" scope="row">$ 100 </TableCell>
                   <TableCell component="th" scope="row">5</TableCell>
                   <TableCell component="th" scope="row">$ 500</TableCell>

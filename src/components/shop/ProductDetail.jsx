@@ -110,19 +110,6 @@ const ProductDetail = () => {
                     width="250"
                   />{" "}
                 </div>
-                <div className="thumbnail text-center">
-                  {" "}
-                  <img
-                    onclick="change_image(this)"
-                    src="https://i.imgur.com/Rx7uKd0.jpg"
-                    width="70"
-                  />{" "}
-                  <img
-                    onclick="change_image(this)"
-                    src="https://i.imgur.com/Dhebu4F.jpg"
-                    width="70"
-                  />{" "}
-                </div>
               </div>
             </div>
             <div className="col-md-6">
