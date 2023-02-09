@@ -3,29 +3,40 @@ import ".././styles/signin.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { login } from "../../service/auth";
-import{Checkbox ,Button, Typography,Stack}from '@mui/material/';
+import { Checkbox, Button, Typography, Stack } from "@mui/material/";
 // import { loginAPI } from "../../service/auth";
 import { getProducts } from "./../../service/product";
 import { getCategory, getAllCategory } from "./../../service/category";
 import { width } from "@mui/system";
-const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+import { toast, ToastContainer } from "react-toastify";
+const label = { inputProps: { "aria-label": "Checkbox demo" } };
 const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isAuth, setIsAuth] = useState(false);
   const onLogin = async () => {
     if (!email) {
-      alert("email is required");
+      toast("Please input your email!");
       return;
     }
     if (!password) {
-      alert("password is required");
+      toast("Please input your password");
       return;
     }
 
-    await login({ email, password });
+    const res = await login({ email, password });
     console.log("Test email:", email);
     console.log("Test password:", password);
-    console.log("Test : ", test);
+    console.log("Status:", res.status);
+    if (res.status == 200) {
+      setIsAuth(true);
+      toast("Login successful");
+      return;
+    }
+    
+    if (isAuth == false) {
+      toast("Invalid credentials");
+    }
   };
   return (
     <div className="container">
@@ -67,14 +78,13 @@ const Signin = () => {
                 <Stack direction="row">
                   <Checkbox {...label} />
                   <Typography
-                    style={{fontSize: 16, marginTop: 10}}
+                    style={{ fontSize: 16, marginTop: 10 }}
                     component="div"
                     fontSize={30}
                   >
                     Remember Me
                   </Typography>
                 </Stack>
-                
               </div>
               <div className="col-md-4 forgetpassword">
                 <p>Forgot password?</p>
@@ -82,15 +92,17 @@ const Signin = () => {
             </div>
 
             {/* Login Btn */}
-            
-              <Button 
-                size="small"
-                variant="contained"  
-                onClick={onLogin} 
-                sx={{ width: 120, height: 40,padding: 1, margin: 0 }}
-              >Login
-              </Button>
-        
+
+            <Button
+              size="small"
+              variant="contained"
+              onClick={onLogin}
+              sx={{ width: 120, height: 40, padding: 1, margin: 0 }}
+            >
+              Login
+            </Button>
+            <ToastContainer />
+
             <div className="row pt-5">
               <p>
                 Don't you have account? <Link to="/signup">Signup</Link>
@@ -102,9 +114,7 @@ const Signin = () => {
         {/* Welcome Right Side */}
         <div className="col-md-6 welcome d-flex justify-content-center">
           <div className=" text-center">
-            <p>
-              Welcome Back!
-            </p>
+            <p>Welcome Back!</p>
           </div>
         </div>
       </div>
