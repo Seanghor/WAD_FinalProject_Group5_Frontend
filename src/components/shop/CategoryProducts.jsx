@@ -37,7 +37,7 @@ export const CategoryProducts = () => {
         setTimeout(() => {
           setLoading(false);
           setaProduct(res);
-        }, 2000);
+        },);
       });
   };
 
@@ -50,7 +50,7 @@ export const CategoryProducts = () => {
           setLoading(false);
           setData(res);
           setCategoryList(res);
-        }, 2000);
+        },);
       });
   };
 
