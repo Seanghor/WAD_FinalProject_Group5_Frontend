@@ -23,7 +23,7 @@ const Navbar = () => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light pt-2 pb-0">
-        <div className="container pb-0">
+        <div className="container-fluid pb-0">
           <div className="logo">
             <img src={kitchiLogo} alt="" className="kitchilogo" />
           </div>
@@ -39,11 +39,10 @@ const Navbar = () => {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div
-            className="collapse navbar-collapse justify-content-center "
-            id="navbarSupportedContent"
-          >
-            <ul className="navbar-nav mb-1 mb-lg-0 ml-xl-5 ml-sm-5">
+
+          <div className="collapse navbar-collapse justify-content-center " id="navbarSupportedContent">
+            <ul className="navbar-nav mb-1 mb-lg-0 ml-xl-5 ml-sm-5 text-center">
+
               <NavLink className="nav-item" to="/">
                 <li className="nav-link" aria-current="page" href="/">
                   Home
@@ -66,11 +65,12 @@ const Navbar = () => {
               </NavLink>
             </ul>
           </div>
+
           <div
             className="collapse navbar-collapse pr-xl-5 "
             id="navbarSupportedContent"
           >
-            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+            <ul className="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
               <li className="nav-item">
                 <NavLink className="nav-link" to="/signin">
                   <i className="bi bi-person-exclamation icon"></i>

@@ -1,13 +1,16 @@
-.icon
-  {
+*{
+  font-family: 'Merienda', cursive;
+}
+
+.icon{
     font-size: 1.5em;
   }
   .icon:hover{
     color: #ff0000;
   }
   .kitchilogo{
-    padding-left: 10px;
-    padding-top: 2px;
+    padding-left: 100px;
+    padding-top: 2px; 
     width: 85%;
     height: 78%;
   }

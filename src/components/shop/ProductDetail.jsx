@@ -14,6 +14,7 @@ import { Stack, Typography } from "@mui/material/";
 import { userInfo } from "../../service/auth";
 import { createOrders } from "./../../service/order";
 
+
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
@@ -171,6 +172,7 @@ const ProductDetail = () => {
                   </Stack>
                 </div>
                 <div className="cart  align-items-center">
+
                   <button
                     className="btn btn-danger text-uppercase "
                     onClick={() => onClickCustomer()}
@@ -183,13 +185,13 @@ const ProductDetail = () => {
                   </button>
                 </div>
                 <h5 className=" mt-5">Product Details</h5>
-                <p className="about">
+                <h5 className="about">
                   Anodized to absorb, distribute and transfer heat evenly and
                   efficiently, these two frying pans sautée mushrooms, fry eggs,
                   caramelize onions and bake frittatas. Ergonomic handles
                   provide a sturdy grip as you stir and flip. Oven-safe for
                   versatility.
-                </p>
+                </h5>
               </div>
             </div>
           </div>
