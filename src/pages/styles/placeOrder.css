@@ -10,8 +10,10 @@ h1{
     font-weight: bolder;
     margin-left:100px
 }
+
 .name input {
     border: 1px solid grey;
+    height: 80%;
 }
 
 .country select{
@@ -31,7 +33,7 @@ h1{
     margin-left: 200px;
 }
 .checkout-btb button{
-    width: 300px;
+    width: 200px;
     height: 50px;
     background-color: #C54248;
     border: none;

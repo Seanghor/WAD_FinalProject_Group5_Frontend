@@ -73,7 +73,9 @@
   #search-input{
     font-weight: 500;
     border-width: 5px;
-  
+  }
+  .search{
+    height: 60%;
   }
   .slider {
     width: 100%;

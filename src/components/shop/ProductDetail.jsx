@@ -18,13 +18,8 @@ const ProductDetail = () => {
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
   const [reproduct, setReproduct] = useState([]);
-  const [customer, setCustomer] = useState(false);
 
-  const isCustomer = async () => {
-    const isCustomer = await isAuth();
-    setCustomer(isCustomer);
-  };
-  console.log("isCustomer : ", customer);
+  const isCustomer = !!localStorage.getItem('accessToken')
   // fect: get product by Id
   const getSingleProduct = async () => {
     const res = await client.get(`/product/${id}`);
@@ -152,8 +147,8 @@ const ProductDetail = () => {
                   </Stack>
                 </div>
                 <div className="cart  align-items-center">
-                  <button className="btn btn-danger text-uppercase " onClick={()=>isCustomer()}>
-                    {!customer? ( <Link to="/signin">Add to cart</Link>):( <Link to="/cart">Add to cart</Link>)}
+                  <button className="btn btn-danger text-uppercase " onClick={()=>isCustomer}>
+                    {!isCustomer? ( <Link to="/signin">Add to cart</Link>):( <Link to="/cart">Add to cart</Link>)}
                    
                   </button>
                 </div>
