@@ -16,12 +16,14 @@ import Button from "@mui/material/Button";
 import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
 import Skeleton from "@mui/material/Skeleton";
-import {  isAuth } from "../../service/auth";
+import {  getProfile, isAuth } from "../../service/auth";
 import SearchIcon from '@mui/icons-material/Search';
 
 
 // import Skeleton ,{ SkeletonTheme }from 'react-loading-skeleton';
 // import 'react-loading-skeleton/dist/skeleton.css';
+import { getOrders } from './../../service/order';
+import { userInfo } from './../../service/auth';
 
 
 const Products = () => {
@@ -36,6 +38,13 @@ const Products = () => {
   const [customer, setCustomer] = useState(false);
   const [accessToken, setAccessToken] = useState(null);
 
+  // testing
+  const test = async() => {
+    const data = await userInfo()
+    console.log("Testing : ", data);
+  }
+
+  // just checke role user now
   const isCustomer = async () => {
     const isCustomer = await isAuth();
     setCustomer(isCustomer);
@@ -69,6 +78,8 @@ const Products = () => {
 
   // --- useEffect:
   useEffect(() => {
+    test()
+    isCustomer()
     allProducts();
     allCategory();
   }, []);
