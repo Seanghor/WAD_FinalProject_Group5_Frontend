@@ -3,15 +3,17 @@ import { getUserProfile } from "./profile";
 
 export const login = async ({ email, password }) => {
   let res = await client.post("/login", { email, password });
-  console.log("Log in success ...");
-  console.log(res);
   if (res.status === 200) {
-   
     localStorage.setItem("accessToken", res.data.accessToken);
     localStorage.setItem("refreshToken", res.data.refreshToken);
-    await initProfile();
+
+    // await initProfile();
+    const pf = await getUserProfile();
+    localStorage.setItem("userInfo", JSON.stringify(pf));
     window.location.href = "/";
+    return res;
   }
+  return res;
 };
 
 export const initProfile = async () => {
@@ -20,11 +22,16 @@ export const initProfile = async () => {
 };
 
 export const register = async ({ username, phone, email, password }) => {
-  const res = await client.post("/register", { username, phone, email, password });
+  const res = await client.post("/register", {
+    username,
+    phone,
+    email,
+    password,
+  });
   if (res.status === 200) {
     localStorage.setItem("accessToken", res.data.accessToken);
     localStorage.setItem("refreshToken", res.data.refreshToken);
-    // await initProfile();
+    await initProfile();
     window.location.href = "/";
   }
 };
