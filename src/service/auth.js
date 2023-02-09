@@ -7,7 +7,7 @@ export const login = async ({ email, password }) => {
     localStorage.setItem("accessToken", res.data.accessToken);
     localStorage.setItem("refreshToken", res.data.refreshToken);
 
-    // await initProfile();
+    await initProfile();
     window.location.href = "/";
     return res;
   }
@@ -29,7 +29,7 @@ export const register = async ({ username, phone, email, password }) => {
   if (res.status === 200) {
     localStorage.setItem("accessToken", res.data.accessToken);
     localStorage.setItem("refreshToken", res.data.refreshToken);
-    // await initProfile();
+    await initProfile();
     window.location.href = "/";
   }
 };
