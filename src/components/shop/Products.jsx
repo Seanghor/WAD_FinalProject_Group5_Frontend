@@ -18,7 +18,7 @@ import Rating from "@mui/material/Rating";
 import { getCategory } from "./../../service/category";
 import Box from "@mui/material/Box";
 import Skeleton from "@mui/material/Skeleton";
-import {  isAuth } from "../../service/auth";
+import { isAuth } from "../../service/auth";
 // import Skeleton ,{ SkeletonTheme }from 'react-loading-skeleton';
 // import 'react-loading-skeleton/dist/skeleton.css';
 
@@ -69,7 +69,6 @@ const Products = () => {
 
   // --- useEffect:
   useEffect(() => {
-    isCustomer();
     allProducts();
     allCategory();
   }, []);
@@ -277,11 +276,8 @@ const Products = () => {
                         sx={{ width: 120, height: 40, padding: 1, margin: 0 }}
                       >
                         {customer ? (
-                          <NavLink to={`/product/${product.id}`}>
-                          </NavLink>
-                        ) : (
-                          null
-                        )}
+                          <NavLink to={`/product/${product.id}`}></NavLink>
+                        ) : null}
                         <NavLink to={`/product/${product.id}`}>
                           Add To Cart
                         </NavLink>
