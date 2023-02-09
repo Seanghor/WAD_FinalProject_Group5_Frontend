@@ -6,7 +6,7 @@ export const login = async ({ email, password }) => {
   if (res.status === 200) {
     localStorage.setItem("accessToken", res.data.accessToken);
     localStorage.setItem("refreshToken", res.data.refreshToken);
-    
+
     // await initProfile();
     window.location.href = "/";
     return res;
