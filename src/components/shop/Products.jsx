@@ -176,7 +176,7 @@ const Products = () => {
           {!loading ? (
             <div>
               {categoryList.map((el, i) => (
-                <CDropdownItem href="#" className="categorylist" key={i}>
+                <CDropdownItem href="#" style={{color:"black", fontWeight: 600}} key={i}>
                   <div onClick={() => onClickCategory(el.id)}> {el.name}</div>
                 </CDropdownItem>
               ))}
@@ -195,11 +195,8 @@ const Products = () => {
       <>
         {!category ? (
           <>
-            <div className="row text-center">
-              <h2>All Products</h2>
-            </div>
-            {product.map((product, j) => (
-              <div key={j} value={product.id} className="col-sm-3 py-2">
+            {product.map((product, j) => ( 
+              <div key={j} value={product.id} className="col-sm-3 pb-3">
                 <Card sx={{ maxWidth: 345 }} style={{ height: 480 }}>
                   <CardActionArea>
                     <CardMedia
@@ -286,14 +283,13 @@ const Products = () => {
                   </CardActionArea>
                 </Card>
               </div>
+            
+             
             ))}
           </>
         ) : (
           <>
-            {" "}
-            <div className="row text-center">
-              <h2>{data.name}</h2>
-            </div>
+
             {data.Product.map((product, j) => (
               <div key={j} value={product.id} className="col-sm-3 py-2">
                 <Card sx={{ maxWidth: 345 }} style={{ height: 480 }}>
@@ -389,10 +385,10 @@ const Products = () => {
   // --------- Big Return
   return (
     <div>
-      <section className="bg-color p-5">
+      <section style={{paddingLeft:100}}>
         {/* Filter Row And Search bar Start */}
         <div className="d-flex">
-          <div className="p-2 flex-fill">
+          <div className="row flex-fill ">
             <div className="filter" id="Filter">
               <div className="filterIcon">
                 <i className="bi bi-filter"></i> <span>Filter</span>
@@ -400,21 +396,49 @@ const Products = () => {
               <div className="vl"></div>
               <span>Show 1-16 of 32 results</span>
             </div>
+            <div className="">
+              <div className="col-md-12 pt-5">
+                <h3>Categories</h3>
+                <div className="row ">
+                  <div className="col-md-3">
+                    <SelectCategory />
+                  </div>
+                  <div className="col-md-6 text-center">
+                    {
+                      !category ? <h1>All Products</h1> :<h1>{data.name}</h1>
+                    }
+                    
+                  </div>
+                  <div className="col-md-3 pt-3">
+                  <TextField id="outlined-basic" label="search products" variant="outlined" />
+                    <Button
+                      variant="contained"
+                      className="btn"
+                      type="submit"
+                      style={{width: 30, marginLeft:30, borderRadius: 50}}
+                    >
+                      <SearchIcon />
+                  </Button>
+                  </div>
+                 
+                  
+                </div>
+              </div>
+
+              <div className="col-md-3 pt-5">
+             
+
+              </div>
+              
+
+            </div>
+            
           </div>
-          <div className="p-2 flex-fill">
+          <div className=" flex-fill ">
             {/* Search bar Start */}
             <div className="col-md-5 mx-auto pt-4">
               <form className="d-flex flex-row position-relative">
-              <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-                <Button
-                  variant="contained"
-                  className="btn"
-                  type="submit"
-                  style={{width: 30, marginLeft:30, borderRadius: 50}}
-                >
-                  <SearchIcon />
-                </Button>
-
+              
                
               </form>
             </div>
@@ -425,22 +449,8 @@ const Products = () => {
 
         {/* Category & Product Card Start */}
         <div className="row">
-          {/* Left Sidee */}
-          <div className="col-12 col-sm-2">
-            <div className="filter">
-              {/* Category List Start */}
-              <div className="Category">
-                <h3>Categories</h3>
-                <div className="categorylist">
-                  <SelectCategory />
-                </div>
-              </div>
-              {/* Category List End */}
-            </div>
-          </div>
-
           {/* Right Side */}
-          <div className="col-12 col-sm-10">
+          <div className="col-12 col-sm-12">
             {/* Card Start */}
             <div className="row">
               {/* <ShowProducts /> */}

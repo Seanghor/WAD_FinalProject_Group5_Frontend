@@ -12,7 +12,6 @@ import { isAuth } from "../../service/auth";
 import { Link } from "react-router-dom";
 import { Stack, Typography } from "@mui/material/";
 
-
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
