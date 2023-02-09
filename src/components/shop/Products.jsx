@@ -1,10 +1,8 @@
-import { React, useRef, useState, useEffect } from "react";
+import { React, useState, useEffect } from "react";
 import "../.././pages/styles/shop.css";
 import { NavLink } from "react-router-dom";
 import { CDropdown } from "@coreui/react";
 import { CDropdownItem, CDropdownMenu, CDropdownToggle } from "@coreui/react";
-import Dropdown from "react-bootstrap/Dropdown";
-import DropdownButton from "react-bootstrap/DropdownButton";
 import { getProducts } from "./../../service/product";
 import { getAllCategory } from "../../service/category";
 import Card from "@mui/material/Card";
@@ -12,15 +10,21 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea, Stack } from "@mui/material";
+import TextField from '@mui/material/TextField';
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import Rating from "@mui/material/Rating";
-import { getCategory } from "./../../service/category";
 import Box from "@mui/material/Box";
 import Skeleton from "@mui/material/Skeleton";
-import {  isAuth } from "../../service/auth";
+import {  getProfile, isAuth } from "../../service/auth";
+import SearchIcon from '@mui/icons-material/Search';
+
+
 // import Skeleton ,{ SkeletonTheme }from 'react-loading-skeleton';
 // import 'react-loading-skeleton/dist/skeleton.css';
+import { getOrders } from './../../service/order';
+import { userInfo } from './../../service/auth';
+
 
 const Products = () => {
   const [loading, setLoading] = useState(true);
@@ -34,8 +38,13 @@ const Products = () => {
   const [customer, setCustomer] = useState(false);
   const [accessToken, setAccessToken] = useState(null);
 
-  let componentMounted = true;
+  // testing
+  const test = async() => {
+    const data = await userInfo()
+    console.log("Testing : ", data);
+  }
 
+  // just checke role user now
   const isCustomer = async () => {
     const isCustomer = await isAuth();
     setCustomer(isCustomer);
@@ -69,7 +78,8 @@ const Products = () => {
 
   // --- useEffect:
   useEffect(() => {
-    isCustomer();
+    test()
+    isCustomer()
     allProducts();
     allCategory();
   }, []);
@@ -277,11 +287,8 @@ const Products = () => {
                         sx={{ width: 120, height: 40, padding: 1, margin: 0 }}
                       >
                         {customer ? (
-                          <NavLink to={`/product/${product.id}`}>
-                          </NavLink>
-                        ) : (
-                          null
-                        )}
+                          <NavLink to={`/product/${product.id}`}></NavLink>
+                        ) : null}
                         <NavLink to={`/product/${product.id}`}>
                           Add To Cart
                         </NavLink>
@@ -409,17 +416,17 @@ const Products = () => {
             {/* Search bar Start */}
             <div className="col-md-5 mx-auto pt-4">
               <form className="d-flex flex-row position-relative">
-                <input
-                  type="search"
-                  className="form-control"
-                  id="example-search-input"
-                />
+              <TextField id="outlined-basic" label="Outlined" variant="outlined" />
                 <Button
-                  className="btn border-0 position-absolute end-0 "
+                  variant="contained"
+                  className="btn"
                   type="submit"
+                  style={{width: 30, marginLeft:30, borderRadius: 50}}
                 >
-                  <i className="bi bi-search" style={{ color: "blue" }}></i>
+                  <SearchIcon />
                 </Button>
+
+               
               </form>
             </div>
             {/* Search bar End */}
