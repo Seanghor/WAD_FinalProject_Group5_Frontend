@@ -27,7 +27,6 @@ const ProductDetail = () => {
       throw new Error("Failed to get product ...");
     }
     const data = await res.data.product;
-
     setLoading(false);
     setProduct(data);
 

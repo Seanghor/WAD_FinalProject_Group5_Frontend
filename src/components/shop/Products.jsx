@@ -69,6 +69,7 @@ const Products = () => {
 
   // --- useEffect:
   useEffect(() => {
+    isCustomer()
     allProducts();
     allCategory();
   }, []);
