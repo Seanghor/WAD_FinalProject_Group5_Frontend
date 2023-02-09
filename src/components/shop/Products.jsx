@@ -19,6 +19,11 @@ import Skeleton from "@mui/material/Skeleton";
 import {  isAuth } from "../../service/auth";
 import SearchIcon from '@mui/icons-material/Search';
 
+
+// import Skeleton ,{ SkeletonTheme }from 'react-loading-skeleton';
+// import 'react-loading-skeleton/dist/skeleton.css';
+
+
 const Products = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
@@ -64,7 +69,6 @@ const Products = () => {
 
   // --- useEffect:
   useEffect(() => {
-    isCustomer();
     allProducts();
     allCategory();
   }, []);
@@ -272,11 +276,8 @@ const Products = () => {
                         sx={{ width: 120, height: 40, padding: 1, margin: 0 }}
                       >
                         {customer ? (
-                          <NavLink to={`/product/${product.id}`}>
-                          </NavLink>
-                        ) : (
-                          null
-                        )}
+                          <NavLink to={`/product/${product.id}`}></NavLink>
+                        ) : null}
                         <NavLink to={`/product/${product.id}`}>
                           Add To Cart
                         </NavLink>
