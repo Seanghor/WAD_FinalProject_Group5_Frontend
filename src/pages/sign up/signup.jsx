@@ -57,96 +57,124 @@ const Signup = () => {
     console.log("SignUp : Successfull");
   };
   return (
+   (
     <div className="container">
-      <div className="container">
-        <div className="col-md-6 register">
-          <h1>Register</h1>
-          <div className="text">
+      <div className="row">
+        {/* Login Form Left Side */}
+        <div className="col-md-6 ">
+          <h1 className="login">Register</h1>
+          <form action="">
+            <div className="form-group">
+              <label htmlFor="text">Username</label>
+              <input
+                type="text"
+                className="form-control"
+                aria-describedby="emailHelp"
+                placeholder="Enter your name"
+                value={name}
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="email">Username or Email address </label>
+              <input
+                type="email"
+                className="form-control"
+                aria-describedby="emailHelp"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="email">Username or Email address </label>
+              <input
+                type="text"
+                className="form-control"
+                aria-describedby="emailHelp"
+                placeholder="Enter Phone Number"
+                value={phone}
+                onChange={(e) => {
+                  setPhone(e.target.value);
+                }}
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="password"> Password</label>
+              <input
+                type="password"
+                className="form-control"
+                id="input-password"
+                placeholder="Enter your Password"
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+              />
+            </div>
+
+            {/* Rememeber me & Forget pwd */}
+            <div className="col">
+              <div className="col-md-6">
+                <Stack direction="row">
+                  <Checkbox {...label} />
+                  <Typography
+                    style={{fontSize: 16, marginTop: 10}}
+                    component="div"
+                    fontSize={30}
+                  >
+                    Yes, This is my personal email
+                  </Typography>
+                </Stack>
+                <Stack direction="row">
+                  <Checkbox {...label} />
+                  <Typography
+                    style={{fontSize: 16, marginTop: 10}}
+                    component="div"
+                    fontSize={30}
+                  >
+                    I agree with the terms private policy.
+                  </Typography>
+                </Stack> 
+              </div>
+            </div>
+
+            {/* Login Btn */}
+            
+              <Button 
+                size="small"
+                variant="contained"  
+                onClick={OnSignup} 
+                sx={{ width: 120, height: 40,padding: 1, marginTop: 5 }}
+              >Sigup
+              </Button>
+        
+            <div className="row pt-5">
+              <p>
+                Already have an account? <Link to="/signin">Login</Link>
+              </p>
+            </div>
+          </form>
+        </div>
+
+        {/* Welcome Right Side */}
+        <div className="col-md-6 welcome d-flex justify-content-center">
+          <div className=" text-center">
             <p>
-              let ‘s get you all set up so you can verify your account and begin
-              <br />
-              setting up your profile.
+              Welcome New User!
             </p>
           </div>
         </div>
-
-        <div className="">
-          <div className="row ">
-            {/* Left side form  */}
-            <div className="col">
-              <div className="first_name">
-                <p>Username</p>
-                <input
-                  type="text"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  placeholder="sothea"
-                  className="item"
-                />
-              </div>
-              <div className="phone_number">
-                <p>Email</p>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="team5@kit.com"
-                  className="item"
-                />
-              </div>
-            </div>
-
-            {/* Right side form */}
-            <div className="col">
-              <div className="last_name">
-                <p>Phone number</p>
-                <input
-                  type="text"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  placeholder="1234"
-                  className="item"
-                />
-              </div>
-              <div className="email">
-                <p>Password</p>
-                <input
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="1@#$456"
-                  className="item"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Text under Left side form */}
-          <div className="text_under">
-            <div className="tick1">
-              <input type="checkbox" className="checkbox" />
-              <label htmlFor="text"> Yes, This is my personal email.</label>
-            </div>
-            <div className="tick2">
-              <input type="checkbox" className="checkbox" />
-              <label htmlFor="text">
-                {" "}
-                I agree with the terms <a href="/">private policy.</a>
-              </label>
-            </div>
-          </div>
-
-          <div className="col-md-6 btn">
-            <button type="submit" onClick={OnSignup}>
-              Sign Up
-            </button>
-          </div>
-          <p>
-            Already have an Account ? <Link to="/signin">Login</Link>
-          </p>
-        </div>
       </div>
     </div>
+
   );
 };
 
