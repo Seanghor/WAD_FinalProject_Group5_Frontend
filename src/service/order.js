@@ -18,7 +18,11 @@ export const getOrderById = async (id) => {
 
 // create order
 export const createOrders = async ({ productId, quantity, customerId }) => {
-  const res = await client.post("/order", { "productId" : 2, "quantity":5, "customerId":1});
+  const res = await client.post("/order", {
+    productId: 2,
+    quantity: 5,
+    customerId: 1,
+  });
   if (res.status !== 200) {
     console.log("Fail to createOrder ...");
     throw new Error("Failed to create ...");
@@ -28,8 +32,8 @@ export const createOrders = async ({ productId, quantity, customerId }) => {
 };
 
 // update order:
-export const updateOrderById = async (id, {quantity}) => {
-  const res = await client.delete(`/order/${id}`, {quantity});
+export const updateOrderById = async (id, { quantity }) => {
+  const res = await client.delete(`/order/${id}`, { quantity });
   if (res.status !== 200) {
     console.log("Fail to update");
     throw new Error("Failled to delete this order");
@@ -40,6 +44,16 @@ export const updateOrderById = async (id, {quantity}) => {
 // delete order
 export const deleteOrder = async (id) => {
   const res = await client.delete(`/order/${id}`);
+  if (res.status !== 200) {
+    console.log("delte order: false");
+    throw new Error("Failled to delete this order");
+  }
+  return res.data;
+};
+
+// delete all order:
+export const deleteAllOrder = async () => {
+  const res = await client.delete("/orders");
   if (res.status !== 200) {
     console.log("delte order: false");
     throw new Error("Failled to delete this order");
