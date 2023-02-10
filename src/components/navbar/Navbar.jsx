@@ -76,13 +76,9 @@ const Navbar = () => {
                   <i className="bi bi-person-exclamation icon"></i>
                 </NavLink>
               </li>
+            
               <li className="nav-item">
-                <NavLink className="nav-link" to="/">
-                  <i className="bi bi-heart icon"></i>
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/placeOrder">
+                <NavLink className="nav-link" to="/cart">
                   <i className="bi bi-cart icon"></i>
                   <span class="badge" id="lblCartCount">
                     {" "}

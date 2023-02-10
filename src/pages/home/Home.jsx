@@ -203,6 +203,23 @@ const Home = () => {
               />
             </Grid>
             {/* Product Card End */}
+
+            <div className="row p-5">
+              <div className="col-md-6 text-start">
+                <p>ABOUT THE BRAND</p>
+                <h2>Hestan</h2>
+                <div className="col-md-5">
+                <p>Hestan founder Stanley Cheng pioneered hard-anodized aluminum cookware in the 1970s
+                  the breakthrough that ushered in nonstick cookware. Hestan Culinary is born form Hestan's longstanding culture of culinary innovation.
+
+                </p>
+                </div>
+               
+              </div>
+              <div className="col-md-6 ">
+                <img src="https://cdn.accentuate.io/hestan/1661133351905/Cangshan-Hestan-Probond-web-1-1700x900.png?v=1661133351905" alt="" />
+              </div>
+            </div>
           </div>
         </section>{" "}
         {/* Container Section End */}

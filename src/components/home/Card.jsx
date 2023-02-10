@@ -8,6 +8,7 @@ import { CardActionArea, Stack } from "@mui/material";
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
+import { Link } from "react-router-dom";
 const Cards = (prop) => {
   return (
     <Grid className="col-md-3" padding={5}>
@@ -62,16 +63,18 @@ const Cards = (prop) => {
             </CardContent>
             <CardActions
               style={{ alignItems: "center", justifyContent: "center" }}
-            >
-              <Button
+              >
+              <Link to={'/shop'} >
+                <Button
                 size="small"
                 variant="contained"
                 color="secondary"
                 style={{ borderRadius: 35 }}
                 sx={{ width: 200, padding: 1.5 }}
-              >
-                Buy Now
-              </Button>
+                >
+                  View More
+                </Button>
+              </Link> 
             </CardActions>
           </CardActionArea>
         </Card>

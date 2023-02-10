@@ -10,11 +10,17 @@ import { useEffect } from "react";
 import { getCategory } from "../../service/category";
 import { isAuth } from "../../service/auth";
 import { Link } from "react-router-dom";
-import { Stack, Typography } from "@mui/material/";
+import { Stack, Typography,Button,Rating,CardActions } from "@mui/material/";
 import { userInfo } from "../../service/auth";
 import { createOrders } from "./../../service/order";
-
-
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import { CardActionArea } from "@mui/material";
+import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
+import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
@@ -75,25 +81,18 @@ const ProductDetail = () => {
     infoOfCustomer();
     getSingleProduct();
     allproductsOfCategory();
-  }, []);
-  const productContainers = [
-    ...document.querySelectorAll(".product-container"),
-  ];
-  const nxtBtn = [...document.querySelectorAll(".nxt-btn")];
-  const preBtn = [...document.querySelectorAll(".pre-btn")];
+  },);
 
-  productContainers.forEach((item, i) => {
-    let containerDimensions = item.getBoundingClientRect();
-    let containerWidth = containerDimensions.width;
-
-    nxtBtn[i].addEventListener("click", () => {
-      item.scrollLeft += containerWidth;
-    });
-
-    preBtn[i].addEventListener("click", () => {
-      item.scrollLeft -= containerWidth;
-    });
-  });
+  const sideScroll = (element, speed, distance, step) => {
+    let scrollAmount = 0;
+    const slideTimer = setInterval(() => {
+      element.scrollLeft += step;
+      scrollAmount += Math.abs(step);
+      if (scrollAmount >= distance) {
+        clearInterval(slideTimer);
+      }
+    }, speed);
+  };
 
   return (
     <div className="container mt-5 mb-5">
@@ -101,17 +100,11 @@ const ProductDetail = () => {
         <div className="col-md-10">
           <div className="row">
             <div className="col-md-6">
-              <div className="images p-3">
-                <div className="text-center p-4">
-                  {" "}
-                  <img
-                    id="main-image"
-                    src={ product.profile}
-                    width="250"
-                  />{" "}
-                </div>
+              <div className="images ">
+                <img src={product.profile} alt="" />
               </div>
             </div>
+            {/* Product Detail Start */}
             <div className="col-md-6">
               <div className="product ">
                 <div className="mb-3">
@@ -128,7 +121,7 @@ const ProductDetail = () => {
                       >
                         ${product.discount_price}
                       </Typography>
-                      {product.discount_active == true ? (
+                      {product.discount_active === true ? (
                         <Typography
                           gutterBottom
                           variant="h6"
@@ -143,8 +136,8 @@ const ProductDetail = () => {
                         </Typography>
                       ) : null}
 
-                      {product.discount_percent != 0 &&
-                      product.discount_active == true ? (
+                      {product.discount_percent !== 0 &&
+                      product.discount_active === true ? (
                         <Typography
                           gutterBottom
                           variant="h6"
@@ -159,17 +152,40 @@ const ProductDetail = () => {
                   </Stack>
                 </div>
                 <div className="cart  align-items-center">
-
-                  <button
-                    className="btn btn-danger text-uppercase "
-                    onClick={() => onClickCustomer()}
-                  >
+                  <Stack direction="column" gap={6}>
+                    <Stack direction="row" alignItems="center" gap={4}>
+                      <Button  size="smaller" style={{width:4,height:35}} variant="contained" > 
+                        <RemoveIcon fontSize="small" />
+                      </Button>
+                      <Typography variant="body2" style={{fontWeight: "600", fontSize: 20}}>5</Typography>
+                      <Button  size="small" style={{width: 1, height:35}} variant="contained">
+                        <AddIcon fontSize="small" />
+                      </Button>
+                    </Stack>   
+                    
+                    <Stack>
                     {isCustomer ? (
-                      <Link to="/cart">Add to cart</Link>
-                    ) : (
-                      <Link to="/signin">Add to cart</Link>
-                    )}
-                  </button>
+                        <Link to="/cart"> 
+                          <Button
+                            size="small"
+                            style={{width: 130, height:45}}
+                            variant="contained"
+                            onClick={() => onClickCustomer()}
+                            >Add to cart
+                          </Button>
+                        </Link>
+                      ) : (
+                        <Link to="/signin">
+                          <Button
+                            variant="contained"
+                            onClick={() => onClickCustomer()}
+                          >Add to cart
+                          </Button>
+                        </Link>
+                      )}
+                    </Stack>
+                  </Stack>
+
                 </div>
                 <h5 className=" mt-5">Product Details</h5>
                 <h5 className="about">
@@ -181,27 +197,556 @@ const ProductDetail = () => {
                 </h5>
               </div>
             </div>
+             {/* Product Detail End */}
           </div>
         </div>
 
-        <div className="re-product ">
-          <h2 className="text">Related Product</h2>
+        <div className="row text-center ">
+          <h2 style={{color: "blue"}}>Related Product</h2>
         </div>
       </div>
-      <section className="product-slider">
-        <button className="pre-btn">
-          <img src={arrow} alt="" />
-        </button>
-        <button className="nxt-btn">
-          <img src={arrow} alt="" />
-        </button>
-        <div classNameName="product-container">
-          {" "}
-          {reproduct.map((product, index) => (
-           <div key={index}>dadasda</div>
-          ))}
-        </div>
-      </section>
+     
+     {/* Horizontal Scroll Start */}
+     <div className="horizontal-scroll">
+        <div className="buttons">
+          <KeyboardDoubleArrowLeftIcon
+            className="scroll"
+            onClick={() => {
+              sideScroll(product.current, 25, 100, -270);
+            }}
+          />
+          <KeyboardDoubleArrowRightIcon
+            className="scroll"
+            onClick={() => {
+              sideScroll(product.current, 25, 100, 270);
+            }}
+          />
+        </div>     
+
+        <div className="product-list" ref={product}>
+      
+        <Card sx={{ maxWidth: 345 }} style={{ height: 530 }} className = "card4 card5">
+          <CardActionArea>
+            <CardMedia
+              style={{
+                borderBottomRightRadius: 10,
+                borderBottomLeftRadius: 10,
+                padding: 3,
+              }}
+              component="img"
+              height="260"
+              image={product.profile}
+              alt="green iguana"
+            />
+            <CardContent style={{ paddingLeft: 20 }}>
+              <Typography
+                gutterBottom
+                variant="h5"
+                component="div"
+                style={{ fontWeight: "bold" }}
+              >
+                {product.name}
+              </Typography>
+              <Rating
+                name="read-only"
+                value={product.rating}
+                readOnly
+              />
+              <Stack direction="row" justifyContent={"space-between"}>
+                <Stack direction={"row"}>
+                  <Typography
+                    variant="h4"
+                    style={{
+                      fontWeight: "bold",
+                      marginRight: 10,
+                      color: "#111",
+                    }}
+                  >
+                    ${product.discount_price}
+                  </Typography>
+                  {product.discount_active == true ? (
+                    <Typography
+                      gutterBottom
+                      variant="h6"
+                      marginTop={1}
+                      color="text.secondary"
+                      style={{ textDecoration: "line-through" }}
+                    >
+                      ${product.price}
+                    </Typography>
+                  ) : null}
+                </Stack>
+
+                <Stack style={{}}>
+                  {product.discount_percent != 0 &&
+                  product.discount_active == true ? (
+                    <Typography
+                      gutterBottom
+                      variant="h6"
+                      marginTop={1}
+                      component="div"
+                      style={{ color: "red" }}
+                    >
+                      {product.discount_percent}%off
+                    </Typography>
+                  ) : null}
+                </Stack>
+              </Stack>
+            </CardContent>
+            <CardActions style={{ paddingLeft: 20 }}>
+              <Button
+                className="card4"
+                variant="outlined"
+                color="primary"
+                sx={{ width: 120, height: 40, padding: 1, margin: 0 }}
+              >
+                {isCustomer ? (
+                  <Link to={`/product/${product.id}`}></Link>
+                ) : null}
+                <Link to={`/product/${product.id}`}>
+                  Add To Cart
+                </Link>
+              </Button>
+            </CardActions>
+          </CardActionArea>
+        </Card>
+
+        <Card sx={{ maxWidth: 345 }} style={{ height: 530 }} className = "card4 card5">
+          <CardActionArea>
+            <CardMedia
+              style={{
+                borderBottomRightRadius: 10,
+                borderBottomLeftRadius: 10,
+                padding: 3,
+              }}
+              component="img"
+              height="260"
+              image={product.profile}
+              alt="green iguana"
+            />
+            <CardContent style={{ paddingLeft: 20 }}>
+              <Typography
+                gutterBottom
+                variant="h5"
+                component="div"
+                style={{ fontWeight: "bold" }}
+              >
+                {product.name}
+              </Typography>
+              <Rating
+                name="read-only"
+                value={product.rating}
+                readOnly
+              />
+              <Stack direction="row" justifyContent={"space-between"}>
+                <Stack direction={"row"}>
+                  <Typography
+                    variant="h4"
+                    style={{
+                      fontWeight: "bold",
+                      marginRight: 10,
+                      color: "#111",
+                    }}
+                  >
+                    ${product.discount_price}
+                  </Typography>
+                  {product.discount_active == true ? (
+                    <Typography
+                      gutterBottom
+                      variant="h6"
+                      marginTop={1}
+                      color="text.secondary"
+                      style={{ textDecoration: "line-through" }}
+                    >
+                      ${product.price}
+                    </Typography>
+                  ) : null}
+                </Stack>
+
+                <Stack style={{}}>
+                  {product.discount_percent != 0 &&
+                  product.discount_active == true ? (
+                    <Typography
+                      gutterBottom
+                      variant="h6"
+                      marginTop={1}
+                      component="div"
+                      style={{ color: "red" }}
+                    >
+                      {product.discount_percent}%off
+                    </Typography>
+                  ) : null}
+                </Stack>
+              </Stack>
+            </CardContent>
+            <CardActions style={{ paddingLeft: 20 }}>
+              <Button
+                className="card4"
+                variant="outlined"
+                color="primary"
+                sx={{ width: 120, height: 40, padding: 1, margin: 0 }}
+              >
+                {isCustomer ? (
+                  <Link to={`/product/${product.id}`}></Link>
+                ) : null}
+                <Link to={`/product/${product.id}`}>
+                  Add To Cart
+                </Link>
+              </Button>
+            </CardActions>
+          </CardActionArea>
+        </Card>
+
+        <Card sx={{ maxWidth: 345 }} style={{ height: 530 }} className = "card4 card5">
+          <CardActionArea>
+            <CardMedia
+              style={{
+                borderBottomRightRadius: 10,
+                borderBottomLeftRadius: 10,
+                padding: 3,
+              }}
+              component="img"
+              height="260"
+              image={product.profile}
+              alt="green iguana"
+            />
+            <CardContent style={{ paddingLeft: 20 }}>
+              <Typography
+                gutterBottom
+                variant="h5"
+                component="div"
+                style={{ fontWeight: "bold" }}
+              >
+                {product.name}
+              </Typography>
+              <Rating
+                name="read-only"
+                value={product.rating}
+                readOnly
+              />
+              <Stack direction="row" justifyContent={"space-between"}>
+                <Stack direction={"row"}>
+                  <Typography
+                    variant="h4"
+                    style={{
+                      fontWeight: "bold",
+                      marginRight: 10,
+                      color: "#111",
+                    }}
+                  >
+                    ${product.discount_price}
+                  </Typography>
+                  {product.discount_active == true ? (
+                    <Typography
+                      gutterBottom
+                      variant="h6"
+                      marginTop={1}
+                      color="text.secondary"
+                      style={{ textDecoration: "line-through" }}
+                    >
+                      ${product.price}
+                    </Typography>
+                  ) : null}
+                </Stack>
+
+                <Stack style={{}}>
+                  {product.discount_percent != 0 &&
+                  product.discount_active == true ? (
+                    <Typography
+                      gutterBottom
+                      variant="h6"
+                      marginTop={1}
+                      component="div"
+                      style={{ color: "red" }}
+                    >
+                      {product.discount_percent}%off
+                    </Typography>
+                  ) : null}
+                </Stack>
+              </Stack>
+            </CardContent>
+            <CardActions style={{ paddingLeft: 20 }}>
+              <Button
+                className="card4"
+                variant="outlined"
+                color="primary"
+                sx={{ width: 120, height: 40, padding: 1, margin: 0 }}
+              >
+                {isCustomer ? (
+                  <Link to={`/product/${product.id}`}></Link>
+                ) : null}
+                <Link to={`/product/${product.id}`}>
+                  Add To Cart
+                </Link>
+              </Button>
+            </CardActions>
+          </CardActionArea>
+        </Card>
+
+        <Card sx={{ maxWidth: 345 }} style={{ height: 530 }} className = "card4 card5">
+          <CardActionArea>
+            <CardMedia
+              style={{
+                borderBottomRightRadius: 10,
+                borderBottomLeftRadius: 10,
+                padding: 3,
+              }}
+              component="img"
+              height="260"
+              image={product.profile}
+              alt="green iguana"
+            />
+            <CardContent style={{ paddingLeft: 20 }}>
+              <Typography
+                gutterBottom
+                variant="h5"
+                component="div"
+                style={{ fontWeight: "bold" }}
+              >
+                {product.name}
+              </Typography>
+              <Rating
+                name="read-only"
+                value={product.rating}
+                readOnly
+              />
+              <Stack direction="row" justifyContent={"space-between"}>
+                <Stack direction={"row"}>
+                  <Typography
+                    variant="h4"
+                    style={{
+                      fontWeight: "bold",
+                      marginRight: 10,
+                      color: "#111",
+                    }}
+                  >
+                    ${product.discount_price}
+                  </Typography>
+                  {product.discount_active == true ? (
+                    <Typography
+                      gutterBottom
+                      variant="h6"
+                      marginTop={1}
+                      color="text.secondary"
+                      style={{ textDecoration: "line-through" }}
+                    >
+                      ${product.price}
+                    </Typography>
+                  ) : null}
+                </Stack>
+
+                <Stack style={{}}>
+                  {product.discount_percent != 0 &&
+                  product.discount_active == true ? (
+                    <Typography
+                      gutterBottom
+                      variant="h6"
+                      marginTop={1}
+                      component="div"
+                      style={{ color: "red" }}
+                    >
+                      {product.discount_percent}%off
+                    </Typography>
+                  ) : null}
+                </Stack>
+              </Stack>
+            </CardContent>
+            <CardActions style={{ paddingLeft: 20 }}>
+              <Button
+                className="card4"
+                variant="outlined"
+                color="primary"
+                sx={{ width: 120, height: 40, padding: 1, margin: 0 }}
+              >
+                {isCustomer ? (
+                  <Link to={`/product/${product.id}`}></Link>
+                ) : null}
+                <Link to={`/product/${product.id}`}>
+                  Add To Cart
+                </Link>
+              </Button>
+            </CardActions>
+          </CardActionArea>
+        </Card>
+
+        <Card sx={{ maxWidth: 345 }} style={{ height: 530 }} className = "card4 card5">
+          <CardActionArea>
+            <CardMedia
+              style={{
+                borderBottomRightRadius: 10,
+                borderBottomLeftRadius: 10,
+                padding: 3,
+              }}
+              component="img"
+              height="260"
+              image={product.profile}
+              alt="green iguana"
+            />
+            <CardContent style={{ paddingLeft: 20 }}>
+              <Typography
+                gutterBottom
+                variant="h5"
+                component="div"
+                style={{ fontWeight: "bold" }}
+              >
+                {product.name}
+              </Typography>
+              <Rating
+                name="read-only"
+                value={product.rating}
+                readOnly
+              />
+              <Stack direction="row" justifyContent={"space-between"}>
+                <Stack direction={"row"}>
+                  <Typography
+                    variant="h4"
+                    style={{
+                      fontWeight: "bold",
+                      marginRight: 10,
+                      color: "#111",
+                    }}
+                  >
+                    ${product.discount_price}
+                  </Typography>
+                  {product.discount_active == true ? (
+                    <Typography
+                      gutterBottom
+                      variant="h6"
+                      marginTop={1}
+                      color="text.secondary"
+                      style={{ textDecoration: "line-through" }}
+                    >
+                      ${product.price}
+                    </Typography>
+                  ) : null}
+                </Stack>
+
+                <Stack style={{}}>
+                  {product.discount_percent != 0 &&
+                  product.discount_active == true ? (
+                    <Typography
+                      gutterBottom
+                      variant="h6"
+                      marginTop={1}
+                      component="div"
+                      style={{ color: "red" }}
+                    >
+                      {product.discount_percent}%off
+                    </Typography>
+                  ) : null}
+                </Stack>
+              </Stack>
+            </CardContent>
+            <CardActions style={{ paddingLeft: 20 }}>
+              <Button
+                className="card4"
+                variant="outlined"
+                color="primary"
+                sx={{ width: 120, height: 40, padding: 1, margin: 0 }}
+              >
+                {isCustomer ? (
+                  <Link to={`/product/${product.id}`}></Link>
+                ) : null}
+                <Link to={`/product/${product.id}`}>
+                  Add To Cart
+                </Link>
+              </Button>
+            </CardActions>
+          </CardActionArea>
+        </Card>
+
+        <Card sx={{ maxWidth: 345 }} style={{ height: 530 }} className = "card4 card5">
+          <CardActionArea>
+            <CardMedia
+              style={{
+                borderBottomRightRadius: 10,
+                borderBottomLeftRadius: 10,
+                padding: 3,
+              }}
+              component="img"
+              height="260"
+              image={product.profile}
+              alt="green iguana"
+            />
+            <CardContent style={{ paddingLeft: 20 }}>
+              <Typography
+                gutterBottom
+                variant="h5"
+                component="div"
+                style={{ fontWeight: "bold" }}
+              >
+                {product.name}
+              </Typography>
+              <Rating
+                name="read-only"
+                value={product.rating}
+                readOnly
+              />
+              <Stack direction="row" justifyContent={"space-between"}>
+                <Stack direction={"row"}>
+                  <Typography
+                    variant="h4"
+                    style={{
+                      fontWeight: "bold",
+                      marginRight: 10,
+                      color: "#111",
+                    }}
+                  >
+                    ${product.discount_price}
+                  </Typography>
+                  {product.discount_active == true ? (
+                    <Typography
+                      gutterBottom
+                      variant="h6"
+                      marginTop={1}
+                      color="text.secondary"
+                      style={{ textDecoration: "line-through" }}
+                    >
+                      ${product.price}
+                    </Typography>
+                  ) : null}
+                </Stack>
+
+                <Stack style={{}}>
+                  {product.discount_percent != 0 &&
+                  product.discount_active == true ? (
+                    <Typography
+                      gutterBottom
+                      variant="h6"
+                      marginTop={1}
+                      component="div"
+                      style={{ color: "red" }}
+                    >
+                      {product.discount_percent}%off
+                    </Typography>
+                  ) : null}
+                </Stack>
+              </Stack>
+            </CardContent>
+            <CardActions style={{ paddingLeft: 20 }}>
+              <Button
+                className="card4"
+                variant="outlined"
+                color="primary"
+                sx={{ width: 120, height: 40, padding: 1, margin: 0 }}
+              >
+                {isCustomer ? (
+                  <Link to={`/product/${product.id}`}></Link>
+                ) : null}
+                <Link to={`/product/${product.id}`}>
+                  Add To Cart
+                </Link>
+              </Button>
+            </CardActions>
+          </CardActionArea>
+        </Card>
+      </div>                 
+           
+     </div>
+     
+
+      
+      {/* Horizontal Scroll End */}
     </div>
   );
 };

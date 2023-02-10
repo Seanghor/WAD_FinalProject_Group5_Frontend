@@ -14,8 +14,7 @@ const Shop = () => {
               className="shopimg"
             />
             <div className="centered">
-              <h1>Shop</h1>
-              <h4>Home {">"} Shop</h4>
+              <h1>Enjoy Your Shopping</h1>
             </div>
           </div>
 

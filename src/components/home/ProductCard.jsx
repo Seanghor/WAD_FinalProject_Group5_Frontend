@@ -1,6 +1,7 @@
 import {React,useState} from "react";
 import "../.././pages/styles/home.css";
 import Grid from "@mui/material/Grid";
+import { Link } from "react-router-dom";
 import {
   CardMedia,
   CardContent,
@@ -16,7 +17,7 @@ import Divider from '@mui/material/Divider';
 const ProductCard = (prop) => {
   return (
     <Grid className="col-md-3" >
-    <Card sx={{ maxWidth: 420 }} style={{height: 620, margin: 25}} 
+    <Card sx={{ maxWidth: 420 }} style={{height: 660, margin: 25}} 
     >
       <CardActionArea>
         <CardMedia
@@ -47,7 +48,15 @@ const ProductCard = (prop) => {
           </Stack>
         </CardContent>
         <CardActions style={{paddingLeft: 20, marginTop: 30}}>
-          <Button variant="outlined" color="primary"  className="card4" sx={{ width: 120, height: 40,padding: 1, margin: 0 }}>Add to cart</Button>  
+          <Button 
+          variant="outlined" 
+          color="primary"  
+          className="card4" 
+          sx={{ width: 120, height: 40,padding: 1, margin: 0 }}>
+            <Link to={'/shop'}>
+              View More
+            </Link>
+          </Button>  
         </CardActions>
       </CardActionArea>
     </Card>
