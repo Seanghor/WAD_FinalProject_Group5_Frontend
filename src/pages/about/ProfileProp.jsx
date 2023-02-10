@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import ".././styles/profile.css";
 
 const ProfileProp = (prop) => {
@@ -14,10 +14,7 @@ const ProfileProp = (prop) => {
           <p>{prop.aboutme}</p>
         </div>
         <div className="col-md-3 pt-5">
-          <img src={prop.image}
-            alt="" 
-            className='img'
-          />
+          <img src={prop.image} alt="" className="img" />
         </div>
         <div className="col-md-4 p-4">
           <h5>Details</h5>
@@ -27,15 +24,15 @@ const ProfileProp = (prop) => {
           <p>{prop.age}</p>
           <h6>Location:</h6>
           <p>{prop.location}</p>
-          <div className="d-flex" >
-            <i class="bi bi-facebook icon"></i>
-            <i class="bi bi-twitter icon"></i>
-            <i class="bi bi-instagram icon"></i>
+          <div className="d-flex">
+            <i className="bi bi-facebook icon"></i>
+            <i className="bi bi-twitter icon"></i>
+            <i className="bi bi-instagram icon"></i>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProfileProp
+export default ProfileProp;

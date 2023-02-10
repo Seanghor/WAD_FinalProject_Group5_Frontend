@@ -14,7 +14,6 @@ import { Stack, Typography } from "@mui/material/";
 import { userInfo } from "../../service/auth";
 import { createOrders } from "./../../service/order";
 
-
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
@@ -27,7 +26,7 @@ const ProductDetail = () => {
   const [isAuth, setIsAuth] = useState(false);
 
   // check accessToekn:
-  const isCustomer = !!localStorage.getItem("accessToken");
+  // const isCustomer = !!localStorage.getItem("accessToken");
 
   // check customer infor
   const infoOfCustomer = async () => {
@@ -39,13 +38,13 @@ const ProductDetail = () => {
     setproductId(Number(id));
   };
   // setIsAuth(isCustomer)
-  const onClickCustomer = async () => {
-    if (isCustomer) {
-      console.log("customerId : ", customerInfo.customerId);
-      console.log("productId : ", id);
-      console.log("quantity : ", quantity);
-      await createOrders({ productId, quantity, customerId });
-    }
+  const onClickAddToCart = async () => {
+    console.log("customerId : ", customerInfo.customerId);
+    console.log("productId : ", id);
+    console.log("quantity : ", quantity);
+    await createOrders({ productId, quantity, customerId }).then((res) => {
+      window.location.reload();
+    });
   };
 
   // fect: get product by Id
@@ -104,11 +103,7 @@ const ProductDetail = () => {
               <div className="images p-3">
                 <div className="text-center p-4">
                   {" "}
-                  <img
-                    id="main-image"
-                    src={ product.profile}
-                    width="250"
-                  />{" "}
+                  <img id="main-image" src={product.profile} width="250" />{" "}
                 </div>
               </div>
             </div>
@@ -159,16 +154,11 @@ const ProductDetail = () => {
                   </Stack>
                 </div>
                 <div className="cart  align-items-center">
-
                   <button
                     className="btn btn-danger text-uppercase "
-                    onClick={() => onClickCustomer()}
+                    onClick={() => onClickAddToCart()}
                   >
-                    {isCustomer ? (
-                      <Link to="/cart">Add to cart</Link>
-                    ) : (
-                      <Link to="/signin">Add to cart</Link>
-                    )}
+                    <Link to="/cart">Add to cart</Link>
                   </button>
                 </div>
                 <h5 className=" mt-5">Product Details</h5>
@@ -198,7 +188,7 @@ const ProductDetail = () => {
         <div classNameName="product-container">
           {" "}
           {reproduct.map((product, index) => (
-           <div key={index}>dadasda</div>
+            <div key={index}>dadasda</div>
           ))}
         </div>
       </section>
