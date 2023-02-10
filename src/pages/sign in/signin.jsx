@@ -3,12 +3,12 @@ import ".././styles/signin.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { login } from "../../service/auth";
-import{Checkbox ,Button, Typography,Stack}from '@mui/material/';
+import { Checkbox, Button, Typography, Stack } from "@mui/material/";
 // import { loginAPI } from "../../service/auth";
 import { getProducts } from "./../../service/product";
 import { getCategory, getAllCategory } from "./../../service/category";
 import { width } from "@mui/system";
-const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+const label = { inputProps: { "aria-label": "Checkbox demo" } };
 const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -67,14 +67,13 @@ const Signin = () => {
                 <Stack direction="row">
                   <Checkbox {...label} />
                   <Typography
-                    style={{fontSize: 16, marginTop: 10}}
+                    style={{ fontSize: 16, marginTop: 10 }}
                     component="div"
                     fontSize={30}
                   >
                     Remember Me
                   </Typography>
                 </Stack>
-                
               </div>
               <div className="col-md-4 forgetpassword">
                 <p>Forgot password?</p>
@@ -83,12 +82,14 @@ const Signin = () => {
 
             {/* Login Btn */}
             <div className="">
-              <Button 
+              <Button
                 size="small"
-                variant="contained"  
-                onClick={onLogin} 
-                sx={{ width: 120, height: 40,padding: 1, margin: 0 }}
-              >Login</Button>
+                variant="contained"
+                onClick={onLogin}
+                sx={{ width: 120, height: 40, padding: 1, margin: 0 }}
+              >
+                Login
+              </Button>
             </div>
             <div className="row pt-5">
               <p>
@@ -101,9 +102,7 @@ const Signin = () => {
         {/* Welcome Right Side */}
         <div className="col-md-6 welcome d-flex justify-content-center">
           <div className=" text-center">
-            <p>
-              Welcome Back!
-            </p>
+            <p>Welcome Back!</p>
           </div>
         </div>
       </div>
