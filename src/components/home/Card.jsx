@@ -13,8 +13,8 @@ const Cards = (prop) => {
   return (
     <Grid className="col-md-3" padding={5}>
       <Grid className="">
-        <Card style={{ height: 720 }} className="card2 card3"  >
-          <CardActionArea >
+        <Card style={{ height: 720 }} className="card2 card3">
+          <CardActionArea>
             <Stack>
               <CardMedia
                 className="background-img"
@@ -41,12 +41,16 @@ const Cards = (prop) => {
                 >
                   ${prop.newPrice}
                 </Typography>
-               
+
                 <Typography
                   gutterBottom
                   variant="h6"
                   component="div"
-                  style={{marginTop: 15, fontFamily: 'Merienda', fontWeight:600}}
+                  style={{
+                    marginTop: 15,
+                    fontFamily: "Merienda",
+                    fontWeight: 600,
+                  }}
                 >
                   {prop.name}
                 </Typography>
@@ -82,6 +86,5 @@ const Cards = (prop) => {
     </Grid>
   );
 };
-
 
 export default Cards;

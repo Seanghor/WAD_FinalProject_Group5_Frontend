@@ -42,10 +42,8 @@ const Products = () => {
     await getProducts()
       .then((response) => response.products)
       .then((res) => {
-        setTimeout(() => {
-          setLoading(false);
-          setaProduct(res);
-        });
+        setLoading(false);
+        setaProduct(res);
       });
   };
 
@@ -54,11 +52,9 @@ const Products = () => {
     await getAllCategory()
       .then((response) => response.allProductCategory)
       .then((res) => {
-        setTimeout(() => {
-          setLoading(false);
-          setData(res);
-          setCategoryList(res);
-        });
+        setLoading(false);
+        setData(res);
+        setCategoryList(res);
       });
   };
 
@@ -236,6 +232,7 @@ const Products = () => {
                   href="#"
                   style={{ color: "black", fontWeight: 600 }}
                   key={i}
+                  value={el}
                 >
                   <div onClick={() => onClickCategory(el.id)}> {el.name}</div>
                 </CDropdownItem>

@@ -32,11 +32,11 @@ const Cart = () => {
   const [loading, setLoading] = useState(false);
   const [total, setTotal] = useState(0);
 
-  const shipping = 0;
-  let x = 0;
+  const shipping = 5;
+  let sum = 0;
   orders.forEach((ord) => {
-    x += Number(ord.total_price);
-    return x;
+    sum += Number(ord.total_price);
+    return sum;
   });
 
   // get all order:
@@ -56,7 +56,7 @@ const Cart = () => {
       <div className="row pt-5">
         <div className="col-md-9 pt-5">
           <Paper sx={{ width: "100%", overflow: "hidden" }}>
-            <TableContainer sx={{ maxHeight: 100 }}>
+            <TableContainer sx={{ maxHeight: 500 }}>
               <Table stickyHeader aria-label="sticky table">
                 <TableHead>
                   <TableRow>
@@ -75,6 +75,7 @@ const Cart = () => {
                     ))}
                   </TableRow>
                 </TableHead>
+
                 <TableBody>
                   {orders.map((product) => (
                     <TableRow
@@ -87,10 +88,10 @@ const Cart = () => {
                         {product.quantity}{" "}
                       </TableCell>
                       <TableCell component="th" scope="row">
-                        ${product.price}
+                        ${parseFloat(product.price).toFixed(2)}
                       </TableCell>
                       <TableCell component="th" scope="row">
-                        ${product.total_price}
+                        ${parseFloat(product.total_price).toFixed(2)}
                       </TableCell>
                       <TableCell>
                         <DeleteIcon sx={{ color: "red" }} />
@@ -116,11 +117,11 @@ const Cart = () => {
               </Typography>
               <Stack direction="row" justifyContent="space-between">
                 <Typography>Subtotal</Typography>
-                <Typography>$ 214.50</Typography>
+                <Typography>${parseFloat(sum).toFixed(2)}</Typography>
               </Stack>
               <Stack direction="row" justifyContent="space-between">
                 <Typography>Shipping</Typography>
-                <Typography>$ 20.00</Typography>
+                <Typography>${parseFloat(shipping).toFixed(2)}</Typography>
               </Stack>
               <Divider
                 sx={{
@@ -132,7 +133,7 @@ const Cart = () => {
               />
               <Stack direction="row" justifyContent="space-between">
                 <Typography>Total</Typography>
-                <Typography>$ 224.00</Typography>
+                <Typography>${sum + shipping}</Typography>
               </Stack>
             </CardContent>
             <CardActions>

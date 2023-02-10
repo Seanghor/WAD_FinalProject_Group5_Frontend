@@ -79,7 +79,7 @@ const Home = () => {
           <div className="col-md-3">
             <div className="row">
               <div className="col-sm-1 m-3">
-                <i class="bi bi-airplane iCon"></i>
+                <i className="bi bi-airplane iCon"></i>
               </div>
 
               <div className="col Info">
@@ -92,7 +92,7 @@ const Home = () => {
           <div className="col-md-3">
             <div className="row">
               <div className="col-sm-1 m-3">
-                <i class="bi bi-wallet2 iCon"></i>
+                <i className="bi bi-wallet2 iCon"></i>
               </div>
 
               <div className="col Info">
@@ -105,7 +105,7 @@ const Home = () => {
           <div className="col-md-3">
             <div className="row">
               <div className="col-sm-1 m-3">
-                <i class="bi bi-clipboard-check iCon"></i>
+                <i className="bi bi-clipboard-check iCon"></i>
               </div>
 
               <div className="col Info">
@@ -118,7 +118,7 @@ const Home = () => {
           <div className="col-md-3">
             <div className="row">
               <div className="col-sm-1 m-3">
-                <i class="bi bi-truck iCon"></i>
+                <i className="bi bi-truck iCon"></i>
               </div>
 
               <div className="col Info">
