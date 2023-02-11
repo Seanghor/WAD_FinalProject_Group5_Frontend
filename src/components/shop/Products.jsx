@@ -10,15 +10,16 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea, Stack } from "@mui/material";
-import TextField from '@mui/material/TextField';
+import TextField from "@mui/material/TextField";
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
 import Skeleton from "@mui/material/Skeleton";
-import {  isAuth } from "../../service/auth";
-import SearchIcon from '@mui/icons-material/Search';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { isAuth } from "../../service/auth";
+import SearchIcon from "@mui/icons-material/Search";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 
 const Products = () => {
   const [loading, setLoading] = useState(true);
@@ -33,7 +34,7 @@ const Products = () => {
   const [accessToken, setAccessToken] = useState(null);
 
   const isCustomer = async () => {
-    const isCustomer = await isAuth();
+    const isCustomer = isAuth();
     setCustomer(isCustomer);
   };
   console.log("isCustomer : ", customer);
@@ -65,6 +66,7 @@ const Products = () => {
 
   // --- useEffect:
   useEffect(() => {
+    isCustomer();
     allProducts();
     allCategory();
   }, []);
@@ -78,34 +80,66 @@ const Products = () => {
         <div className="row">
           <div className="col-sm-3 py-2">
             <Box sx={{ pt: 1 }}>
-              <Skeleton x={{ animationDuration: "0.9s" }}/>
-              <Skeleton width="60%" height={100} x={{ animationDuration: "0.9s" }}/>
-              <Skeleton x={{ animationDuration: "0.9s" }}/>
-              <Skeleton width="60%" height={100} x={{ animationDuration: "0.9s" }}/>
+              <Skeleton x={{ animationDuration: "0.9s" }} />
+              <Skeleton
+                width="60%"
+                height={100}
+                x={{ animationDuration: "0.9s" }}
+              />
+              <Skeleton x={{ animationDuration: "0.9s" }} />
+              <Skeleton
+                width="60%"
+                height={100}
+                x={{ animationDuration: "0.9s" }}
+              />
             </Box>
           </div>
           <div className="col-sm-3 py-2">
             <Box sx={{ pt: 1 }}>
-              <Skeleton x={{ animationDuration: "0.9s" }}/>
-              <Skeleton width="60%" height={100} x={{ animationDuration: "0.9s" }} />
-              <Skeleton x={{ animationDuration: "0.9s" }}/>
-              <Skeleton width="60%" height={100} x={{ animationDuration: "0.9s" }} />
+              <Skeleton x={{ animationDuration: "0.9s" }} />
+              <Skeleton
+                width="60%"
+                height={100}
+                x={{ animationDuration: "0.9s" }}
+              />
+              <Skeleton x={{ animationDuration: "0.9s" }} />
+              <Skeleton
+                width="60%"
+                height={100}
+                x={{ animationDuration: "0.9s" }}
+              />
             </Box>
           </div>
           <div className="col-sm-3 py-2">
             <Box sx={{ pt: 1 }}>
-              <Skeleton x={{ animationDuration: "0.9s"}}/>
-              <Skeleton width="60%" height={100} x={{ animationDuration: "0.9s" }}/>
-              <Skeleton x={{ animationDuration: "0.9s" }}/>
-              <Skeleton width="60%" height={100} x={{ animationDuration: "0.9s" }}/>
+              <Skeleton x={{ animationDuration: "0.9s" }} />
+              <Skeleton
+                width="60%"
+                height={100}
+                x={{ animationDuration: "0.9s" }}
+              />
+              <Skeleton x={{ animationDuration: "0.9s" }} />
+              <Skeleton
+                width="60%"
+                height={100}
+                x={{ animationDuration: "0.9s" }}
+              />
             </Box>
           </div>
           <div className="col-sm-3 py-2">
             <Box sx={{ pt: 1 }}>
-              <Skeleton x={{ animationDuration: "0.9s"}}/>
-              <Skeleton width="60%" height={100} x={{ animationDuration: "0.9s" }}/>
-              <Skeleton x={{ animationDuration: "0.9s" }}/>
-              <Skeleton width="60%" height={100} x={{ animationDuration:"0.9s" }}/>
+              <Skeleton x={{ animationDuration: "0.9s" }} />
+              <Skeleton
+                width="60%"
+                height={100}
+                x={{ animationDuration: "0.9s" }}
+              />
+              <Skeleton x={{ animationDuration: "0.9s" }} />
+              <Skeleton
+                width="60%"
+                height={100}
+                x={{ animationDuration: "0.9s" }}
+              />
             </Box>
           </div>
         </div>
@@ -113,34 +147,66 @@ const Products = () => {
         <div className="row">
           <div className="col-sm-3 py-2">
             <Box sx={{ pt: 1 }}>
-              <Skeleton x={{ animationDuration: "0.9s"}}/>
-              <Skeleton width="60%" height={100} x={{ animationDuration: "0.9s"}}/>
-              <Skeleton x={{ animationDuration: "0.9s" }}/>
-              <Skeleton width="60%" height={100} x={{ animationDuration: "0.9s" }} />
+              <Skeleton x={{ animationDuration: "0.9s" }} />
+              <Skeleton
+                width="60%"
+                height={100}
+                x={{ animationDuration: "0.9s" }}
+              />
+              <Skeleton x={{ animationDuration: "0.9s" }} />
+              <Skeleton
+                width="60%"
+                height={100}
+                x={{ animationDuration: "0.9s" }}
+              />
             </Box>
           </div>
           <div className="col-sm-3 py-2">
             <Box sx={{ pt: 1 }}>
-              <Skeleton x={{ animationDuration: "0.9s" }}/>
-              <Skeleton width="60%" height={100} x={{ animationDuration: "0.9s"}}/>
-              <Skeleton x={{ animationDuration: "0.9s" }}/>
-              <Skeleton width="60%" height={100} x={{ animationDuration: "0.9s" }}/>
+              <Skeleton x={{ animationDuration: "0.9s" }} />
+              <Skeleton
+                width="60%"
+                height={100}
+                x={{ animationDuration: "0.9s" }}
+              />
+              <Skeleton x={{ animationDuration: "0.9s" }} />
+              <Skeleton
+                width="60%"
+                height={100}
+                x={{ animationDuration: "0.9s" }}
+              />
             </Box>
           </div>
           <div className="col-sm-3 py-2">
             <Box sx={{ pt: 1 }}>
-              <Skeleton x={{ animationDuration: "0.9s" }}/>
-              <Skeleton width="60%" height={100} x={{ animationDuration: "0.9s"}}/>
-              <Skeleton x={{ animationDuration: "0.9s" }}/>
-              <Skeleton width="60%" height={100} x={{ animationDuration: "0.9s" }}/>
+              <Skeleton x={{ animationDuration: "0.9s" }} />
+              <Skeleton
+                width="60%"
+                height={100}
+                x={{ animationDuration: "0.9s" }}
+              />
+              <Skeleton x={{ animationDuration: "0.9s" }} />
+              <Skeleton
+                width="60%"
+                height={100}
+                x={{ animationDuration: "0.9s" }}
+              />
             </Box>
           </div>
           <div className="col-sm-3 py-2">
             <Box sx={{ pt: 1 }}>
-              <Skeleton x={{ animationDuration: "0.9s" }}/>
-              <Skeleton width="60%" height={100} x={{ animationDuration: "0.9s" }}/>
-              <Skeleton x={{ animationDuration: "0.9s" }}/>
-              <Skeleton width="60%" height={100} x={{ animationDuration: "0.9s" }}/>
+              <Skeleton x={{ animationDuration: "0.9s" }} />
+              <Skeleton
+                width="60%"
+                height={100}
+                x={{ animationDuration: "0.9s" }}
+              />
+              <Skeleton x={{ animationDuration: "0.9s" }} />
+              <Skeleton
+                width="60%"
+                height={100}
+                x={{ animationDuration: "0.9s" }}
+              />
             </Box>
           </div>
         </div>
@@ -148,12 +214,8 @@ const Products = () => {
     );
   };
 
-  const filterProdcut = (cat) => {
-    const updatedList = data.filter((x) => x.category === cat);
-    setFilter(updatedList);
-  };
   const onClickCategory = async (id) => {
-    const dataC = await categoryList.find((cate) => {
+    const dataC = categoryList.find((cate) => {
       return cate.id === id;
     });
     setCategory(true);
@@ -172,7 +234,12 @@ const Products = () => {
           {!loading ? (
             <div>
               {categoryList.map((el, i) => (
-                <CDropdownItem href="#" style={{color:"black", fontWeight: 600}} key={i}>
+                <CDropdownItem
+                  href="#"
+                  style={{ color: "black", fontWeight: 600 }}
+                  key={i}
+                  value={el.id}
+                >
                   <div onClick={() => onClickCategory(el.id)}> {el.name}</div>
                 </CDropdownItem>
               ))}
@@ -191,9 +258,13 @@ const Products = () => {
       <>
         {!category ? (
           <>
-            {product.map((product, j) => ( 
+            {product.map((product, j) => (
               <div key={j} value={product.id} className="col-sm-3 pb-3">
-                <Card sx={{ maxWidth: 335 }} style={{ height: 530 }} className = "card4 card5">
+                <Card
+                  sx={{ maxWidth: 335 }}
+                  style={{ height: 530 }}
+                  className="card4 card5"
+                >
                   <CardActionArea>
                     <CardMedia
                       style={{
@@ -217,7 +288,7 @@ const Products = () => {
                       </Typography>
                       <Rating
                         name="read-only"
-                        value={product.rating}
+                        value={Number(product.rating)}
                         readOnly
                       />
                       <Stack direction="row" justifyContent={"space-between"}>
@@ -261,43 +332,77 @@ const Products = () => {
                         </Stack>
                       </Stack>
                     </CardContent>
-                    <CardActions >
+                    <CardActions>
                       <Stack direction="row" gap={10}>
-                        <Stack >
+                        <Stack>
+                          <NavLink to={`/product/${product.id}`}></NavLink>
                           <Button
                             className="card4"
                             variant="outlined"
                             color="primary"
-                            sx={{ width: 120, height: 40, padding: 1, margin: 0 }}
+                            sx={{
+                              width: 120,
+                              height: 40,
+                              padding: 1,
+                              margin: 0,
+                            }}
                           >
                             {customer ? (
-                              <NavLink to={`/product/${product.id}`}></NavLink>
-                            ) : null}
-                            <NavLink to={`/product/${product.id}`}>
-                              View Detail
-                            </NavLink>
+                              <NavLink to={`/product/${product.id}`}>
+                                View Detail
+                              </NavLink>
+                            ) : (
+                              <NavLink to={`/signin`}>View Detail</NavLink>
+                            )}
                           </Button>
                         </Stack>
 
-                        <Stack s>
-                          <AddShoppingCartIcon  sx={{ width: 100, height: 40, color: "red" }}/>
+                        <Stack>
+                          {customer ? (
+                            <Button
+                              className="shoppingIC"
+                              variant="outlined"
+                              color="primary"
+                              sx={{ width: 10, height: "auto" }}
+                              size="small"
+                            >
+                              {" "}
+                              <AddShoppingCartIcon
+                                sx={{ width: 100, height: 35, color: "red" }}
+                              />
+                            </Button>
+                          ) : (
+                            <Button
+                              style={{ width: 10, height: "auto" }}
+                              className="shoppingIC"
+                              color="primary"
+                              size="small"
+                              variant="contained"
+                              disabled
+                            >
+                              {" "}
+                              <RemoveShoppingCartIcon
+                                sx={{ width: 70, height: 35, color: "red" }}
+                              />
+                            </Button>
+                          )}
                         </Stack>
-                         
                       </Stack>
-                      
                     </CardActions>
                   </CardActionArea>
                 </Card>
               </div>
-            
-             
             ))}
           </>
         ) : (
           <>
             {data.Product.map((product, j) => (
               <div key={j} value={product.id} className="col-sm-3 py-2">
-                <Card sx={{ maxWidth: 345 }} style={{ height: 480 }}  className = "card4 card5">
+                <Card
+                  sx={{ maxWidth: 335 }}
+                  style={{ height: 530 }}
+                  className="card4 card5"
+                >
                   <CardActionArea>
                     <CardMedia
                       style={{
@@ -321,7 +426,7 @@ const Products = () => {
                       </Typography>
                       <Rating
                         name="read-only"
-                        value={product.rating}
+                        value={Number(product.rating)}
                         readOnly
                       />
                       <Stack direction="row" justifyContent={"space-between"}>
@@ -349,7 +454,7 @@ const Products = () => {
                           ) : null}
                         </Stack>
 
-                        <Stack style={{}}>
+                        <Stack>
                           {product.discount_percent != 0 &&
                           product.discount_active == true ? (
                             <Typography
@@ -365,17 +470,46 @@ const Products = () => {
                         </Stack>
                       </Stack>
                     </CardContent>
-                    <CardActions style={{ paddingLeft: 20 }}>
-                      <Button
-                        className="card4"
-                        variant="outlined"
-                        color="primary"
-                        sx={{ width: 120, height: 40, padding: 1, margin: 0 }}
-                      >
-                        <NavLink to={`/product/${product.id}`}>
-                          Add To Cart
-                        </NavLink>
-                      </Button>
+                    <CardActions>
+                      <Stack direction="row" gap={10}>
+                        <Stack>
+                          <NavLink to={`/product/${product.id}`}></NavLink>
+                          <Button
+                            className="card4"
+                            variant="outlined"
+                            color="primary"
+                            sx={{
+                              width: 120,
+                              height: 40,
+                              padding: 1,
+                              margin: 0,
+                            }}
+                          >
+                            {customer ? (
+                              <NavLink to={`/product/${product.id}`}>
+                                View Detail
+                              </NavLink>
+                            ) : (
+                              <NavLink to={`/signin`}>View Detail</NavLink>
+                            )}
+                          </Button>
+                        </Stack>
+
+                        <Stack>
+                          <Button
+                            className="shoppingIC"
+                            variant="outlined"
+                            color="primary"
+                            sx={{ width: 10, height: "auto" }}
+                            size="small"
+                          >
+                            {" "}
+                            <AddShoppingCartIcon
+                              sx={{ width: 100, height: 40, color: "red" }}
+                            />
+                          </Button>
+                        </Stack>
+                      </Stack>
                     </CardActions>
                   </CardActionArea>
                 </Card>
@@ -390,7 +524,7 @@ const Products = () => {
   // --------- Big Return
   return (
     <div>
-      <section style={{paddingLeft:100}}>
+      <section style={{ paddingLeft: 100 }}>
         {/* Filter Row And Search bar Start */}
         <div className="d-flex">
           <div className="row flex-fill ">
@@ -409,28 +543,27 @@ const Products = () => {
                     <SelectCategory />
                   </div>
                   <div className="col-md-6 text-center">
-                    {
-                      !category ? <h1>All Products</h1> :<h1>{data.name}</h1>
-                    }
-                    
+                    {!category ? <h1>All Products</h1> : <h1>{data.name}</h1>}
                   </div>
                   <div className="col-md-3 pt-3">
-                  <TextField id="outlined-basic" label="search products" variant="outlined" />
+                    <TextField
+                      id="outlined-basic"
+                      label="search products"
+                      variant="outlined"
+                    />
                     <Button
                       variant="contained"
                       className="btn"
                       type="submit"
-                      style={{width: 30, marginLeft:30, borderRadius: 50}}
+                      style={{ width: 30, marginLeft: 30, borderRadius: 50 }}
                     >
                       <SearchIcon />
-                  </Button>
+                    </Button>
                   </div>
-                 
-                  
                 </div>
               </div>
             </div>
-          </div>  
+          </div>
         </div>
         {/* Filter Row And Search bar End */}
 
@@ -443,7 +576,6 @@ const Products = () => {
               {/* <ShowProducts /> */}
               {loading ? <Loading /> : <ShowProducts />}
             </div>
-
           </div>
         </div>
         {/* Category & Product Card End */}

@@ -79,7 +79,7 @@ const Home = () => {
           <div className="col-md-3">
             <div className="row">
               <div className="col-sm-1 m-3">
-                <i class="bi bi-airplane iCon"></i>
+                <i className="bi bi-airplane iCon"></i>
               </div>
 
               <div className="col Info">
@@ -92,7 +92,7 @@ const Home = () => {
           <div className="col-md-3">
             <div className="row">
               <div className="col-sm-1 m-3">
-                <i class="bi bi-wallet2 iCon"></i>
+                <i className="bi bi-wallet2 iCon"></i>
               </div>
 
               <div className="col Info">
@@ -105,7 +105,7 @@ const Home = () => {
           <div className="col-md-3">
             <div className="row">
               <div className="col-sm-1 m-3">
-                <i class="bi bi-clipboard-check iCon"></i>
+                <i className="bi bi-clipboard-check iCon"></i>
               </div>
 
               <div className="col Info">
@@ -118,7 +118,7 @@ const Home = () => {
           <div className="col-md-3">
             <div className="row">
               <div className="col-sm-1 m-3">
-                <i class="bi bi-truck iCon"></i>
+                <i className="bi bi-truck iCon"></i>
               </div>
 
               <div className="col Info">
@@ -209,15 +209,19 @@ const Home = () => {
                 <p>ABOUT THE BRAND</p>
                 <h2>Hestan</h2>
                 <div className="col-md-5">
-                <p>Hestan founder Stanley Cheng pioneered hard-anodized aluminum cookware in the 1970s
-                  the breakthrough that ushered in nonstick cookware. Hestan Culinary is born form Hestan's longstanding culture of culinary innovation.
-
-                </p>
+                  <p>
+                    Hestan founder Stanley Cheng pioneered hard-anodized
+                    aluminum cookware in the 1970s the breakthrough that ushered
+                    in nonstick cookware. Hestan Culinary is born form Hestan's
+                    longstanding culture of culinary innovation.
+                  </p>
                 </div>
-               
               </div>
               <div className="col-md-6 ">
-                <img src="https://cdn.accentuate.io/hestan/1661133351905/Cangshan-Hestan-Probond-web-1-1700x900.png?v=1661133351905" alt="" />
+                <img
+                  src="https://cdn.accentuate.io/hestan/1661133351905/Cangshan-Hestan-Probond-web-1-1700x900.png?v=1661133351905"
+                  alt=""
+                />
               </div>
             </div>
           </div>

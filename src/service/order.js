@@ -17,7 +17,7 @@ export const getOrderById = async (id) => {
 };
 
 // create order
-export const createOrders = async ({ productId, quantity, customerId }) => {
+export const createOrder = async ({ productId, quantity, customerId }) => {
   const res = await client.post("/order", {
     productId,
     quantity,
@@ -27,7 +27,7 @@ export const createOrders = async ({ productId, quantity, customerId }) => {
     console.log("Fail to createOrder ...");
     throw new Error("Failed to create ...");
   }
-  console.log("Create suceessfull ...");
+  console.log("Create order: suceessfull ...");
   return res.data;
 };
 

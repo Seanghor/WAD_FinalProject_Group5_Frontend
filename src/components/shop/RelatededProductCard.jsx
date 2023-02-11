@@ -1,7 +1,7 @@
 import React from "react";
 import "../../pages/styles/RelatededProductCard.css";
 function RelatededProductCard(props) {
-  const { profile, description, name, discount_price, price} = props;
+  const { profile, description, name, discount_price, price } = props;
 
   return (
     <div className="product-card">
@@ -15,8 +15,10 @@ function RelatededProductCard(props) {
       </div>
       <div className="product-info">
         <h2 className="product-brand">{name}</h2>
-        <p className="product-short-description">a short line about the cloth..</p>
-        <span className="price">${discount_price }</span>
+        <p className="product-short-description">
+          a short line about the cloth..
+        </p>
+        <span className="price">${discount_price}</span>
         <span className="actual-price">${price}</span>
       </div>
     </div>

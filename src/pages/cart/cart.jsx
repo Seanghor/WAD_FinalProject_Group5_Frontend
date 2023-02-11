@@ -1,7 +1,6 @@
 import { React, useState } from "react";
 import ".././styles/cart.css";
 import { Link } from "react-router-dom";
-
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -18,13 +17,16 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { getOrders } from "./../../service/order";
 import { useEffect } from "react";
+import SendIcon from "@mui/icons-material/Send";
+import IconButton from "@mui/material/IconButton";
+import { deleteOrder } from "./../../service/order";
 
 const columns = [
   { id: "product_name", label: "Product Name", minWidth: 170 },
   { id: "quantity", label: "Quantity", minWidth: 70 },
   { id: "price", label: "Price", minWidth: 70 },
   { id: "total", label: "Total", minWidth: 70 },
-  { id: "actions", label: "", maxWidth: 20 },
+  { id: "actions", label: "Option", maxWidth: 70 },
 ];
 
 const Cart = () => {
@@ -32,11 +34,11 @@ const Cart = () => {
   const [loading, setLoading] = useState(false);
   const [total, setTotal] = useState(0);
 
-  const shipping = 0;
-  let x = 0;
+  const shipping = 1.99;
+  let sum = 0;
   orders.forEach((ord) => {
-    x += Number(ord.total_price);
-    return x;
+    sum += Number(ord.total_price);
+    return sum;
   });
 
   // get all order:
@@ -45,6 +47,18 @@ const Cart = () => {
     setOrders(data);
     setLoading(true);
     console.log("Get all order: ", data);
+  };
+
+  // handle remove
+  const onClickRemove = async (id) => {
+    await deleteOrder(id)
+      .then((res) => {
+        console.log("Res : ", res);
+        orderList();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   // --- useEffect:
@@ -56,7 +70,7 @@ const Cart = () => {
       <div className="row pt-5">
         <div className="col-md-9 pt-5">
           <Paper sx={{ width: "100%", overflow: "hidden" }}>
-            <TableContainer sx={{ maxHeight: 100 }}>
+            <TableContainer sx={{}}>
               <Table stickyHeader aria-label="sticky table">
                 <TableHead>
                   <TableRow>
@@ -93,7 +107,18 @@ const Cart = () => {
                         ${product.total_price}
                       </TableCell>
                       <TableCell>
-                        <DeleteIcon sx={{ color: "red" }} />
+                        <IconButton
+                          aria-label="delete"
+                          size="large"
+                          style={{ color: "red" }}
+                          component="th"
+                          scope="row"
+                          onClick={() => {
+                            onClickRemove(product.id);
+                          }}
+                        >
+                          <DeleteIcon />
+                        </IconButton>
                       </TableCell>
                     </TableRow>
                   ))}
@@ -116,11 +141,15 @@ const Cart = () => {
               </Typography>
               <Stack direction="row" justifyContent="space-between">
                 <Typography>Subtotal</Typography>
-                <Typography>$ 214.50</Typography>
+                <Typography>${parseFloat(sum).toFixed(2)}</Typography>
               </Stack>
               <Stack direction="row" justifyContent="space-between">
                 <Typography>Shipping</Typography>
-                <Typography>$ 20.00</Typography>
+                {orders.length != 0 ? (
+                  <Typography>${parseFloat(shipping).toFixed(2)}</Typography>
+                ) : (
+                  <Typography>${parseFloat(0).toFixed(2)}</Typography>
+                )}
               </Stack>
               <Divider
                 sx={{
@@ -132,7 +161,15 @@ const Cart = () => {
               />
               <Stack direction="row" justifyContent="space-between">
                 <Typography>Total</Typography>
-                <Typography>$ 224.00</Typography>
+                {orders.length != 0 ? (
+                  <Typography>
+                    ${parseFloat(sum + shipping).toFixed(2)}
+                  </Typography>
+                ) : (
+                  <Typography>
+                    ${parseFloat(0).toFixed(2)}
+                  </Typography>
+                )}
               </Stack>
             </CardContent>
             <CardActions>

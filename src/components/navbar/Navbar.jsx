@@ -40,9 +40,11 @@ const Navbar = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          <div className="collapse navbar-collapse justify-content-center " id="navbarSupportedContent">
+          <div
+            className="collapse navbar-collapse justify-content-center "
+            id="navbarSupportedContent"
+          >
             <ul className="navbar-nav mb-1 mb-lg-0 ml-xl-5 ml-sm-5 text-center">
-
               <NavLink className="nav-item" to="/">
                 <li className="nav-link" aria-current="page" href="/">
                   Home
@@ -76,14 +78,16 @@ const Navbar = () => {
                   <i className="bi bi-person-exclamation icon"></i>
                 </NavLink>
               </li>
-            
+
               <li className="nav-item">
                 <NavLink className="nav-link" to="/cart">
                   <i className="bi bi-cart icon"></i>
-                  <span class="badge" id="lblCartCount">
-                    {" "}
-                    {notification}{" "}
-                  </span>
+                  {notification != 0 ? (
+                    <span className="badge" id="lblCartCount">
+                      {" "}
+                      {notification}{" "}
+                    </span>
+                  ) : null}
                 </NavLink>
               </li>
             </ul>
