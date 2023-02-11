@@ -326,7 +326,7 @@ const Products = () => {
                               component="div"
                               style={{ color: "red" }}
                             >
-                              {product.discount_percent}%off
+                              {product.discount_percent}%OFF
                             </Typography>
                           ) : null}
                         </Stack>
@@ -464,7 +464,7 @@ const Products = () => {
                               component="div"
                               style={{ color: "red" }}
                             >
-                              {product.discount_percent}%off
+                              {product.discount_percent}%OFF
                             </Typography>
                           ) : null}
                         </Stack>

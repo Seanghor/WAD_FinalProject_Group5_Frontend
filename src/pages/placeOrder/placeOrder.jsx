@@ -248,25 +248,12 @@ const PlaceOrder = () => {
             </div>
           </div>
         ) : (
-          <div className="col-md-6 pt-5">
-            <div className="row">
-              <div className="col">
-                <h2 className="total">Deal</h2>
-              </div>
-              <div className="col">
-                <h2 className="total">Successfull</h2>
-              </div>
-            </div>
-
-            <hr />
-            <div className="description">
-              <ul className="describe">
-                <li>
-                  <h2>Thank You</h2>
-                </li>
-              </ul>
-            </div>
+          <div className="col-md-6 welcome d-flex justify-content-center">
+              <div className=" text-center">
+                <p>Deal Successful</p>
+            <p>Thank You</p>
           </div>
+        </div>
         )}
       </div>
     </div>
