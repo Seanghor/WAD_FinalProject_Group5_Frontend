@@ -5,6 +5,8 @@ import { useEffect } from "react";
 import { deleteAllOrder, getOrders } from "../../service/order";
 import PaymentIcon from "@mui/icons-material/Payment";
 import { Button } from "@mui/material";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const PlaceOrder = () => {
   const [username, setUsername] = useState("");
@@ -50,6 +52,7 @@ const PlaceOrder = () => {
       .then((res) => {
         setPay(true);
         console.log("Pay success");
+        return 
       })
       .catch((err) => {
         console.log(err);
@@ -240,7 +243,10 @@ const PlaceOrder = () => {
                 <Button
                   size="small"
                   startIcon={<PaymentIcon />}
-                  onClick={() => onClickPay()}
+                  onClick={() => {
+                    onClickPay()
+                  
+                  }}
                 >
                   Pay Now
                 </Button>
@@ -249,11 +255,11 @@ const PlaceOrder = () => {
           </div>
         ) : (
           <div className="col-md-6 welcome d-flex justify-content-center">
-              <div className=" text-center">
-                <p>Deal Successful</p>
-            <p>Thank You</p>
+            <div className=" text-center">
+              <p>Deal Successful</p>
+              <p>Thank You</p>
+            </div>
           </div>
-        </div>
         )}
       </div>
     </div>

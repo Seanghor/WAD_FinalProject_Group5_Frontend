@@ -19,6 +19,7 @@ const Navbar = () => {
   // --- useEffect:
   useEffect(() => {
     orderList();
+    setNotification(notification)
   }, [notification]);
   return (
     <div>

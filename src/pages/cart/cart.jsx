@@ -20,6 +20,8 @@ import { useEffect } from "react";
 import SendIcon from "@mui/icons-material/Send";
 import IconButton from "@mui/material/IconButton";
 import { deleteOrder } from "./../../service/order";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const columns = [
   { id: "product_name", label: "Product Name", minWidth: 170 },
@@ -55,6 +57,8 @@ const Cart = () => {
       .then((res) => {
         console.log("Res : ", res);
         orderList();
+        return toast("Remove Successfull");
+        // window.location.reload(false)   //for refresh notification
       })
       .catch((err) => {
         console.error(err);
@@ -119,6 +123,18 @@ const Cart = () => {
                         >
                           <DeleteIcon />
                         </IconButton>
+                        <ToastContainer
+                          position="top-right"
+                          autoClose={100}
+                          hideProgressBar={true}
+                          newestOnTop={false}
+                          closeOnClick
+                          rtl={false}
+                          pauseOnFocusLoss
+                          draggable
+                          pauseOnHover={false}
+                          theme="light"
+                        />
                       </TableCell>
                     </TableRow>
                   ))}
@@ -166,9 +182,7 @@ const Cart = () => {
                     ${parseFloat(sum + shipping).toFixed(2)}
                   </Typography>
                 ) : (
-                  <Typography>
-                    ${parseFloat(0).toFixed(2)}
-                  </Typography>
+                  <Typography>${parseFloat(0).toFixed(2)}</Typography>
                 )}
               </Stack>
             </CardContent>

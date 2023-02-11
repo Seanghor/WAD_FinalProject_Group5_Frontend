@@ -21,6 +21,9 @@ import CardMedia from "@mui/material/CardMedia";
 import { CardActionArea } from "@mui/material";
 import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
@@ -68,13 +71,23 @@ const ProductDetail = () => {
     console.log("quantity : ", quantity);
 
     // console.log("Type :", typeof(productId));
-    await createOrder({ productId:parseInt(id), quantity, customerId })
+    await createOrder({ productId: parseInt(id), quantity, customerId })
       .then((res) => {
         console.log(res);
       })
       .catch((err) => {
         console.log(err);
       });
+    return toast("🦄 Wow so easy!", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
 
   useEffect(() => {
@@ -202,10 +215,11 @@ const ProductDetail = () => {
                           size="small"
                           style={{ width: 130, height: 45 }}
                           variant="contained"
-                          onClick={() => onClickOrder()}
+                          onClick={() => {onClickOrder() }}
                         >
                           Add to cart
                         </Button>
+                     
                       </Link>
                     </Stack>
                   </Stack>
