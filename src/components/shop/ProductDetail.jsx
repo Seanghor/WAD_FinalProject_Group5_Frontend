@@ -27,9 +27,9 @@ const ProductDetail = () => {
   const [loading, setLoading] = useState(true);
   const [reproduct, setReproduct] = useState([]);
   const [customerInfo, setCustomerInfor] = useState([]);
-  const [productId, setproductId] = useState(Number);
+  const [productId, setproductId] = useState();
   const [customerId, setCustomerId] = useState(Number);
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(Number(1));
   const [isAuth, setIsAuth] = useState(false);
   const [proId, setProId] = useState(id);
 
@@ -62,13 +62,13 @@ const ProductDetail = () => {
     const profileData = await data.profile;
     setCustomerInfor(profileData);
     setCustomerId(profileData.customerId);
-    setproductId(Number(id));
+    setproductId(parseInt(id));
     console.log("customerId : ", profileData.customerId);
-    console.log("productId : ", id);
+    console.log("productId : ", productId);
     console.log("quantity : ", quantity);
 
     // console.log("Type :", typeof(productId));
-    await createOrder({ productId, quantity, customerId })
+    await createOrder({ productId:parseInt(id), quantity, customerId })
       .then((res) => {
         console.log(res);
       })
