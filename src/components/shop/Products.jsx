@@ -20,6 +20,8 @@ import { isAuth } from "../../service/auth";
 import SearchIcon from "@mui/icons-material/Search";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
+import { userInfo } from './../../service/auth';
+import { createOrder } from "../../service/order";
 
 const Products = () => {
   const [loading, setLoading] = useState(true);
@@ -32,12 +34,17 @@ const Products = () => {
   const [category, setCategory] = useState(false);
   const [customer, setCustomer] = useState(false);
   const [accessToken, setAccessToken] = useState(null);
+  const [customerInfo, setCustomerInfo] = useState()
 
   const isCustomer = async () => {
     const isCustomer = isAuth();
     setCustomer(isCustomer);
+    if (isCustomer === true) {
+      setCustomerInfo(userInfo().profile)
+    }
   };
   console.log("isCustomer : ", customer);
+  console.log("CustomerInfo : ", customerInfo);
 
   // fect: get all product
   const allProducts = async () => {
@@ -365,6 +372,7 @@ const Products = () => {
                               color="primary"
                               sx={{ width: 10, height: "auto" }}
                               size="small"
+                              onClick={async()=> {await createOrder({ productId:product.id, quantity:1, customerId: customerInfo.customerId })}}
                             >
                               {" "}
                               <AddShoppingCartIcon
@@ -502,6 +510,7 @@ const Products = () => {
                             color="primary"
                             sx={{ width: 10, height: "auto" }}
                             size="small"
+                            onClick={async()=> {await createOrder({ productId:product.id, quantity:1, customerId: customerInfo.customerId })} }
                           >
                             {" "}
                             <AddShoppingCartIcon
