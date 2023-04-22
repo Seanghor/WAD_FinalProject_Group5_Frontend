@@ -2,6 +2,18 @@
   "name": "kitchi-frontend",
   "version": "0.1.0",
   "private": true,
+  "author1": {
+    "name": "seanghor",
+    "email": "haiseanghor20@kit.edu.khcom"
+  },
+  "author2": {
+    "name": "sothea",
+    "email": "bansothea20@kit.edu.khcom"
+  },
+  "author3": {
+    "name": "kimsour",
+    "email": "rithkimsour20@kit.edu.khcom"
+  },
   "dependencies": {
     "@coreui/react": "^4.5.2",
     "@emotion/react": "^11.10.5",
