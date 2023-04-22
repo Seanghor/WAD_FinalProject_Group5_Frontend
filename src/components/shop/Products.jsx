@@ -19,6 +19,11 @@ import Skeleton from "@mui/material/Skeleton";
 import { isAuth } from "../../service/auth";
 import SearchIcon from "@mui/icons-material/Search";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
+import { userInfo } from "./../../service/auth";
+import { createOrder } from "../../service/order";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Products = () => {
   const [loading, setLoading] = useState(true);
@@ -30,12 +35,17 @@ const Products = () => {
   const [category, setCategory] = useState(false);
   const [customer, setCustomer] = useState(false);
   const [accessToken, setAccessToken] = useState(null);
+  const [customerInfo, setCustomerInfo] = useState();
 
   const isCustomer = async () => {
     const isCustomer = isAuth();
     setCustomer(isCustomer);
+    if (isCustomer === true) {
+      setCustomerInfo(userInfo().profile);
+    }
   };
   console.log("isCustomer : ", customer);
+  console.log("CustomerInfo : ", customerInfo);
 
   // fect: get all product
   const allProducts = async () => {
@@ -57,6 +67,8 @@ const Products = () => {
         setCategoryList(res);
       });
   };
+
+  // await createOrder({ productId:product.id, quantity:1, customerId: customerInfo.customerId })}
 
   // --- useEffect:
   useEffect(() => {
@@ -209,7 +221,7 @@ const Products = () => {
   };
 
   const onClickCategory = async (id) => {
-    const dataC = await categoryList.find((cate) => {
+    const dataC = categoryList.find((cate) => {
       return cate.id === id;
     });
     setCategory(true);
@@ -232,7 +244,7 @@ const Products = () => {
                   href="#"
                   style={{ color: "black", fontWeight: 600 }}
                   key={i}
-                  value={el}
+                  value={el.id}
                 >
                   <div onClick={() => onClickCategory(el.id)}> {el.name}</div>
                 </CDropdownItem>
@@ -282,7 +294,7 @@ const Products = () => {
                       </Typography>
                       <Rating
                         name="read-only"
-                        value={product.rating}
+                        value={Number(product.rating)}
                         readOnly
                       />
                       <Stack direction="row" justifyContent={"space-between"}>
@@ -320,7 +332,7 @@ const Products = () => {
                               component="div"
                               style={{ color: "red" }}
                             >
-                              {product.discount_percent}%off
+                              {product.discount_percent}%OFF
                             </Typography>
                           ) : null}
                         </Stack>
@@ -329,6 +341,7 @@ const Products = () => {
                     <CardActions>
                       <Stack direction="row" gap={10}>
                         <Stack>
+                          <NavLink to={`/product/${product.id}`}></NavLink>
                           <Button
                             className="card4"
                             variant="outlined"
@@ -340,18 +353,67 @@ const Products = () => {
                               margin: 0,
                             }}
                           >
-                        
+                            {customer ? (
                               <NavLink to={`/product/${product.id}`}>
                                 View Detail
                               </NavLink>
-                         
+                            ) : (
+                              <NavLink to={`/signin`}>View Detail</NavLink>
+                            )}
                           </Button>
                         </Stack>
 
-                        <Stack s>
-                          <AddShoppingCartIcon
-                            sx={{ width: 100, height: 40, color: "red" }}
-                          />
+                        <Stack>
+                          {customer ? (
+                            <div>
+                              {" "}
+                              <Button
+                                className="shoppingIC"
+                                variant="outlined"
+                                color="primary"
+                                sx={{ width: 10, height: "auto" }}
+                                size="small"
+                                onClick={async () => {
+                                  await createOrder({
+                                    productId: product.id,
+                                    quantity: 1,
+                                    customerId: customerInfo.customerId,
+                                  });
+
+                                  return toast.success("Add to Cart!", {
+                                    position: "top-right",
+                                    autoClose: 1000,
+                                    hideProgressBar: false,
+                                    closeOnClick: true,
+                                    pauseOnHover: true,
+                                    draggable: true,
+                                    progress: undefined,
+                                    theme: "light",
+                                  });
+                                }}
+                              >
+                                {" "}
+                                <AddShoppingCartIcon
+                                  sx={{ width: 100, height: 35, color: "red" }}
+                                />
+                              </Button>
+                              <ToastContainer />
+                            </div>
+                          ) : (
+                            <Button
+                              style={{ width: 10, height: "auto" }}
+                              className="shoppingIC"
+                              color="primary"
+                              size="small"
+                              variant="contained"
+                              disabled
+                            >
+                              {" "}
+                              <RemoveShoppingCartIcon
+                                sx={{ width: 70, height: 35, color: "red" }}
+                              />
+                            </Button>
+                          )}
                         </Stack>
                       </Stack>
                     </CardActions>
@@ -365,8 +427,8 @@ const Products = () => {
             {data.Product.map((product, j) => (
               <div key={j} value={product.id} className="col-sm-3 py-2">
                 <Card
-                  sx={{ maxWidth: 345 }}
-                  style={{ height: 480 }}
+                  sx={{ maxWidth: 335 }}
+                  style={{ height: 530 }}
                   className="card4 card5"
                 >
                   <CardActionArea>
@@ -392,7 +454,7 @@ const Products = () => {
                       </Typography>
                       <Rating
                         name="read-only"
-                        value={product.rating}
+                        value={Number(product.rating)}
                         readOnly
                       />
                       <Stack direction="row" justifyContent={"space-between"}>
@@ -420,9 +482,9 @@ const Products = () => {
                           ) : null}
                         </Stack>
 
-                        <Stack style={{}}>
-                          {product.discount_percent !== 0 &&
-                          product.discount_active === true ? (
+                        <Stack>
+                          {product.discount_percent != 0 &&
+                          product.discount_active == true ? (
                             <Typography
                               gutterBottom
                               variant="h6"
@@ -430,23 +492,59 @@ const Products = () => {
                               component="div"
                               style={{ color: "red" }}
                             >
-                              {product.discount_percent}%off
+                              {product.discount_percent}%OFF
                             </Typography>
                           ) : null}
                         </Stack>
                       </Stack>
                     </CardContent>
-                    <CardActions style={{ paddingLeft: 20 }}>
-                      <Button
-                        className="card4"
-                        variant="outlined"
-                        color="primary"
-                        sx={{ width: 120, height: 40, padding: 1, margin: 0 }}
-                      >
-                        <NavLink to={`/product/${product.id}`}>
-                          Add To Cart
-                        </NavLink>
-                      </Button>
+                    <CardActions>
+                      <Stack direction="row" gap={10}>
+                        <Stack>
+                          <NavLink to={`/product/${product.id}`}></NavLink>
+                          <Button
+                            className="card4"
+                            variant="outlined"
+                            color="primary"
+                            sx={{
+                              width: 120,
+                              height: 40,
+                              padding: 1,
+                              margin: 0,
+                            }}
+                          >
+                            {customer ? (
+                              <NavLink to={`/product/${product.id}`}>
+                                View Detail
+                              </NavLink>
+                            ) : (
+                              <NavLink to={`/signin`}>View Detail</NavLink>
+                            )}
+                          </Button>
+                        </Stack>
+
+                        <Stack>
+                          <Button
+                            className="shoppingIC"
+                            variant="outlined"
+                            color="primary"
+                            sx={{ width: 10, height: "auto" }}
+                            size="small"
+                            onClick={async () => {
+                              await createOrder({
+                                productId: product.id,
+                                quantity: 1,
+                                customerId: customerInfo.customerId,
+                              });
+                            }}
+                          >
+                            {" "}
+                            <AddShoppingCartIcon
+                              sx={{ width: 100, height: 40, color: "red" }}
+                            />
+                          </Button>
+                        </Stack>
+                      </Stack>
                     </CardActions>
                   </CardActionArea>
                 </Card>

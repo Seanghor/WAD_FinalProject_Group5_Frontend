@@ -1,6 +1,12 @@
 import React from "react";
 import ".././styles/contact.css";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 const Contact = () => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
   return (
     <div>
       <div className="container">
@@ -39,6 +45,9 @@ const Contact = () => {
                     type="text"
                     className="form-control "
                     placeholder="Enter Name"
+                    onChange={(e) => {
+                      setUsername(e.target.value);
+                    }}
                   />
                 </div>
                 <div className="form-group ">
@@ -48,6 +57,9 @@ const Contact = () => {
                     className="form-control "
                     ria-describedby="emailHelp"
                     placeholder="email"
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
                   />
                 </div>
                 <div className="form-group ">
@@ -56,6 +68,9 @@ const Contact = () => {
                     type="text"
                     className="form-control"
                     placeholder="Optional"
+                    onChange={(e) => {
+                      setSubject(e.target.value);
+                    }}
                   />
                 </div>
                 <div className="form-group  ">
@@ -63,13 +78,22 @@ const Contact = () => {
                   <input
                     type="text"
                     className="form-control "
-                    placeholder="email"
+                    placeholder="message"
+                    onChange={(e) => {
+                      setMessage(e.target.value);
+                    }}
                   />
                 </div>
 
-                <button type="submit" className="btn btn-primary">
-                  Submit
-                </button>
+                {!username || !email || !message ? (
+                  <button type="submit" className="btn btn-primary" disabled>
+                    Submit
+                  </button>
+                ) : (
+                  <button type="submit" className="btn btn-primary">
+                    Submit
+                  </button>
+                )}
               </form>
             </div>
           </div>

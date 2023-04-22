@@ -1,7 +1,6 @@
 import { React, useState } from "react";
 import ".././styles/cart.css";
 import { Link } from "react-router-dom";
-
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -18,13 +17,18 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { getOrders } from "./../../service/order";
 import { useEffect } from "react";
+import SendIcon from "@mui/icons-material/Send";
+import IconButton from "@mui/material/IconButton";
+import { deleteOrder } from "./../../service/order";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const columns = [
   { id: "product_name", label: "Product Name", minWidth: 170 },
   { id: "quantity", label: "Quantity", minWidth: 70 },
   { id: "price", label: "Price", minWidth: 70 },
   { id: "total", label: "Total", minWidth: 70 },
-  { id: "actions", label: "", maxWidth: 20 },
+  { id: "actions", label: "Option", maxWidth: 70 },
 ];
 
 const Cart = () => {
@@ -32,7 +36,7 @@ const Cart = () => {
   const [loading, setLoading] = useState(false);
   const [total, setTotal] = useState(0);
 
-  const shipping = 5;
+  const shipping = 1.99;
   let sum = 0;
   orders.forEach((ord) => {
     sum += Number(ord.total_price);
@@ -47,6 +51,20 @@ const Cart = () => {
     console.log("Get all order: ", data);
   };
 
+  // handle remove
+  const onClickRemove = async (id) => {
+    await deleteOrder(id)
+      .then((res) => {
+        console.log("Res : ", res);
+        orderList();
+        return toast("Remove Successfull");
+        // window.location.reload(false)   //for refresh notification
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   // --- useEffect:
   useEffect(() => {
     orderList();
@@ -56,7 +74,7 @@ const Cart = () => {
       <div className="row pt-5">
         <div className="col-md-9 pt-5">
           <Paper sx={{ width: "100%", overflow: "hidden" }}>
-            <TableContainer sx={{ maxHeight: 500 }}>
+            <TableContainer sx={{}}>
               <Table stickyHeader aria-label="sticky table">
                 <TableHead>
                   <TableRow>
@@ -94,7 +112,30 @@ const Cart = () => {
                         ${parseFloat(product.total_price).toFixed(2)}
                       </TableCell>
                       <TableCell>
-                        <DeleteIcon sx={{ color: "red" }} />
+                        <IconButton
+                          aria-label="delete"
+                          size="large"
+                          style={{ color: "red" }}
+                          component="th"
+                          scope="row"
+                          onClick={() => {
+                            onClickRemove(product.id);
+                          }}
+                        >
+                          <DeleteIcon />
+                        </IconButton>
+                        <ToastContainer
+                          position="top-right"
+                          autoClose={100}
+                          hideProgressBar={true}
+                          newestOnTop={false}
+                          closeOnClick
+                          rtl={false}
+                          pauseOnFocusLoss
+                          draggable
+                          pauseOnHover={false}
+                          theme="light"
+                        />
                       </TableCell>
                     </TableRow>
                   ))}
@@ -121,7 +162,11 @@ const Cart = () => {
               </Stack>
               <Stack direction="row" justifyContent="space-between">
                 <Typography>Shipping</Typography>
-                <Typography>${parseFloat(shipping).toFixed(2)}</Typography>
+                {orders.length != 0 ? (
+                  <Typography>${parseFloat(shipping).toFixed(2)}</Typography>
+                ) : (
+                  <Typography>${parseFloat(0).toFixed(2)}</Typography>
+                )}
               </Stack>
               <Divider
                 sx={{
@@ -133,7 +178,13 @@ const Cart = () => {
               />
               <Stack direction="row" justifyContent="space-between">
                 <Typography>Total</Typography>
-                <Typography>${sum + shipping}</Typography>
+                {orders.length != 0 ? (
+                  <Typography>
+                    ${parseFloat(sum + shipping).toFixed(2)}
+                  </Typography>
+                ) : (
+                  <Typography>${parseFloat(0).toFixed(2)}</Typography>
+                )}
               </Stack>
             </CardContent>
             <CardActions>

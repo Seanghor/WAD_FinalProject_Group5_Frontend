@@ -67,18 +67,18 @@ const Cards = (prop) => {
             </CardContent>
             <CardActions
               style={{ alignItems: "center", justifyContent: "center" }}
-              >
-              <Link to={'/shop'} >
+            >
+              <Link to={"/shop"}>
                 <Button
-                size="small"
-                variant="contained"
-                color="secondary"
-                style={{ borderRadius: 35 }}
-                sx={{ width: 200, padding: 1.5 }}
+                  size="small"
+                  variant="contained"
+                  color="secondary"
+                  style={{ borderRadius: 35 }}
+                  sx={{ width: 200, padding: 1.5 }}
                 >
                   View More
                 </Button>
-              </Link> 
+              </Link>
             </CardActions>
           </CardActionArea>
         </Card>

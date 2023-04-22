@@ -19,6 +19,7 @@ const Navbar = () => {
   // --- useEffect:
   useEffect(() => {
     orderList();
+    setNotification(notification)
   }, [notification]);
   return (
     <div>
@@ -78,11 +79,11 @@ const Navbar = () => {
                   <i className="bi bi-person-exclamation icon"></i>
                 </NavLink>
               </li>
-            
+
               <li className="nav-item">
                 <NavLink className="nav-link" to="/cart">
                   <i className="bi bi-cart icon"></i>
-                  {notification ? (
+                  {notification != 0 ? (
                     <span className="badge" id="lblCartCount">
                       {" "}
                       {notification}{" "}
