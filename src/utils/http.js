@@ -1,8 +1,8 @@
 import { logout }  from "../service/auth"
 import axios from "axios";
 
-const REFRESH_TOKEN_URL = "http://localhost:8080/api/refreshToken";
-const BASE_URL = "http://localhost:8080/api";
+const REFRESH_TOKEN_URL = "http://localhost:2001/api/refreshToken";
+const BASE_URL = "http://localhost:2001/api";
 
 let failedQueue = [];
 let isRefreshing = false;
