@@ -29,7 +29,7 @@ EXPOSE 2000
 
 # To run: pnpm run preview
 # # We need package.json and vite.config.ts
-# COPY package.json vite.config.ts ./
+COPY package.json ./
 
 # Install TypeScript globally (if needed)
 RUN npm install typescript -g
