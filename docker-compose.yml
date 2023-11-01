@@ -1,7 +1,7 @@
 version: "3.3"
 name: kitchi-web
 services:
-  web:
+  kitchi-web:
     container_name: kitchin-web
     image: kitchin-web_iamge  
     build: .
