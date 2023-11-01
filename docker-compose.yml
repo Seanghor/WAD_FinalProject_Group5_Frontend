@@ -3,7 +3,7 @@ name: kitchi-web
 services:
   kitchi-web:
     container_name: kitchin-web
-    image: kitchin-web_iamge  
+    image: kitchi-web_iamge  
     build: .
     ports:
       - "2000:2000"
