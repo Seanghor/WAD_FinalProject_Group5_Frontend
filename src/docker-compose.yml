@@ -1,0 +1,12 @@
+version: "3.3"
+name: kitchi-web
+services:
+  web:
+    container_name: kitchin-web
+    image: kitchin-web_iamge  
+    build: .
+    ports:
+      - "2000:2000"
+    environment:
+      NODE_ENV: production
+    command: pnpm run preview
