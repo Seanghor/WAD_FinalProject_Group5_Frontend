@@ -38,4 +38,4 @@ RUN npm install typescript -g
 RUN npm install -g pnpm
 
 # Command to start the application
-CMD ["pnpm", "run", "preview"]
+CMD ["pnpm", "run", "start"]
