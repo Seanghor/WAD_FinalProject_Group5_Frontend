@@ -2,7 +2,7 @@ version: "3.3"
 name: kitchi-web
 services:
   kitchi-web:
-    container_name: kitchin-web
+    container_name: kitchi-web
     image: kitchi-web_iamge  
     build: .
     ports:
