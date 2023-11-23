@@ -4,10 +4,6 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { login } from "../../service/auth";
 import { Checkbox, Button, Typography, Stack } from "@mui/material/";
-// import { loginAPI } from "../../service/auth";
-import { getProducts } from "./../../service/product";
-import { getCategory, getAllCategory } from "./../../service/category";
-import { width } from "@mui/system";
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 const Signin = () => {
   const [email, setEmail] = useState("");

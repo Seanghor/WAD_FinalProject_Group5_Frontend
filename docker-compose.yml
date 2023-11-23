@@ -1,0 +1,12 @@
+version: "3.3"
+name: kitchi-web
+services:
+  kitchi-web:
+    container_name: kitchi-web
+    image: kitchi-web_iamge  
+    build: .
+    ports:
+      - "2000:2000"
+    environment:
+      NODE_ENV: production
+    command: yarn run start
