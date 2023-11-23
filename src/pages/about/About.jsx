@@ -53,7 +53,7 @@ const About = () => {
                     </Link>
                     <p className="card-text">Hello, everyone! I'm from KIT.</p>
                     <p className="text-secondary text-decoration-none">
-                      Backend Developer
+                      Frontend Developer
                     </p>
                     <p className="text">Software Engineering </p>
                   </div>

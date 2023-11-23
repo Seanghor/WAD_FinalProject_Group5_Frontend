@@ -24,7 +24,6 @@ COPY --from=BUILD_IMAGE /app/react-app/public/ /app/react-app/public/
 COPY --from=BUILD_IMAGE /app/react-app/src/ /app/react-app/src/
 COPY --from=BUILD_IMAGE /app/react-app/node_modules /app/react-app/node_modules
 
-
 # Expose the application port
 EXPOSE 2000
 

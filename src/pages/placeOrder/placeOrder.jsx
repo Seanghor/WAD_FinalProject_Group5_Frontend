@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import { deleteAllOrder, getOrders } from "../../service/order";
 import PaymentIcon from "@mui/icons-material/Payment";
 import { Button } from "@mui/material";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const PlaceOrder = () => {
@@ -17,8 +16,9 @@ const PlaceOrder = () => {
   const [zipe, setZipe] = useState();
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [moreInfo, setMoreInfo] = useState("");
+
   // const [username, setUsername] = useState("")
+  const [moreInfo, setMoreInfo] = useState("");
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(false);
   const [pay, setPay] = useState(false);
@@ -52,7 +52,7 @@ const PlaceOrder = () => {
       .then((res) => {
         setPay(true);
         console.log("Pay success");
-        return 
+        return
       })
       .catch((err) => {
         console.log(err);
@@ -228,14 +228,14 @@ const PlaceOrder = () => {
             </div>
             <div className="checkout-btb">
               {orders.length == 0 ||
-              !username ||
-              !company ||
-              !city ||
-              !street ||
-              !province ||
-              !zipe ||
-              !phone ||
-              !email ? (
+                !username ||
+                !company ||
+                !city ||
+                !street ||
+                !province ||
+                !zipe ||
+                !phone ||
+                !email ? (
                 <Button size="small" disabled startIcon={<PaymentIcon />}>
                   Pay Now
                 </Button>
@@ -245,7 +245,7 @@ const PlaceOrder = () => {
                   startIcon={<PaymentIcon />}
                   onClick={() => {
                     onClickPay()
-                  
+
                   }}
                 >
                   Pay Now
